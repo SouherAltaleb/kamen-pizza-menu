@@ -20,7 +20,7 @@ export const pizzas = [
     description: "Spinat, Knoblauch",
     allergens: [],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza2.png",
     sizes: [
       { size: "28 cm", price: "8,50 €" },
       { size: "32 cm", price: "9,50 €" },
@@ -34,7 +34,7 @@ export const pizzas = [
     description: "Brokkoli, Feta-Käse, Knoblauch",
     allergens: [],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza3.png",
     sizes: [
       { size: "28 cm", price: "8,50 €" },
       { size: "32 cm", price: "9,50 €" },

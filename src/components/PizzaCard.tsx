@@ -22,11 +22,11 @@ function PizzaCard({
   sizes,
 }: Pizza) {
   return (
-    <article className="flex gap-4 rounded-[25px] border border-kamen-gold bg-white/40 p-4">
+    <article className="flex gap-3 rounded-[25px] border border-kamen-gold/50 bg-kamen-cream p-4 sm:gap-4 sm:p-5">
       <img
         src={image}
         alt={name}
-        className="h-32 w-32 rounded-2xl object-cover"
+        className="h-32 w-32 shrink-0 rounded-[15px] object-cover sm:h-24 sm:w-24"
       />
 
       <div className="flex flex-1 flex-col">
@@ -42,9 +42,11 @@ function PizzaCard({
           {name}
         </h3>
 
-        <p className="mt-2 text-sm text-kamen-dark">{description}</p>
+        <p className="mt-2 text-sm leading-relaxed  text-kamen-dark">
+          {description}
+        </p>
 
-        <div className="mt-3 space-y-1">
+        <div className="mt-3 space-y-1.5">
           {sizes.map((item) => (
             <div key={item.size} className="flex justify-between text-sm">
               <span className="text-kamen-dark">{item.size}</span>
