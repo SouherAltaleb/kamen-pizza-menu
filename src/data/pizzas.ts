@@ -6,7 +6,7 @@ export const pizzas = [
     description: "Tomatensauce, Käse",
     allergens: ["A", "G", "2"],
     category: "Klassisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza1.png",
     sizes: [
       { size: "28 cm", price: "7,50 €" },
       { size: "32 cm", price: "8,00 €" },
