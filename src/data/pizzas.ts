@@ -1,10 +1,10 @@
 export const pizzas = [
   {
-    id: 1,
+    id: "01",
     number: "01",
     name: "Margherita",
     description: "Tomatensauce, Käse",
-    allergens: ["A", "G", "2"],
+    allergens: ["a", "l"],
     category: "Klassisch",
     image: "/pizza/pizza1.png",
     sizes: [
@@ -14,11 +14,11 @@ export const pizzas = [
   },
 
   {
-    id: 2,
+    id: "02",
     number: "02",
     name: "Spinat",
-    description: "Spinat, Knoblauch",
-    allergens: [],
+    description: "Spinat und Knoblauch",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
     image: "/pizza/pizza2.png",
     sizes: [
@@ -28,11 +28,11 @@ export const pizzas = [
   },
 
   {
-    id: 3,
+    id: "03",
     number: "03",
     name: "Brokkoli",
-    description: "Brokkoli, Feta-Käse, Knoblauch",
-    allergens: [],
+    description: "Brokkoli, Hirtenkäse, Knoblauch",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
     image: "/pizza/pizza3.png",
     sizes: [
@@ -42,13 +42,13 @@ export const pizzas = [
   },
 
   {
-    id: 4,
+    id: "04",
     number: "04",
     name: "Funghi",
     description: "Frische Champignons",
-    allergens: [],
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza4.png",
     sizes: [
       { size: "28 cm", price: "8,50 €" },
       { size: "32 cm", price: "9,50 €" },
@@ -56,13 +56,13 @@ export const pizzas = [
   },
 
   {
-    id: 5,
+    id: "05",
     number: "05",
     name: "Cipolla",
     description: "Zwiebeln",
-    allergens: [],
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza5.png",
     sizes: [
       { size: "28 cm", price: "8,50 €" },
       { size: "32 cm", price: "9,50 €" },
@@ -70,13 +70,13 @@ export const pizzas = [
   },
 
   {
-    id: 6,
+    id: "06",
     number: "06",
     name: "Paprika",
-    description: "Frische Paprika, Zwiebeln",
-    allergens: [],
+    description: "Frische Paprika und Zwiebeln",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza6.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -84,13 +84,13 @@ export const pizzas = [
   },
 
   {
-    id: 7,
+    id: "07",
     number: "07",
     name: "Artischocken",
     description: "Artischocken",
     allergens: [],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza7.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -98,14 +98,14 @@ export const pizzas = [
   },
 
   {
-    id: 8,
+    id: "08",
     number: "08",
-    name: "Caprese",
+    name: "Genovese",
     description:
-      "Frische Tomaten, Mozzarella, Pesto, Walnüsse, Rucola (ohne Tomatensauce)",
-    allergens: [],
+      "Frische Tomaten, Mozzarella, Pesto, geriebene Walnüsse, Rucola (ohne Tomatensauce)",
+    allergens: ["a", "l", "o"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza8.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -113,13 +113,13 @@ export const pizzas = [
   },
 
   {
-    id: 9,
+    id: "09",
     number: "09",
     name: "Campania",
-    description: "Champignons, schwarze Oliven, Mais",
-    allergens: [],
+    description: "Champignons, schwarze Oliven und Mais",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza9.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -127,13 +127,13 @@ export const pizzas = [
   },
 
   {
-    id: 10,
+    id: "10",
     number: "10",
     name: "Vegetaria",
-    description: "Spinat, Brokkoli, frische Paprika, Champignons",
-    allergens: [],
+    description: "Spinat, Brokkoli, frische Paprika und Champignons",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza10.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -141,14 +141,13 @@ export const pizzas = [
   },
 
   {
-    id: 11,
+    id: "10a",
     number: "10a",
     name: "Veggi Vegan",
     description: "Champignons, Brokkoli, Paprika, Spinat, veganer Käse",
-    allergens: [],
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    dietary: "vegan",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza10.png",
     sizes: [
       { size: "28 cm", price: "10,50 €" },
       { size: "32 cm", price: "11,50 €" },
@@ -156,14 +155,13 @@ export const pizzas = [
   },
 
   {
-    id: 12,
+    id: "10b",
     number: "10b",
     name: "Tonno Vegan",
     description: "Thunfisch, veganer Käse, Zwiebeln",
-    allergens: [],
-    category: "Vegetarisch",
-    dietary: "vegan",
-    image: "/pizza/pizza.png",
+    allergens: ["a", "l"],
+    category: "Fisch",
+    image: "/pizza/pizza10b.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -171,13 +169,13 @@ export const pizzas = [
   },
 
   {
-    id: 13,
+    id: "10c",
     number: "10c",
     name: "Nostalgia",
-    description: "Milde Peperoni, Feta-Käse, schwarze Oliven, Knoblauch",
-    allergens: [],
+    description: "Milde Peperoni, Hirtenkäse, schwarze Oliven, Knoblauch",
+    allergens: ["a", "l"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza10c.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -185,39 +183,24 @@ export const pizzas = [
   },
 
   {
-    id: 14,
+    id: "11",
     number: "11",
-    name: "Special Pizza",
-    description:
-      "Putenschinken, Rindersalami, Champignons, Thunfisch, schwarze Oliven, Ei, Knoblauch",
-    allergens: [],
-    category: "Fleisch",
-    image: "/pizza/pizza.png",
-    sizes: [
-      { size: "28 cm", price: "10,50 €" },
-      { size: "32 cm", price: "11,50 €" },
-    ],
-  },
-
-  {
-    id: 15,
-    number: "11a",
-    name: "Heart Pizza",
-    description: "Herzförmige Pizza mit Käserand + 2 Beläge nach Wahl",
-    allergens: [],
+    name: "Herzform-Pizza",
+    description: "Herzform-Pizza mit Käserand und zwei Zutaten nach Wunsch",
+    allergens: ["a", "h", "i", "l", "5"],
     category: "Spezial",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza11.png",
     sizes: [{ size: "32 cm", price: "11,50 €" }],
   },
 
   {
-    id: 16,
+    id: "12",
     number: "12",
     name: "4 Formaggi",
-    description: "Vier verschiedene Käsesorten",
-    allergens: [],
+    description: "4 verschiedene Käsesorten",
+    allergens: ["a", "l", "4"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza12.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -225,13 +208,13 @@ export const pizzas = [
   },
 
   {
-    id: 17,
+    id: "13",
     number: "13",
-    name: "Beef Salami",
+    name: "Rindersalami",
     description: "Rindersalami",
-    allergens: [],
+    allergens: ["a", "l", "1", "2", "8", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza13.png",
     sizes: [
       { size: "28 cm", price: "8,50 €" },
       { size: "32 cm", price: "9,50 €" },
@@ -239,13 +222,13 @@ export const pizzas = [
   },
 
   {
-    id: 18,
+    id: "14",
     number: "14",
     name: "Prosciutto",
-    description: "Putenschinken",
-    allergens: [],
+    description: "Pizzabelag aus Truthahnfleisch",
+    allergens: ["a", "l", "1", "2", "8", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza14.png",
     sizes: [
       { size: "28 cm", price: "8,50 €" },
       { size: "32 cm", price: "9,50 €" },
@@ -253,13 +236,13 @@ export const pizzas = [
   },
 
   {
-    id: 19,
+    id: "15",
     number: "15",
-    name: "Döner Pizza",
-    description: "Dönerfleisch, Zwiebeln, Sauce Hollandaise",
-    allergens: [],
+    name: "Dönerpizza",
+    description: "Dönerfleisch, Zwiebeln und Sauce Hollandaise",
+    allergens: ["a", "h", "l", "u"],
     category: "Döner",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza15.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -267,41 +250,13 @@ export const pizzas = [
   },
 
   {
-    id: 20,
+    id: "15a",
     number: "15a",
-    name: "Döner Brokkoli",
-    description: "Dönerfleisch, Brokkoli, Sauce Hollandaise",
-    allergens: [],
-    category: "Döner",
-    image: "/pizza/pizza.png",
-    sizes: [
-      { size: "28 cm", price: "10,00 €" },
-      { size: "32 cm", price: "11,00 €" },
-    ],
-  },
-
-  {
-    id: 21,
-    number: "15b",
-    name: "Döner Paprika",
-    description: "Dönerfleisch, Paprika, Sauce Hollandaise",
-    allergens: [],
-    category: "Döner",
-    image: "/pizza/pizza.png",
-    sizes: [
-      { size: "28 cm", price: "10,00 €" },
-      { size: "32 cm", price: "11,00 €" },
-    ],
-  },
-
-  {
-    id: 22,
-    number: "15c",
     name: "Zazi Döner",
-    description: "Dönerfleisch, Brokkoli, Sauce Hollandaise, Tzatziki",
-    allergens: [],
+    description: "Dönerfleisch, Brokkoli, Sauce Hollandaise und Zaziki",
+    allergens: ["a", "h", "l", "u"],
     category: "Döner",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza15a.png",
     sizes: [
       { size: "28 cm", price: "11,00 €" },
       { size: "32 cm", price: "12,00 €" },
@@ -309,13 +264,13 @@ export const pizzas = [
   },
 
   {
-    id: 23,
+    id: "16",
     number: "16",
-    name: "Garlic Sausage",
-    description: "Knoblauchwurst, Zwiebeln",
-    allergens: [],
+    name: "Knoblauchwurst",
+    description: "Knoblauchwurst und Zwiebeln",
+    allergens: ["a", "l", "t", "u", "k", "1", "2", "4", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza16.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -323,27 +278,13 @@ export const pizzas = [
   },
 
   {
-    id: 24,
+    id: "17",
     number: "17",
-    name: "Garlic Sausage Special",
-    description: "Knoblauchwurst, schwarze Oliven, Feta-Käse",
-    allergens: [],
-    category: "Fleisch",
-    image: "/pizza/pizza.png",
-    sizes: [
-      { size: "28 cm", price: "9,50 €" },
-      { size: "32 cm", price: "10,50 €" },
-    ],
-  },
-
-  {
-    id: 25,
-    number: "18",
     name: "Pollo",
-    description: "Hähnchenbrust, Brokkoli, Mais",
-    allergens: [],
+    description: "Hähnchenbruststreifen, Brokkoli und Mais",
+    allergens: ["a", "l", "1", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza17.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -351,13 +292,13 @@ export const pizzas = [
   },
 
   {
-    id: 26,
-    number: "18a",
+    id: "17a",
+    number: "17a",
     name: "Barbecue",
-    description: "BBQ-Sauce, Hähnchenbrust, Paprika, Zwiebeln",
-    allergens: [],
+    description: "Barbecue Sauce, Hähnchenbruststreifen, Paprika und Zwiebeln",
+    allergens: ["a", "l", "1", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza17a.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -365,13 +306,13 @@ export const pizzas = [
   },
 
   {
-    id: 27,
-    number: "18b",
+    id: "17b",
+    number: "17b",
     name: "Pollo Hollandaise",
-    description: "Hähnchenbrust, Brokkoli, Sauce Hollandaise, Mais",
-    allergens: [],
+    description: "Hähnchenbruststreifen, Brokkoli, Sauce Hollandaise, Mais",
+    allergens: ["a", "l"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza17b.png",
     sizes: [
       { size: "28 cm", price: "11,00 €" },
       { size: "32 cm", price: "12,00 €" },
@@ -379,13 +320,13 @@ export const pizzas = [
   },
 
   {
-    id: 28,
-    number: "19",
+    id: "18",
+    number: "18",
     name: "Capricciosa",
-    description: "Putenschinken, Champignons",
-    allergens: [],
+    description: "Pizzabelag aus Truthahnfleisch und Champignons",
+    allergens: ["a", "l", "1", "2", "8", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza18.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -393,13 +334,13 @@ export const pizzas = [
   },
 
   {
-    id: 29,
-    number: "19a",
+    id: "19",
+    number: "19",
     name: "Da Roma",
-    description: "Putenschinken, Rindersalami, Champignons",
-    allergens: [],
+    description: "Pizzabelag aus Truthahnfleisch, Rindersalami und Champignons",
+    allergens: ["a", "l", "1", "2", "4"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza19.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -407,13 +348,13 @@ export const pizzas = [
   },
 
   {
-    id: 30,
+    id: "20",
     number: "20",
     name: "Hawaii",
-    description: "Putenschinken, Ananas",
-    allergens: [],
+    description: "Pizzabelag aus Truthahnfleisch und Ananas",
+    allergens: ["a", "l", "1", "2", "8", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza20.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -421,13 +362,14 @@ export const pizzas = [
   },
 
   {
-    id: 31,
+    id: "21",
     number: "21",
     name: "Quattro Stagioni",
-    description: "Rindersalami, Thunfisch, Putenschinken, Champignons",
-    allergens: [],
+    description:
+      "Rindersalami, Thunfisch, Pizzabelag aus Truthahnfleisch und Champignons",
+    allergens: ["a", "l", "1", "2", "4", "8", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza21.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -435,13 +377,13 @@ export const pizzas = [
   },
 
   {
-    id: 32,
+    id: "22",
     number: "22",
     name: "Diavolo",
     description: "Scharfe Rindersalami, Zwiebeln, Peperoni, Rucola, Parmesan",
-    allergens: [],
+    allergens: ["a", "l", "1", "2", "8", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza22.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -449,27 +391,13 @@ export const pizzas = [
   },
 
   {
-    id: 33,
+    id: "23",
     number: "23",
-    name: "Parmaschinken",
-    description: "Putenschinken, Mozzarella, Rucola, Parmesan",
-    allergens: [],
-    category: "Fleisch",
-    image: "/pizza/pizza.png",
-    sizes: [
-      { size: "28 cm", price: "10,00 €" },
-      { size: "32 cm", price: "11,00 €" },
-    ],
-  },
-
-  {
-    id: 34,
-    number: "24",
     name: "Tonno",
-    description: "Thunfisch, Zwiebeln",
-    allergens: [],
+    description: "Thunfisch und Zwiebeln",
+    allergens: ["a", "l", "i"],
     category: "Fisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza23.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -477,13 +405,13 @@ export const pizzas = [
   },
 
   {
-    id: 35,
-    number: "25",
+    id: "24",
+    number: "24",
     name: "Scampis",
-    description: "Scampi, Spinat, Knoblauch",
-    allergens: [],
+    description: "Scampis, Spinat und Knoblauch",
+    allergens: ["a", "g", "l"],
     category: "Fisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza24.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -491,13 +419,13 @@ export const pizzas = [
   },
 
   {
-    id: 36,
-    number: "26",
+    id: "25",
+    number: "25",
     name: "Salmone",
-    description: "Lachs, Spinat, Knoblauch",
-    allergens: [],
+    description: "Lachs, Spinat und Knoblauch",
+    allergens: ["a", "i", "l"],
     category: "Fisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza25.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -505,13 +433,13 @@ export const pizzas = [
   },
 
   {
-    id: 37,
-    number: "27",
+    id: "26",
+    number: "26",
     name: "Frutti di Mare",
-    description: "Meeresfrüchte, Knoblauch",
-    allergens: [],
+    description: "Meeresfrüchte und Knoblauch",
+    allergens: ["a", "g", "i", "l", "z"],
     category: "Fisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza26.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -519,13 +447,13 @@ export const pizzas = [
   },
 
   {
-    id: 38,
-    number: "28",
+    id: "27",
+    number: "27",
     name: "Napoli",
-    description: "Sardellen, Kapern, schwarze Oliven",
-    allergens: [],
+    description: "Sardellen, Kapern & schwarze Oliven",
+    allergens: ["a", "i", "l", "5 "],
     category: "Fisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza27.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -533,14 +461,14 @@ export const pizzas = [
   },
 
   {
-    id: 39,
-    number: "29",
+    id: "28",
+    number: "28",
     name: "Calzone",
     description:
-      "Putenschinken, Rindersalami, Champignons, Thunfisch, Peperoni",
-    allergens: [],
-    category: "Calzone",
-    image: "/pizza/pizza.png",
+      "Pizzabelag aus Truthahnfleisch, Rindersalami, Champignons, Thunfisch und Peperoni",
+    allergens: ["a", "l", "1", "2", "3", "4", "8", "9"],
+    category: "Fleisch",
+    image: "/pizza/pizza28.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -548,13 +476,13 @@ export const pizzas = [
   },
 
   {
-    id: 40,
-    number: "30",
+    id: "29",
+    number: "29",
     name: "Calzone alle Turke",
-    description: "Knoblauchwurst, Champignons, Zwiebeln, frische Tomaten",
-    allergens: [],
-    category: "Calzone",
-    image: "/pizza/pizza.png",
+    description: "Knoblauchwurst, Champignons, Zwiebeln, frische Tomatenstücke",
+    allergens: ["a", "l", "t", "u", "k", "1", "2", "9"],
+    category: "Fleisch",
+    image: "/pizza/pizza29.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -562,27 +490,13 @@ export const pizzas = [
   },
 
   {
-    id: 41,
-    number: "30a",
-    name: "Calzone Döner",
-    description: "Dönerfleisch, Brokkoli, Tzatziki, Sauce Hollandaise",
-    allergens: [],
-    category: "Calzone",
-    image: "/pizza/pizza.png",
-    sizes: [
-      { size: "28 cm", price: "10,00 €" },
-      { size: "32 cm", price: "11,00 €" },
-    ],
-  },
-
-  {
-    id: 42,
-    number: "31",
+    id: "30",
+    number: "30",
     name: "Calzone Veggy",
-    description: "Champignons, frische Paprika, Brokkoli, Spinat, Knoblauch",
-    allergens: [],
-    category: "Calzone",
-    image: "/pizza/pizza.png",
+    description: "Champignons, frische Paprika, Brokkoli, Spinat und Knoblauch",
+    allergens: ["a", "l"],
+    category: "Vegetarisch",
+    image: "/pizza/pizza30.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -590,13 +504,13 @@ export const pizzas = [
   },
 
   {
-    id: 43,
-    number: "32",
+    id: "31",
+    number: "31",
     name: "Lucy",
-    description: "Pommes frites, Salat, Ketchup, Mayonnaise",
-    allergens: [],
+    description: "Pommes, Salat, Ketchup, Mayo",
+    allergens: ["a", "h", "l", "2", "3", "4"],
     category: "Spezial",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza31.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -604,13 +518,13 @@ export const pizzas = [
   },
 
   {
-    id: 44,
-    number: "33",
+    id: "32",
+    number: "32",
     name: "Mozzarella",
-    description: "Mozzarella, frische Tomaten, Basilikum",
-    allergens: [],
+    description: "Mit Mozzarella, frischen Tomaten und Basilikum",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza32.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -618,13 +532,13 @@ export const pizzas = [
   },
 
   {
-    id: 45,
-    number: "34",
+    id: "33",
+    number: "33",
     name: "Toscana",
-    description: "Mozzarella, Rucola, Parmesan",
-    allergens: [],
+    description: "Mit Mozzarella, Rucola und Parmesan",
+    allergens: ["a", "h", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza33.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -632,13 +546,13 @@ export const pizzas = [
   },
 
   {
-    id: 46,
-    number: "35",
+    id: "34",
+    number: "34",
     name: "Amalfi",
-    description: "Brokkoli, Feta-Käse, Spinat, Knoblauch",
-    allergens: [],
+    description: "Brokkoli, Hirtenkäse, Spinat und Knoblauch",
+    allergens: ["a", "h", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza34.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -646,35 +560,13 @@ export const pizzas = [
   },
 
   {
-    id: 47,
-    number: "36",
-    name: "Stuffed Pizza Rolls",
-    description: "8 Stück · Gefüllt mit Käse",
-    allergens: [],
-    category: "Extras",
-    image: "/pizza/pizza.png",
-    sizes: [{ size: "8 Stück", price: "6,50 €" }],
-  },
-
-  {
-    id: 48,
-    number: "37",
-    name: "Pizza Rolls",
-    description: "8 Stück · Serviert mit Knoblauchbutter",
-    allergens: [],
-    category: "Extras",
-    image: "/pizza/pizza.png",
-    sizes: [{ size: "8 Stück", price: "5,00 €" }],
-  },
-
-  {
-    id: 49,
-    number: "38",
+    id: "35",
+    number: "35",
     name: "Focaccia",
-    description: "Kirschtomaten, Knoblauch, Rosmarin, Basilikum, Olivenöl",
-    allergens: [],
+    description: "Cherrytomaten, Knoblauch, Rosmarin, Basilikum, Olivenöl",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza35.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -682,29 +574,42 @@ export const pizzas = [
   },
 
   {
-    id: 50,
-    number: "39",
+    id: "36",
+    number: "36",
     name: "Verdure",
     description:
-      "Gegrilltes Gemüse (Zucchini, Aubergine, Champignons), Kirschtomaten",
-    allergens: [],
+      "Gegrilltes Gemüse (Zucchini, Aubergine, Champignons), Cherrytomaten",
+    allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza.png",
+    image: "/pizza/pizza36.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
     ],
   },
+  {
+    id: "37",
+    number: "37",
+    name: "Gefüllte Pizzabrötchen (8 Stk.)",
+    description:
+      "Mit Käse. Extra Zutaten: Pizzabelag aus Truthahnfleisch, Rindersalami, Thunfisch, Sucuk, Hähnchenbrust, Champignons, Spinat und viel mehr",
+    allergens: [],
+    category: "Finger Food",
+    image: "/pizza/pizza37.png",
+    sizes: [
+      { size: "8 Stk.", price: "6,50 €" },
+      { size: "Extra Zutaten", price: "2,50 €" },
+    ],
+  },
 
   {
-    id: 51,
-    number: "",
-    name: "Extra Toppings",
-    description:
-      "Putenschinken, Rindersalami, Thunfisch, Sucuk, Hähnchen, Champignons, Spinat und mehr",
-    allergens: [],
-    category: "Extras",
-    image: "/pizza/pizza.png",
-    sizes: [{ size: "Extra", price: "2,50 €" }],
+    id: "38",
+    number: "38",
+    name: "Portion Pizzabrötchen (8 Stk.)",
+    description: "Kräuterbutter",
+    allergens: ["a", "l"],
+    category: "Finger Food",
+    image: "/pizza/pizza38.png",
+    sizes: [{ size: "8 Stk.", price: "5,00 €" }],
   },
 ];

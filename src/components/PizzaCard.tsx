@@ -32,7 +32,7 @@ function PizzaCard({
       <div className="flex flex-1 flex-col">
         {/* allergens section */}
         {allergens?.length > 0 && (
-          <div className="mb-1 text-[10px] font-medium text-kamen-gold">
+          <div className="mb-1 text-[12px] font-medium text-kamen-gold ">
             {allergens.join(", ")}
           </div>
         )}
