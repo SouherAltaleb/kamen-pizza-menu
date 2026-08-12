@@ -7,7 +7,7 @@ export const noodles = [
       "Ohne Tomatensauce, Olivenöl, Peperoni, Cherrytomaten, frische Kräuter und Knoblauch",
     allergens: ["a"],
     category: "Nudeln",
-    image: "/nudeln/nudeln39.png",
+    image: "/nudeln/nudeln-aglio.png",
     sizes: [{ size: "Portion", price: "8,50 €" }],
   },
 
@@ -18,7 +18,7 @@ export const noodles = [
     description: "Tomatensauce, Basilikum und Parmesan",
     allergens: ["a"],
     category: "Nudeln",
-    image: "/nudeln/nudeln39a.png",
+    image: "/nudeln/nudeln-napoli.png",
     sizes: [{ size: "Portion", price: "8,50 €" }],
   },
 
@@ -29,7 +29,7 @@ export const noodles = [
     description: "Tomatensauce und Peperoni",
     allergens: [],
     category: "Nudeln",
-    image: "/nudeln/nudeln39b.png",
+    image: "/nudeln/nudeln-arrabiata.png",
     sizes: [{ size: "Portion", price: "8,80 €" }],
   },
 
@@ -40,7 +40,7 @@ export const noodles = [
     description: "Mit Bolognesesauce",
     allergens: ["a", "l"],
     category: "Nudeln",
-    image: "/nudeln/nudeln40.png",
+    image: "/nudeln/nudeln-bolognese.png",
     sizes: [{ size: "Portion", price: "9,00 €" }],
   },
 
@@ -51,7 +51,7 @@ export const noodles = [
     description: "Pizzabelag aus Truthahnfleisch und Champignons in Sahnesauce",
     allergens: ["a", "l", "1", "2", "4", "8", "9"],
     category: "Nudeln",
-    image: "/nudeln/nudeln41.png",
+    image: "/nudeln/nudeln-alla-panna.png",
     sizes: [{ size: "Portion", price: "9,50 €" }],
   },
 
@@ -63,7 +63,7 @@ export const noodles = [
       "Pizzabelag aus Truthahnfleisch, Erbsen und Tomaten-Sahnesauce",
     allergens: ["1", "2", "8", "9"],
     category: "Nudeln",
-    image: "/nudeln/nudeln41a.png",
+    image: "/nudeln/nudeln-da-roma.png",
     sizes: [{ size: "Portion", price: "9,80 €" }],
   },
 
@@ -74,7 +74,7 @@ export const noodles = [
     description: "Pizzabelag aus Truthahnfleisch und Ei in Sahnesauce",
     allergens: ["a", "h", "l", "1", "2", "4", "8", "9"],
     category: "Nudeln",
-    image: "/nudeln/nudeln42.png",
+    image: "/nudeln/nudeln-carbonara.png",
     sizes: [{ size: "Portion", price: "9,50 €" }],
   },
 
@@ -85,7 +85,7 @@ export const noodles = [
     description: "Thunfisch, Zwiebeln und Knoblauch in Tomatensauce",
     allergens: ["a", "i", "l"],
     category: "Nudeln",
-    image: "/nudeln/nudeln43.png",
+    image: "/nudeln/nudeln-al-tonno.png",
     sizes: [{ size: "Portion", price: "9,50 €" }],
   },
 
@@ -96,7 +96,7 @@ export const noodles = [
     description: "Meeresfrüchte, Knoblauch und Tomatensauce",
     allergens: ["a", "g", "i", "z"],
     category: "Nudeln",
-    image: "/nudeln/nudeln44.png",
+    image: "/nudeln/nudeln-frutti-di-mare.png",
     sizes: [{ size: "Portion", price: "10,50 €" }],
   },
 
@@ -108,7 +108,7 @@ export const noodles = [
       "Hähnchenbruststreifen, Brokkoli, Mais, Champignons und Tomaten-Sahnesauce",
     allergens: ["a", "l", "1", "9"],
     category: "Nudeln",
-    image: "/nudeln/nudeln45.png",
+    image: "/nudeln/nudeln-pollo.png",
     sizes: [{ size: "Portion", price: "10,50 €" }],
   },
 
@@ -119,7 +119,7 @@ export const noodles = [
     description: "Lachs und Spinat in Tomaten-Sahnesauce",
     allergens: ["a", "i", "l"],
     category: "Nudeln",
-    image: "/nudeln/nudeln46.png",
+    image: "/nudeln/nudeln-salmone.png",
     sizes: [{ size: "Portion", price: "11,00 €" }],
   },
 
@@ -130,7 +130,7 @@ export const noodles = [
     description: "4 verschiedene Käsesorten",
     allergens: ["a", "l"],
     category: "Nudeln",
-    image: "/nudeln/nudeln47.png",
+    image: "/nudeln/nudeln-quattro-formaggi.png",
     sizes: [{ size: "Portion", price: "10,00 €" }],
   },
 
@@ -141,7 +141,7 @@ export const noodles = [
     description: "Brokkoli, Spinat und Champignons in Sahnesauce",
     allergens: ["a", "l"],
     category: "Nudeln",
-    image: "/nudeln/nudeln48.png",
+    image: "/nudeln/nudeln-del-bosco.png",
     sizes: [{ size: "Portion", price: "9,00 €" }],
   },
 
@@ -152,7 +152,7 @@ export const noodles = [
     description: "Scampis, Knoblauch und schwarze Oliven in Tomatensauce",
     allergens: ["a", "g", "l"],
     category: "Nudeln",
-    image: "/nudeln/nudeln49.png",
+    image: "/nudeln/nudeln-marina.png",
     sizes: [{ size: "Portion", price: "11,00 €" }],
   },
   {
@@ -162,7 +162,7 @@ export const noodles = [
     description: "Sahnesauce,Gorgonzola-Käse",
     allergens: ["l"],
     category: "Nudeln",
-    image: "/nudeln/nudeln50.png",
+    image: "/nudeln/nudeln-gorgonzola.png",
     sizes: [{ size: "Portion", price: "9,00 €" }],
   },
 ];
