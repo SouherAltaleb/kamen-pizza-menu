@@ -157,7 +157,7 @@ export const pizzas = [
   {
     id: "10b",
     number: "10b",
-    name: "Tonno Vegan",
+    name: "Tonno Speciale",
     description: "Thunfisch, veganer Käse, Zwiebeln",
     allergens: ["a", "l"],
     category: "Fisch",
@@ -174,7 +174,7 @@ export const pizzas = [
     name: "Nostalgia",
     description: "Milde Peperoni, Hirtenkäse, schwarze Oliven, Knoblauch",
     allergens: ["a", "l"],
-    category: "Fleisch",
+    category: "Vegetarisch",
     image: "/pizza/pizza10c.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
@@ -318,15 +318,28 @@ export const pizzas = [
       { size: "32 cm", price: "12,00 €" },
     ],
   },
-
   {
     id: "18",
     number: "18",
+    name: "Chicken Hollandaise",
+    description:
+      "Hähnchen, Brokkoli und Mais mit Sauce Hollandaise – ohne Tomatensauce",
+    allergens: ["a", "l"],
+    category: "Fleisch",
+    image: "/pizza/pizza18.png",
+    sizes: [
+      { size: "28 cm", price: "9,00 €" },
+      { size: "32 cm", price: "10,00 €" },
+    ],
+  },
+  {
+    id: "18a",
+    number: "18a",
     name: "Capricciosa",
     description: "Pizzabelag aus Truthahnfleisch und Champignons",
     allergens: ["a", "l", "1", "2", "8", "9"],
     category: "Fleisch",
-    image: "/pizza/pizza18.png",
+    image: "/pizza/pizza18a.png",
     sizes: [
       { size: "28 cm", price: "9,00 €" },
       { size: "32 cm", price: "10,00 €" },
@@ -380,7 +393,7 @@ export const pizzas = [
     id: "22",
     number: "22",
     name: "Diavolo",
-    description: "Scharfe Rindersalami, Zwiebeln, Peperoni, Rucola, Parmesan",
+    description: "Rindersalami, Zwiebeln, Peperoni, Rucola, Parmesan",
     allergens: ["a", "l", "1", "2", "8", "9"],
     category: "Fleisch",
     image: "/pizza/pizza22.png",
@@ -467,8 +480,8 @@ export const pizzas = [
     description:
       "Pizzabelag aus Truthahnfleisch, Rindersalami, Champignons, Thunfisch und Peperoni",
     allergens: ["a", "l", "1", "2", "3", "4", "8", "9"],
-    category: "Fleisch",
-    image: "/pizza/pizza28.png",
+    category: "Calzone",
+    image: "/pizza/calzone.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -481,8 +494,8 @@ export const pizzas = [
     name: "Calzone alle Turke",
     description: "Knoblauchwurst, Champignons, Zwiebeln, frische Tomatenstücke",
     allergens: ["a", "l", "t", "u", "k", "1", "2", "9"],
-    category: "Fleisch",
-    image: "/pizza/pizza29.png",
+    category: "Calzone",
+    image: "/pizza/calzone.png",
     sizes: [
       { size: "28 cm", price: "10,00 €" },
       { size: "32 cm", price: "11,00 €" },
@@ -495,8 +508,8 @@ export const pizzas = [
     name: "Calzone Veggy",
     description: "Champignons, frische Paprika, Brokkoli, Spinat und Knoblauch",
     allergens: ["a", "l"],
-    category: "Vegetarisch",
-    image: "/pizza/pizza30.png",
+    category: "Calzone",
+    image: "/pizza/calzone.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -563,7 +576,8 @@ export const pizzas = [
     id: "35",
     number: "35",
     name: "Focaccia",
-    description: "Cherrytomaten, Knoblauch, Rosmarin, Basilikum, Olivenöl",
+    description:
+      "Cherrytomaten, Knoblauch, Rosmarin, Basilikum, ohne Tomatensoße mit Olivenöl",
     allergens: ["a", "l"],
     category: "Vegetarisch",
     image: "/pizza/pizza35.png",
@@ -578,7 +592,7 @@ export const pizzas = [
     number: "36",
     name: "Verdure",
     description:
-      "Gegrilltes Gemüse (Zucchini, Aubergine, Champignons), Cherrytomaten",
+      "Gegrilltes Gemüse (Zucchini, Aubergine, Champignons), Cherrytomaten, Paprika",
     allergens: ["a", "l"],
     category: "Vegetarisch",
     image: "/pizza/pizza36.png",

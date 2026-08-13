@@ -1,27 +1,13 @@
-type Size = {
-  size: string;
-  price: string;
-};
+import type { MenuItem } from "../types/menu";
 
-type Salad = {
-  id: string;
-  number: string;
-  name: string;
-  description: string;
-  allergens: string[];
-  category: string;
-  image: string;
-  sizes: Size[];
-};
-
-function SaladCard({
+function MenuCard({
   number,
   name,
   description,
   allergens,
   image,
   sizes,
-}: Salad) {
+}: MenuItem) {
   return (
     <article className="flex gap-4 rounded-[25px] border border-kamen-gold bg-kamen-cream p-4">
       {/* Image */}
@@ -33,7 +19,7 @@ function SaladCard({
       <div className="flex flex-1 flex-col">
         {/* Allergens */}
         {allergens?.length > 0 && (
-          <div className="mb-1 text-[12px] font-medium text-kamen-gold">
+          <div className="mb-1 text-[12px] font-medium text-kamen-gold uppercase">
             {allergens.join(", ")}
           </div>
         )}
@@ -63,4 +49,4 @@ function SaladCard({
   );
 }
 
-export default SaladCard;
+export default MenuCard;

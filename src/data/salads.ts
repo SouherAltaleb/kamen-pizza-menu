@@ -116,7 +116,7 @@ export const salate = [
     allergens: ["2", "l"],
     category: "Salate",
     image: "/salate/salat-nostalgia.png",
-    sizes: [{ size: "Portion", price: "6,00 €" }],
+    sizes: [{ size: "Portion", price: "9,50 €" }],
   },
 
   {

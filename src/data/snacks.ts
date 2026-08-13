@@ -60,11 +60,25 @@ export const snacks = [
 ];
 
 export const snackSauces = [
-  "Hausgemachte Kräuterbutter",
-  "Aioli",
-  "Barbecue",
-  "Sweet & Sour",
-  "Curry-Mango",
-  "Mayonnaise",
-  "Ketchup",
+  {
+    name: "Hausgemachte Kräuterbutter",
+    price: "1,50 €",
+    allergens: ["L"],
+  },
+  {
+    name: "Aioli",
+    price: "1,50 €",
+    allergens: ["H"],
+  },
+  {
+    name: "Barbecue , Sweet & Sour, Curry-Mango",
+    price: "0,50 €",
+    allergens: [],
+  },
+
+  {
+    name: "Mayonnaise, Ketchup",
+    price: "0,50 €",
+    allergens: ["H"],
+  },
 ];
