@@ -2,11 +2,11 @@ export const desserts = [
   {
     id: "tiramisu",
     name: "Tiramisu",
-    description: "Klassisches Tiramisu",
+    description: "italienisches Dessert, hausgemacht",
     allergens: ["a", "c", "g"],
     category: "Dessert",
     image: "/dessert/tiramisu.png",
-    sizes: [{ size: "Portion", price: "5,00 €" }],
+    sizes: [{ size: "Portion", price: "4,50 €" }],
   },
 
   {

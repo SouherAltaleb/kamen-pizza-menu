@@ -1,4 +1,3 @@
-import { CakeSlice, CupSoda, IceCream, Pizza, Salad, Soup } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const categories = [
@@ -6,55 +5,61 @@ const categories = [
     id: "pizza",
     name: "Pizza",
     shortName: "Pizza",
-    icon: Pizza,
+    icon: "/icons/pizza.png",
   },
   {
     id: "nudeln",
     name: "Nudeln",
     shortName: "Nudeln",
-    icon: Soup,
-  },
-  {
-    id: "salate",
-    name: "Salate",
-    shortName: "Salate",
-    icon: Salad,
+    icon: "/icons/nudeln.png",
   },
   {
     id: "aufläufe",
     name: "Aufläufe",
     shortName: "Aufläufe",
-    icon: Soup,
+    icon: "/icons/auflaeufe.png",
   },
   {
-    id: "vegetarische-gerichte",
-    name: "Vegetarische Gerichte",
-    shortName: "Veggi",
-    icon: Salad,
+    id: "doener",
+    name: "Döner",
+    shortName: "Döner",
+    icon: "/icons/doener.png",
   },
   {
-    id: "finger-food",
-    name: "Finger Food",
-    shortName: "Finger Food",
-    icon: CupSoda,
+    id: "baguettes",
+    name: "Baguettes",
+    shortName: "Baguettes",
+    icon: "/icons/baguettes.png",
+  },
+  {
+    id: "salate",
+    name: "Salate",
+    shortName: "Salate",
+    icon: "/icons/salate.png",
+  },
+  {
+    id: "burger-falafel",
+    name: "Burger & Falafel",
+    shortName: "Burger",
+    icon: "/icons/burger.png",
+  },
+  {
+    id: "snacks-beilagen",
+    name: "Snacks & Beilagen",
+    shortName: "Snacks",
+    icon: "/icons/snacks.png",
   },
   {
     id: "getränke",
     name: "Getränke",
     shortName: "Getränke",
-    icon: CupSoda,
+    icon: "/icons/getraenke.png",
   },
   {
     id: "nachtisch",
     name: "Nachtisch",
     shortName: "Nachtisch",
-    icon: CakeSlice,
-  },
-  {
-    id: "ben-jerrys",
-    name: "Ben & Jerry's",
-    shortName: "Ben & Jerry's",
-    icon: IceCream,
+    icon: "/icons/nachtisch.png",
   },
 ];
 
@@ -98,6 +103,12 @@ function Navigation() {
     };
   }, []);
 
+  const handleCategoryClick = (categoryId: string) => {
+    document.getElementById(categoryId)?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section id="pizza" className="scroll-mt-6 pb-20">
       {/* Category Cards */}
@@ -105,66 +116,59 @@ function Navigation() {
         ref={navigationRef}
         className="grid grid-cols-2 gap-4 lg:grid-cols-3"
       >
-        {categories.map((category) => {
-          const Icon = category.icon;
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => handleCategoryClick(category.id)}
+            className="flex min-h-24 flex-col items-center justify-center rounded-[25px] border border-kamen-gold bg-kamen-dark p-4 transition-transform hover:-translate-y-1"
+          >
+            <img
+              src={category.icon}
+              alt=""
+              className="h-10.5 w-10.5 object-contain"
+            />
 
-          return (
-            <button
-              key={category.id}
-              onClick={() => {
-                document.getElementById(category.id)?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-              className="flex min-h-24 flex-col items-center justify-center rounded-[25px] border border-kamen-gold bg-kamen-dark p-4 transition-transform hover:-translate-y-1"
-            >
-              <Icon size={42} strokeWidth={1.5} className="text-kamen-gold" />
-
-              <span className="mt-3 text-xs font-medium uppercase text-white">
-                {category.name}
-              </span>
-            </button>
-          );
-        })}
+            <span className="mt-3 text-xs font-medium uppercase text-white">
+              {category.name}
+            </span>
+          </button>
+        ))}
       </div>
 
       {/* Sticky Navigation */}
       {showStickyNav && (
-        <div className="fixed bottom-0 left-0 right-0 z-50">
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-18 bg-kamen-dark" />
+        <div className="fixed inset-x-0 bottom-0 z-50">
+          <div className="mx-auto w-full max-w-7xl bg-kamen-dark">
+            <nav className="overflow-x-auto scrollbar-hide">
+              <div className="flex w-max min-w-full justify-center gap-7 px-5 pb-4 pt-3">
+                {categories.map((category) => {
+                  const isActive = activeCategory === category.id;
 
-          <nav className="relative flex gap-7 overflow-x-auto px-5 pb-4 pt-3 scrollbar-hide">
-            {categories.map((category) => {
-              const Icon = category.icon;
-              const isActive = activeCategory === category.id;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => handleCategoryClick(category.id)}
+                      className="flex shrink-0 flex-col items-center gap-1"
+                    >
+                      <img
+                        src={category.icon}
+                        alt=""
+                        className="h-5.75 w-5.75 object-contain"
+                      />
 
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => {
-                    document.getElementById(category.id)?.scrollIntoView({
-                      behavior: "smooth",
-                    });
-                  }}
-                  className="flex shrink-0 flex-col items-center gap-1"
-                >
-                  <Icon
-                    size={23}
-                    strokeWidth={1.7}
-                    className="text-kamen-gold"
-                  />
-
-                  <span
-                    className={`whitespace-nowrap text-[10px] font-medium uppercase transition-colors ${
-                      isActive ? "text-kamen-gold" : "text-white"
-                    }`}
-                  >
-                    {category.shortName}
-                  </span>
-                </button>
-              );
-            })}
-          </nav>
+                      <span
+                        className={`whitespace-nowrap text-[10px] font-medium uppercase transition-colors ${
+                          isActive ? "text-kamen-gold" : "text-white"
+                        }`}
+                      >
+                        {category.shortName}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </nav>
+          </div>
         </div>
       )}
     </section>

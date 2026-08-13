@@ -13,7 +13,7 @@ function PizzaTabs({ activeCategory, setActiveCategory }: Props) {
     "Fisch",
     "Calzone",
     "Spezial",
-    "Extras",
+    "Finger Food",
   ];
 
   return (
