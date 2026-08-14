@@ -31,7 +31,16 @@ export const snacks = [
     image: "/snacks/snacks74.png",
     sizes: [{ size: "6 Stk.", price: "5,00 €" }],
   },
-
+  {
+    id: "71",
+    number: "71",
+    name: "Hummus",
+    description: "Hummus mit Pommes oder gemischtem Salat",
+    allergens: [],
+    category: "Snacks & Beilagen",
+    image: "/snacks/hummus.png",
+    sizes: [{ size: "Portion", price: "8,50 €" }],
+  },
   {
     id: "75",
     number: "75",

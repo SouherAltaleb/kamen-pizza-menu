@@ -42,26 +42,4 @@ export const doener = [
     image: "/doener/doener-box.png",
     sizes: [{ size: "Portion", price: "7,50 €" }],
   },
-
-  {
-    id: "70",
-    number: "70",
-    name: "Falafel Teller",
-    description: "Falafel, Pommes, Hummus und gemischter Salat",
-    allergens: ["a"],
-    category: "Döner & Teller",
-    image: "/doener/falafel.png",
-    sizes: [{ size: "Portion", price: "10,00 €" }],
-  },
-
-  {
-    id: "71",
-    number: "71",
-    name: "Hummus",
-    description: "Hummus mit Pommes oder gemischtem Salat",
-    allergens: [],
-    category: "Döner & Teller",
-    image: "/doener/hummus.png",
-    sizes: [{ size: "Portion", price: "8,50 €" }],
-  },
 ];

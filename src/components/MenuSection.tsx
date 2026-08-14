@@ -40,7 +40,7 @@ function MenuSection({
         <p className="mt-2 mb-4 text-xs text-kamen-dark">{description}</p>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-4 mt-4">
         {items.map((item) => (
           <MenuCard
             key={item.id}

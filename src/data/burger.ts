@@ -9,7 +9,7 @@ export const burger: MenuItem[] = [
     allergens: ["A", "H", "U"],
     category: "Burger & Falafel",
     image: "/burger/hamburger.png",
-    sizes: [{ size: "Burger", price: "—" }],
+    sizes: [{ size: "Burger", price: "6,00 €" }],
   },
 
   {
@@ -21,7 +21,7 @@ export const burger: MenuItem[] = [
     allergens: ["A", "H", "L", "U"],
     category: "Burger & Falafel",
     image: "/burger/cheeseburger.png",
-    sizes: [{ size: "Burger", price: "—" }],
+    sizes: [{ size: "Burger", price: "7,00 €" }],
   },
 
   {
@@ -32,14 +32,14 @@ export const burger: MenuItem[] = [
     allergens: ["A", "H", "U"],
     category: "Burger & Falafel",
     image: "/burger/chicken-burger.png",
-    sizes: [{ size: "Burger", price: "—" }],
+    sizes: [{ size: "Burger", price: "6,00 €" }],
   },
 
   {
     id: "81",
     number: "81",
-    name: "Crispy Chicken Burger",
-    description: "Crispy-Hähnchen, Salat, Tomaten, Zwiebeln und Burgersauce",
+    name: "Chili Cheese Burger",
+    description: "mit Jalapenos und Paprika",
     allergens: ["A", "H", "U"],
     category: "Burger & Falafel",
     image: "/burger/crispy-chicken.png",
@@ -49,19 +49,19 @@ export const burger: MenuItem[] = [
   {
     id: "82",
     number: "82",
-    name: "Falafel Burger",
+    name: "Falafel Tasche",
     description: "Falafel, Salat, Tomaten, Zwiebeln und Sauce",
     allergens: ["A", "H", "V"],
     category: "Burger & Falafel",
-    image: "/burger/falafel-burger.png",
-    sizes: [{ size: "Burger", price: "—" }],
+    image: "/burger/falafel-tasche.png",
+    sizes: [{ size: "Burger", price: "6,50 €" }],
   },
 
   {
     id: "83",
     number: "83",
     name: "Falafel Teller",
-    description: "Falafel, Salat, Tomaten, Zwiebeln und Sauce",
+    description: "Falafel, Salat, Tomaten, Zwiebeln und Humus-Sauce",
     allergens: ["A", "H", "V"],
     category: "Burger & Falafel",
     image: "/burger/falafel-teller.png",
