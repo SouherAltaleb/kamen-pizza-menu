@@ -1,19 +1,23 @@
-export const desserts = [
+import type { MenuItem } from "../types/menu";
+
+export const desserts: MenuItem[] = [
   {
-    id: "tiramisu",
+    id: "93",
+    number: "93",
     name: "Tiramisu",
-    description: "italienisches Dessert, hausgemacht",
-    allergens: ["a", "c", "g"],
+    description: "Italienisches Dessert, hausgemacht ohne Alkohol",
+    allergens: ["A", "L"],
     category: "Dessert",
     image: "/dessert/tiramisu.png",
     sizes: [{ size: "Portion", price: "4,50 €" }],
   },
 
   {
-    id: "chocolate-fudge-brownie",
+    id: "94",
+    number: "94",
     name: "Ben & Jerry's Chocolate Fudge Brownie",
     description: "Schokoladeneiscreme mit Schokogebäckstücken",
-    allergens: ["g"],
+    allergens: ["L"],
     category: "Dessert",
     image: "/dessert/chocolate-fudge-brownie.png",
     sizes: [
@@ -23,11 +27,12 @@ export const desserts = [
   },
 
   {
-    id: "cookie-dough",
+    id: "95",
+    number: "95",
     name: "Ben & Jerry's Cookie Dough",
     description:
       "Vanilleeiscreme mit Schokoladenkeksstücken und Knusperstücken",
-    allergens: ["a", "g"],
+    allergens: ["A", "L"],
     category: "Dessert",
     image: "/dessert/cookie-dough.png",
     sizes: [
@@ -37,11 +42,12 @@ export const desserts = [
   },
 
   {
-    id: "strawberry-cheesecake",
+    id: "96",
+    number: "96",
     name: "Ben & Jerry's Strawberry Cheesecake",
     description:
       "Erdbeer-Käsekuchen-Eiscreme mit Erdbeerstückchen und Keksstücken",
-    allergens: ["a", "g"],
+    allergens: ["A", "L"],
     category: "Dessert",
     image: "/dessert/strawberry-cheesecake.png",
     sizes: [
@@ -51,11 +57,12 @@ export const desserts = [
   },
 
   {
-    id: "peanut-butter",
+    id: "97",
+    number: "97",
     name: "Ben & Jerry's Peanut Butter",
     description:
       "Erdnussbutter-Eiscreme mit Erdnussbutter-Strudeln und Schokoladenstückchen",
-    allergens: ["a", "g", "h"],
+    allergens: ["A", "J", "L"],
     category: "Dessert",
     image: "/dessert/peanut-butter.png",
     sizes: [

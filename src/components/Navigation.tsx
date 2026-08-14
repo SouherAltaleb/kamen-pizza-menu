@@ -14,7 +14,7 @@ const categories = [
     icon: "/icons/nudeln.png",
   },
   {
-    id: "aufläufe",
+    id: "auflaeufe",
     name: "Aufläufe",
     shortName: "Aufläufe",
     icon: "/icons/auflaeufe.png",
@@ -44,13 +44,13 @@ const categories = [
     icon: "/icons/burger.png",
   },
   {
-    id: "snacks-beilagen",
+    id: "snacks",
     name: "Snacks & Beilagen",
     shortName: "Snacks",
     icon: "/icons/snacks.png",
   },
   {
-    id: "getränke",
+    id: "getraenke",
     name: "Getränke",
     shortName: "Getränke",
     icon: "/icons/getraenke.png",
@@ -79,22 +79,29 @@ function Navigation() {
 
       setShowStickyNav(navigationBottom < 0);
 
+      const offset = 180;
+
       let currentCategory = "pizza";
+      let closestDistance = Infinity;
 
       categories.forEach((category) => {
         const section = document.getElementById(category.id);
 
-        if (section) {
-          const top = section.getBoundingClientRect().top;
+        if (!section) return;
 
-          if (top <= 150) {
-            currentCategory = category.id;
-          }
+        const top = section.getBoundingClientRect().top;
+        const distance = Math.abs(top - offset);
+
+        if (top <= offset && distance < closestDistance) {
+          closestDistance = distance;
+          currentCategory = category.id;
         }
       });
 
       setActiveCategory(currentCategory);
     };
+
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
 
@@ -104,13 +111,18 @@ function Navigation() {
   }, []);
 
   const handleCategoryClick = (categoryId: string) => {
-    document.getElementById(categoryId)?.scrollIntoView({
+    const section = document.getElementById(categoryId);
+
+    if (!section) return;
+
+    section.scrollIntoView({
       behavior: "smooth",
+      block: "start",
     });
   };
 
   return (
-    <section id="pizza" className="scroll-mt-6 pb-20">
+    <div className="pb-20">
       {/* Category Cards */}
       <div
         ref={navigationRef}
@@ -171,7 +183,7 @@ function Navigation() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
 

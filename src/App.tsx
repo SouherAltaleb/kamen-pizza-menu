@@ -12,6 +12,7 @@ import { snacks, snackSauces } from "./data/snacks";
 
 import PizzaSection from "./components/PizzaSection.tsx";
 import DrinksSection from "./components/DrinksSection.tsx";
+import { desserts } from "./data/desserts";
 import AllergenInfo from "./components/AllergenInfo.tsx";
 import Footer from "./components/Footer.tsx";
 
@@ -41,14 +42,14 @@ function App() {
           items={doener}
         />
 
+        <MenuSection id="baguettes" title="Baguettes" items={baguettes} />
+
         <MenuSection
           id="salate"
           title="Salate"
           description={saladDressing}
           items={salate}
         />
-
-        <MenuSection id="baguettes" title="Baguettes" items={baguettes} />
 
         <MenuSection
           id="burger-falafel"
@@ -61,6 +62,7 @@ function App() {
         </MenuSection>
 
         <DrinksSection />
+        <MenuSection id="nachtisch" title="Nachtisch" items={desserts} />
 
         <AllergenInfo />
 
