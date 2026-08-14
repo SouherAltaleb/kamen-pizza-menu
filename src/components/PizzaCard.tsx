@@ -22,14 +22,13 @@ function PizzaCard({
   sizes,
 }: Pizza) {
   return (
-    <article className="flex gap-3 rounded-[25px] border border-kamen-gold/50 bg-kamen-cream p-4 sm:gap-4 sm:p-5">
-      <img
-        src={image}
-        alt={name}
-        className="h-32 w-32 shrink-0 rounded-[15px] object-cover sm:h-24 sm:w-24"
-      />
+    <article className="flex gap-3 rounded-[25px] border border-kamen-gold bg-kamen-cream p-3 sm:gap-4 sm:p-4">
+      {/* Image */}
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl sm:h-20 sm:w-20">
+        <img src={image} alt={name} className="h-full w-full object-contain" />
+      </div>
 
-      <div className="flex flex-1 flex-col">
+      <div className="min-w-0 flex-1">
         {/* allergens section */}
         {allergens?.length > 0 && (
           <div className="mb-1 text-[12px] font-medium text-kamen-gold ">
