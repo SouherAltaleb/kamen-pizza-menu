@@ -31,6 +31,7 @@ function PizzaSection() {
             name={pizza.name}
             description={pizza.description}
             allergens={pizza.allergens}
+            category={pizza.category}
             image={pizza.image}
             sizes={pizza.sizes}
           />

@@ -9,7 +9,7 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-kaese.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 
   {
@@ -20,7 +20,7 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-schinken.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 
   {
@@ -31,7 +31,7 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-salami.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 
   {
@@ -42,7 +42,7 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "I", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-thunfisch.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 
   {
@@ -53,7 +53,7 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-doener.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 
   {
@@ -64,7 +64,7 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-haehnchen.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 
   {
@@ -75,7 +75,7 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-sucuk.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 
   {
@@ -86,6 +86,6 @@ export const baguettes: MenuItem[] = [
     allergens: ["A", "L"],
     category: "Baguettes",
     image: "/baguettes/baguette-vegetarisch.png",
-    sizes: [{ size: "Baguette", price: "—" }],
+    sizes: [{ size: "Baguette", price: "8,00 €" }],
   },
 ];
