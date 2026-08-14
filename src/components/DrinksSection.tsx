@@ -5,7 +5,7 @@ function DrinksSection() {
   return (
     <section
       id="getraenke"
-      className="mx-6 mt-6 rounded-[25px] bg-kamen-cream p-6"
+      className="mx-2 mt-6 rounded-[25px] bg-kamen-cream p-6"
     >
       <h2 className="text-3xl font-semibold text-kamen-gold">Getränke</h2>
 
