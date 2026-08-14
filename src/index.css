@@ -16,10 +16,13 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
   font-family: "Manrope", sans-serif;
+  background-color: var(--color-kamen-dark);
+  color: var(--color-kamen-cream);
 }
 
 h1,

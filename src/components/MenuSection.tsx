@@ -33,7 +33,7 @@ function MenuSection({
   children,
 }: MenuSectionProps) {
   return (
-    <section id={id} className="mx-6 mt-6 rounded-[25px] bg-kamen-cream p-6">
+    <section id={id} className="mx-2 mt-6 rounded-[25px] bg-kamen-cream p-6">
       <h2 className="text-3xl font-semibold text-kamen-gold">{title}</h2>
 
       {description && (
