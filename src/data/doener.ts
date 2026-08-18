@@ -1,7 +1,7 @@
 export const doener = [
   {
-    id: "66",
-    number: "66",
+    id: "57",
+    number: "57",
     name: "Döner Tasche",
     description: "Dönerfleisch, Salat, Tomaten, Gurken, Zwiebeln und Sauce",
     allergens: ["a", "l"],
@@ -11,8 +11,8 @@ export const doener = [
   },
 
   {
-    id: "67",
-    number: "67",
+    id: "58",
+    number: "58",
     name: "Döner Dürüm",
     description: "Dönerfleisch, Salat, Tomaten, Gurken, Zwiebeln und Sauce",
     allergens: ["a", "l"],
@@ -22,8 +22,8 @@ export const doener = [
   },
 
   {
-    id: "68",
-    number: "68",
+    id: "59",
+    number: "59",
     name: "Döner Teller",
     description: "Dönerfleisch, Salat, Pommes und Sauce",
     allergens: ["a", "l"],
@@ -33,8 +33,8 @@ export const doener = [
   },
 
   {
-    id: "69",
-    number: "69",
+    id: "60",
+    number: "60",
     name: "Döner Box",
     description: "Dönerfleisch, Pommes und Sauce",
     allergens: ["a", "l"],

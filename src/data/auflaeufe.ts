@@ -1,7 +1,7 @@
 export const auflaeufe = [
   {
-    id: "62",
-    number: "62",
+    id: "51",
+    number: "51",
     name: "Kartoffel-Auflauf",
     description:
       "Kartoffeln, Champignons, Brokkoli, Sahnesauce und mit Käse überbacken",
@@ -12,8 +12,8 @@ export const auflaeufe = [
   },
 
   {
-    id: "63",
-    number: "63",
+    id: "52",
+    number: "52",
     name: "Pollo-Auflauf",
     description:
       "Hähnchenbrust, Brokkoli, Champignons, Sahnesauce und mit Käse überbacken",
@@ -24,8 +24,8 @@ export const auflaeufe = [
   },
 
   {
-    id: "64",
-    number: "64",
+    id: "53",
+    number: "53",
     name: "Döner-Auflauf",
     description:
       "Dönerfleisch, Champignons, Zwiebeln, Sahnesauce und mit Käse überbacken",
@@ -36,8 +36,8 @@ export const auflaeufe = [
   },
 
   {
-    id: "65",
-    number: "65",
+    id: "54",
+    number: "54",
     name: "Gemüse-Auflauf",
     description:
       "Kartoffeln, Brokkoli, Paprika, Champignons, Mais, Sahnesauce und mit Käse überbacken",
@@ -48,8 +48,8 @@ export const auflaeufe = [
   },
 
   {
-    id: "66",
-    number: "66",
+    id: "55",
+    number: "55",
     name: "Nudel-Auflauf",
     description:
       "Penne, Schinken, Champignons, Sahnesauce und mit Käse überbacken",
@@ -60,8 +60,8 @@ export const auflaeufe = [
   },
 
   {
-    id: "67",
-    number: "67",
+    id: "56",
+    number: "56",
     name: "Spinat-Auflauf",
     description:
       "Blattspinat, Champignons, Knoblauch, Sahnesauce und mit Käse überbacken",

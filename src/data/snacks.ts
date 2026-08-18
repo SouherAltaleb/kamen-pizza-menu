@@ -1,7 +1,7 @@
 export const snacks = [
   {
-    id: "72",
-    number: "72",
+    id: "86",
+    number: "86",
     name: "Pommes",
     description: "Knusprige Pommes",
     allergens: [],
@@ -11,8 +11,8 @@ export const snacks = [
   },
 
   {
-    id: "73",
-    number: "73",
+    id: "87",
+    number: "87",
     name: "Chicken Nuggets",
     description: "6 Stück",
     allergens: ["a"],
@@ -22,8 +22,8 @@ export const snacks = [
   },
 
   {
-    id: "74",
-    number: "74",
+    id: "88",
+    number: "88",
     name: "Chili Cheese Nuggets",
     description: "6 Stück",
     allergens: ["a", "l"],
@@ -31,9 +31,10 @@ export const snacks = [
     image: "/snacks/chili-nuggets.png",
     sizes: [{ size: "6 Stk.", price: "5,00 €" }],
   },
+
   {
-    id: "71",
-    number: "71",
+    id: "89",
+    number: "89",
     name: "Hummus",
     description: "Hummus mit Pommes oder gemischtem Salat",
     allergens: [],
@@ -41,9 +42,10 @@ export const snacks = [
     image: "/snacks/hummus.png",
     sizes: [{ size: "Portion", price: "8,50 €" }],
   },
+
   {
-    id: "75",
-    number: "75",
+    id: "90",
+    number: "90",
     name: "Gefüllte Pizzabrötchen",
     description:
       "8 Stück mit Käse. Extra Zutaten: Pizzabelag aus Truthahnfleisch, Rindersalami, Thunfisch, Sucuk, Hähnchenbrust, Champignons, Spinat und mehr",
@@ -57,8 +59,8 @@ export const snacks = [
   },
 
   {
-    id: "76",
-    number: "76",
+    id: "91",
+    number: "91",
     name: "Portion Pizzabrötchen",
     description: "8 Stück mit Kräuterbutter",
     allergens: ["a", "l"],
@@ -74,6 +76,7 @@ export const snackSauces = [
     price: "1,50 €",
     allergens: ["L"],
   },
+
   {
     name: "Aioli",
     price: "1,50 €",
