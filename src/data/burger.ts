@@ -2,8 +2,8 @@ import type { MenuItem } from "../types/menu";
 
 export const burger: MenuItem[] = [
   {
-    id: "78",
-    number: "78",
+    id: "80",
+    number: "80",
     name: "Hamburger",
     description: "Rindfleisch-Patty, Salat, Tomaten, Zwiebeln und Burgersauce",
     allergens: ["A", "H", "U"],
@@ -13,8 +13,8 @@ export const burger: MenuItem[] = [
   },
 
   {
-    id: "79",
-    number: "79",
+    id: "81",
+    number: "81",
     name: "Cheeseburger",
     description:
       "Rindfleisch-Patty, Käse, Salat, Tomaten, Zwiebeln und Burgersauce",
@@ -25,8 +25,8 @@ export const burger: MenuItem[] = [
   },
 
   {
-    id: "80",
-    number: "80",
+    id: "82",
+    number: "82",
     name: "Chicken Burger",
     description: "Hähnchen-Patty, Salat, Tomaten, Zwiebeln und Burgersauce",
     allergens: ["A", "H", "U"],
@@ -36,8 +36,8 @@ export const burger: MenuItem[] = [
   },
 
   {
-    id: "81",
-    number: "81",
+    id: "83",
+    number: "83",
     name: "Chili Cheese Burger",
     description: "mit Jalapenos und Paprika",
     allergens: ["A", "H", "U"],
@@ -47,8 +47,8 @@ export const burger: MenuItem[] = [
   },
 
   {
-    id: "82",
-    number: "82",
+    id: "84",
+    number: "84",
     name: "Falafel Tasche",
     description: "Falafel, Salat, Tomaten, Zwiebeln und Sauce",
     allergens: ["A", "H", "V"],
@@ -58,8 +58,8 @@ export const burger: MenuItem[] = [
   },
 
   {
-    id: "83",
-    number: "83",
+    id: "85",
+    number: "85",
     name: "Falafel Teller",
     description: "Falafel, Salat, Tomaten, Zwiebeln und Humus-Sauce",
     allergens: ["A", "H", "V"],

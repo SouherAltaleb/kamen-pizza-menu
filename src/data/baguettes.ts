@@ -2,8 +2,8 @@ import type { MenuItem } from "../types/menu";
 
 export const baguettes: MenuItem[] = [
   {
-    id: "70",
-    number: "70",
+    id: "61",
+    number: "61",
     name: "Baguette Käse",
     description: "Käse, Tomaten und Salat",
     allergens: ["A", "L"],
@@ -13,8 +13,8 @@ export const baguettes: MenuItem[] = [
   },
 
   {
-    id: "71",
-    number: "71",
+    id: "62",
+    number: "62",
     name: "Baguette Schinken",
     description: "Putenschinken, Käse, Tomaten und Salat",
     allergens: ["A", "L"],
@@ -24,8 +24,8 @@ export const baguettes: MenuItem[] = [
   },
 
   {
-    id: "72",
-    number: "72",
+    id: "63",
+    number: "63",
     name: "Baguette Salami",
     description: "Salami, Käse, Tomaten und Salat",
     allergens: ["A", "L"],
@@ -35,8 +35,8 @@ export const baguettes: MenuItem[] = [
   },
 
   {
-    id: "73",
-    number: "73",
+    id: "64",
+    number: "64",
     name: "Baguette Thunfisch",
     description: "Thunfisch, Käse, Zwiebeln, Tomaten und Salat",
     allergens: ["A", "I", "L"],
@@ -46,8 +46,8 @@ export const baguettes: MenuItem[] = [
   },
 
   {
-    id: "74",
-    number: "74",
+    id: "65",
+    number: "65",
     name: "Baguette Döner",
     description: "Dönerfleisch, Käse, Zwiebeln, Tomaten und Salat",
     allergens: ["A", "L"],
@@ -57,8 +57,8 @@ export const baguettes: MenuItem[] = [
   },
 
   {
-    id: "75",
-    number: "75",
+    id: "66",
+    number: "66",
     name: "Baguette Hähnchen",
     description: "Hähnchenbrust, Käse, Tomaten und Salat",
     allergens: ["A", "L"],
@@ -68,8 +68,8 @@ export const baguettes: MenuItem[] = [
   },
 
   {
-    id: "76",
-    number: "76",
+    id: "67",
+    number: "67",
     name: "Baguette Sucuk",
     description: "Sucuk, Käse, Tomaten und Salat",
     allergens: ["A", "L"],
@@ -79,8 +79,8 @@ export const baguettes: MenuItem[] = [
   },
 
   {
-    id: "77",
-    number: "77",
+    id: "68",
+    number: "68",
     name: "Baguette Vegetarisch",
     description: "Käse, Paprika, Mais, Tomaten und Salat",
     allergens: ["A", "L"],

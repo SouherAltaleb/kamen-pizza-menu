@@ -3,8 +3,8 @@ export const saladDressing =
 
 export const salate = [
   {
-    id: "51",
-    number: "51",
+    id: "69",
+    number: "69",
     name: "Gemischter Salat",
     description: "Grüner Salat, Tomaten, Gurken, Mais und Zwiebeln",
     allergens: [],
@@ -14,8 +14,8 @@ export const salate = [
   },
 
   {
-    id: "52",
-    number: "52",
+    id: "70",
+    number: "70",
     name: "Bauernsalat",
     description:
       "Grüner Salat, Tomaten, Gurken, Mais, schwarze Oliven, Hirtenkäse und Zwiebeln",
@@ -26,8 +26,8 @@ export const salate = [
   },
 
   {
-    id: "53",
-    number: "53",
+    id: "71",
+    number: "71",
     name: "Thunfischsalat",
     description: "Grüner Salat, Tomaten, Gurken, Thunfisch, Mais und Zwiebeln",
     allergens: ["l"],
@@ -37,8 +37,8 @@ export const salate = [
   },
 
   {
-    id: "54",
-    number: "54",
+    id: "72",
+    number: "72",
     name: "Rucola Salat",
     description:
       "Grüner Salat, Tomaten, Gurken, Rucola, Mais, Zwiebeln und Parmesan",
@@ -49,8 +49,8 @@ export const salate = [
   },
 
   {
-    id: "55",
-    number: "55",
+    id: "73",
+    number: "73",
     name: "Mozzarella Salat",
     description:
       "Grüner Salat, Tomaten, Gurken, Mozzarella, Rucola, Salatbelag aus Truthahnfleisch und Balsamico-Creme",
@@ -61,8 +61,8 @@ export const salate = [
   },
 
   {
-    id: "56",
-    number: "56",
+    id: "74",
+    number: "74",
     name: "Roma Salat",
     description:
       "Grüner Salat, Tomaten, Gurken, Mais, Thunfisch, Salatbelag aus Truthahnfleisch und Zwiebeln",
@@ -73,8 +73,8 @@ export const salate = [
   },
 
   {
-    id: "57",
-    number: "57",
+    id: "75",
+    number: "75",
     name: "Capricciosa Salat",
     description:
       "Eisbergsalat, Tomaten, Mais, Gurken, schwarze Oliven, Artischocken und Salatbelag aus Truthahnfleisch",
@@ -85,8 +85,8 @@ export const salate = [
   },
 
   {
-    id: "58",
-    number: "58",
+    id: "76",
+    number: "76",
     name: "Caprese Salat",
     description: "Tomaten, Mozzarella, Basilikum und Balsamico-Creme",
     allergens: [],
@@ -96,8 +96,8 @@ export const salate = [
   },
 
   {
-    id: "59",
-    number: "59",
+    id: "77",
+    number: "77",
     name: "Hawaii Salat",
     description:
       "Grüner Salat, Tomaten, Gurken, Mais, Salatbelag aus Truthahnfleisch und Ananas",
@@ -108,8 +108,8 @@ export const salate = [
   },
 
   {
-    id: "60",
-    number: "60",
+    id: "78",
+    number: "78",
     name: "Nostalgia Salat",
     description:
       "Grüner Salat, Tomaten, Gurken, Peperoni, Hirtenkäse, pikante Oliven und Knoblauch",
@@ -120,8 +120,8 @@ export const salate = [
   },
 
   {
-    id: "61",
-    number: "61",
+    id: "79",
+    number: "79",
     name: "Antipasto Salat",
     description:
       "Grüner Salat, Tomaten, Gurken, Rucola, Parmesan und Balsamico-Crema",

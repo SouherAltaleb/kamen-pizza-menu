@@ -140,7 +140,7 @@ function Navigation() {
               className="h-10.5 w-10.5 object-contain"
             />
 
-            <span className="mt-3 text-xs font-medium uppercase text-white">
+            <span className="mt-3 text-xs font-medium uppercase text-kamen-cream">
               {category.name}
             </span>
           </button>
@@ -170,7 +170,7 @@ function Navigation() {
 
                       <span
                         className={`whitespace-nowrap text-[10px] font-medium uppercase transition-colors ${
-                          isActive ? "text-kamen-gold" : "text-white"
+                          isActive ? "text-kamen-gold" : "text-kamen-cream"
                         }`}
                       >
                         {category.shortName}

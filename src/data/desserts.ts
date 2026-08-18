@@ -2,8 +2,8 @@ import type { MenuItem } from "../types/menu";
 
 export const desserts: MenuItem[] = [
   {
-    id: "93",
-    number: "93",
+    id: "92",
+    number: "92",
     name: "Tiramisu",
     description: "Italienisches Dessert, hausgemacht ohne Alkohol",
     allergens: ["A", "L"],
@@ -13,8 +13,8 @@ export const desserts: MenuItem[] = [
   },
 
   {
-    id: "94",
-    number: "94",
+    id: "93",
+    number: "93",
     name: "Ben & Jerry's Chocolate Fudge Brownie",
     description: "Schokoladeneiscreme mit Schokogebäckstücken",
     allergens: ["L"],
@@ -27,8 +27,8 @@ export const desserts: MenuItem[] = [
   },
 
   {
-    id: "95",
-    number: "95",
+    id: "94",
+    number: "94",
     name: "Ben & Jerry's Cookie Dough",
     description:
       "Vanilleeiscreme mit Schokoladenkeksstücken und Knusperstücken",
@@ -42,8 +42,8 @@ export const desserts: MenuItem[] = [
   },
 
   {
-    id: "96",
-    number: "96",
+    id: "95",
+    number: "95",
     name: "Ben & Jerry's Strawberry Cheesecake",
     description:
       "Erdbeer-Käsekuchen-Eiscreme mit Erdbeerstückchen und Keksstücken",
@@ -57,8 +57,8 @@ export const desserts: MenuItem[] = [
   },
 
   {
-    id: "97",
-    number: "97",
+    id: "96",
+    number: "96",
     name: "Ben & Jerry's Peanut Butter",
     description:
       "Erdnussbutter-Eiscreme mit Erdnussbutter-Strudeln und Schokoladenstückchen",
