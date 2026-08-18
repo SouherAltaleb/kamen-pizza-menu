@@ -38,9 +38,7 @@ function MenuCard({
             <div key={item.size} className="flex justify-between text-sm">
               <span className="text-kamen-dark">{item.size}</span>
 
-              <span className="font-semibold text-kamen-dark">
-                {item.price}
-              </span>
+              <span className="font-bold text-kamen-dark">{item.price}</span>
             </div>
           ))}
         </div>

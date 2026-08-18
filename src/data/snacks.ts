@@ -6,7 +6,7 @@ export const snacks = [
     description: "Knusprige Pommes",
     allergens: [],
     category: "Snacks & Beilagen",
-    image: "/snacks/snacks72.png",
+    image: "/snacks/pommes.png",
     sizes: [{ size: "Portion", price: "3,50 €" }],
   },
 
@@ -17,7 +17,7 @@ export const snacks = [
     description: "6 Stück",
     allergens: ["a"],
     category: "Snacks & Beilagen",
-    image: "/snacks/snacks73.png",
+    image: "/snacks/chicken-nuggets.png",
     sizes: [{ size: "6 Stk.", price: "4,50 €" }],
   },
 
@@ -28,7 +28,7 @@ export const snacks = [
     description: "6 Stück",
     allergens: ["a", "l"],
     category: "Snacks & Beilagen",
-    image: "/snacks/snacks74.png",
+    image: "/snacks/chili-nuggets.png",
     sizes: [{ size: "6 Stk.", price: "5,00 €" }],
   },
   {
@@ -49,7 +49,7 @@ export const snacks = [
       "8 Stück mit Käse. Extra Zutaten: Pizzabelag aus Truthahnfleisch, Rindersalami, Thunfisch, Sucuk, Hähnchenbrust, Champignons, Spinat und mehr",
     allergens: ["a", "l"],
     category: "Snacks & Beilagen",
-    image: "/snacks/snacks75.png",
+    image: "/snacks/gefuellte-pizzabroetchen.png",
     sizes: [
       { size: "8 Stk.", price: "6,50 €" },
       { size: "Extra Zutaten", price: "2,50 €" },
@@ -63,7 +63,7 @@ export const snacks = [
     description: "8 Stück mit Kräuterbutter",
     allergens: ["a", "l"],
     category: "Snacks & Beilagen",
-    image: "/snacks/snacks76.png",
+    image: "/snacks/portion-pizzabroetchen.png",
     sizes: [{ size: "8 Stk.", price: "5,00 €" }],
   },
 ];
@@ -78,11 +78,6 @@ export const snackSauces = [
     name: "Aioli",
     price: "1,50 €",
     allergens: ["H"],
-  },
-  {
-    name: "Barbecue , Sweet & Sour, Curry-Mango",
-    price: "0,50 €",
-    allergens: [],
   },
 
   {

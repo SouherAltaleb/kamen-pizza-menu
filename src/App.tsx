@@ -29,7 +29,8 @@ function App() {
         <MenuSection
           id="nudeln"
           title="Nudeln"
-          description="text"
+          description="Alle Gerichte werden mit einer Nudelsorte nach Wahl zubereitet.
+"
           items={noodles}
         />
 
@@ -38,7 +39,7 @@ function App() {
         <MenuSection
           id="doener"
           title="Döner & Teller"
-          description="text"
+          description="Alle Gerichte werden mit grünem Salat, Weißkraut, Rotkraut, Zwiebeln, Tomaten, Gurken und einer Sauce nach Wahl zubereitet."
           items={doener}
         />
 
@@ -54,6 +55,7 @@ function App() {
         <MenuSection
           id="burger-falafel"
           title="Burger & Falafel"
+          description="Alle Burger werden mit Eisbergsalat, Tomaten, Zwiebeln, Gewürzgurken, Röstzwiebeln und Burgersauce zubereitet."
           items={burger}
         />
 

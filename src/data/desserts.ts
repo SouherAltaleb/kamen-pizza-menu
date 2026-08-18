@@ -34,7 +34,7 @@ export const desserts: MenuItem[] = [
       "Vanilleeiscreme mit Schokoladenkeksstücken und Knusperstücken",
     allergens: ["A", "L"],
     category: "Dessert",
-    image: "/dessert/cookie-dough.png",
+    image: "/dessert/chocolate-fudge-brownie.png",
     sizes: [
       { size: "Klein", price: "4,00 €" },
       { size: "Groß", price: "8,00 €" },
@@ -49,7 +49,7 @@ export const desserts: MenuItem[] = [
       "Erdbeer-Käsekuchen-Eiscreme mit Erdbeerstückchen und Keksstücken",
     allergens: ["A", "L"],
     category: "Dessert",
-    image: "/dessert/strawberry-cheesecake.png",
+    image: "/dessert/chocolate-fudge-brownie.png",
     sizes: [
       { size: "Klein", price: "4,00 €" },
       { size: "Groß", price: "8,00 €" },
@@ -64,7 +64,7 @@ export const desserts: MenuItem[] = [
       "Erdnussbutter-Eiscreme mit Erdnussbutter-Strudeln und Schokoladenstückchen",
     allergens: ["A", "J", "L"],
     category: "Dessert",
-    image: "/dessert/peanut-butter.png",
+    image: "/dessert/chocolate-fudge-brownie.png",
     sizes: [
       { size: "Klein", price: "4,00 €" },
       { size: "Groß", price: "8,00 €" },

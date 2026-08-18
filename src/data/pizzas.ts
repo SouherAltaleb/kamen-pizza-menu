@@ -157,25 +157,11 @@ export const pizzas = [
   {
     id: "10b",
     number: "10b",
-    name: "Tonno Speciale",
-    description: "Thunfisch, veganer Käse, Zwiebeln",
-    allergens: ["a", "l"],
-    category: "Fisch",
-    image: "/pizza/pizza10b.png",
-    sizes: [
-      { size: "28 cm", price: "10,00 €" },
-      { size: "32 cm", price: "11,00 €" },
-    ],
-  },
-
-  {
-    id: "10c",
-    number: "10c",
     name: "Nostalgia",
     description: "Milde Peperoni, Hirtenkäse, schwarze Oliven, Knoblauch",
     allergens: ["a", "l"],
     category: "Vegetarisch",
-    image: "/pizza/pizza10c.png",
+    image: "/pizza/pizza10b.png",
     sizes: [
       { size: "28 cm", price: "9,50 €" },
       { size: "32 cm", price: "10,50 €" },
@@ -608,8 +594,8 @@ export const pizzas = [
     description:
       "Mit Käse. Extra Zutaten: Pizzabelag aus Truthahnfleisch, Rindersalami, Thunfisch, Sucuk, Hähnchenbrust, Champignons, Spinat und viel mehr",
     allergens: [],
-    category: "Finger Food",
-    image: "/pizza/pizza37.png",
+    category: "Pizzabrötchen",
+    image: "/pizza/gefuellte-pizzabroetchen.png",
     sizes: [
       { size: "8 Stk.", price: "6,50 €" },
       { size: "Extra Zutaten", price: "2,50 €" },
@@ -622,8 +608,8 @@ export const pizzas = [
     name: "Portion Pizzabrötchen (8 Stk.)",
     description: "Kräuterbutter",
     allergens: ["a", "l"],
-    category: "Finger Food",
-    image: "/pizza/pizza38.png",
+    category: "Pizzabrötchen",
+    image: "/pizza/portion-pizzabroetchen.png",
     sizes: [{ size: "8 Stk.", price: "5,00 €" }],
   },
 ];

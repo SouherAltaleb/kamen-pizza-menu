@@ -16,13 +16,16 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
+  color-scheme: light only;
+  background-color: #11110b;
 }
 
 body {
+  margin: 0;
+  min-width: 320px;
   font-family: "Manrope", sans-serif;
-  background-color: var(--color-kamen-dark);
-  color: var(--color-kamen-cream);
+  background-color: #11110b;
+  color: #f2e9d7;
 }
 
 h1,

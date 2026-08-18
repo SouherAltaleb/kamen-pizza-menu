@@ -5,6 +5,7 @@ export const drinks = [
     category: "Getränke",
     size: "0,33 l",
     price: "2,00 €",
+    allergens: [],
   },
 
   {
@@ -13,6 +14,7 @@ export const drinks = [
     category: "Getränke",
     size: "1 l",
     price: "3,00 €",
+    allergens: [],
   },
 
   {
@@ -21,6 +23,7 @@ export const drinks = [
     category: "Getränke",
     size: "0,5 l",
     price: "2,00 €",
+    allergens: [],
   },
 
   {
@@ -29,6 +32,7 @@ export const drinks = [
     category: "Getränke",
     size: "0,25 l",
     price: "2,00 €",
+    allergens: [],
   },
 
   {
@@ -37,6 +41,7 @@ export const drinks = [
     category: "Getränke",
     size: "0,25 l",
     price: "2,00 €",
+    allergens: [],
   },
 
   {
@@ -45,6 +50,7 @@ export const drinks = [
     category: "Getränke",
     size: "0,3 l",
     price: "2,00 €",
+    allergens: [],
   },
 
   {
@@ -53,5 +59,15 @@ export const drinks = [
     category: "Getränke",
     size: "0,3 l",
     price: "2,00 €",
+    allergens: [],
+  },
+
+  {
+    name: "Ayran",
+    description: "",
+    category: "Getränke",
+    size: "0,25 l",
+    price: "2,00 €",
+    allergens: ["G"],
   },
 ];
