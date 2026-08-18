@@ -3,7 +3,8 @@ type Size = {
   price: string;
 };
 
-type Pizza = {
+type Salad = {
+  id: string;
   number: string;
   name: string;
   description: string;
@@ -13,25 +14,26 @@ type Pizza = {
   sizes: Size[];
 };
 
-function PizzaCard({
+function SaladCard({
   number,
   name,
   description,
   allergens,
   image,
   sizes,
-}: Pizza) {
+}: Salad) {
   return (
-    <article className="flex gap-3 rounded-[25px] border border-kamen-gold bg-kamen-cream p-3 sm:gap-4 sm:p-4">
+    <article className="flex gap-4 rounded-[25px] border border-kamen-gold bg-kamen-cream p-4">
       {/* Image */}
-      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl sm:h-20 sm:w-20">
+      <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl">
         <img src={image} alt={name} className="h-full w-full object-contain" />
       </div>
 
-      <div className="min-w-0 flex-1">
-        {/* allergens section */}
+      {/* Content */}
+      <div className="flex flex-1 flex-col">
+        {/* Allergens */}
         {allergens?.length > 0 && (
-          <div className="mb-1 text-[12px] font-medium text-kamen-gold ">
+          <div className="mb-1 text-[12px] font-medium text-kamen-gold">
             {allergens.join(", ")}
           </div>
         )}
@@ -41,7 +43,7 @@ function PizzaCard({
           {name}
         </h3>
 
-        <p className="mt-2 text-sm leading-relaxed  text-kamen-dark">
+        <p className="mt-2 text-sm leading-relaxed text-kamen-dark">
           {description}
         </p>
 
@@ -50,7 +52,9 @@ function PizzaCard({
             <div key={item.size} className="flex justify-between text-sm">
               <span className="text-kamen-dark">{item.size}</span>
 
-              <span className="font-bold text-kamen-dark">{item.price}</span>
+              <span className="font-semibold text-kamen-dark">
+                {item.price}
+              </span>
             </div>
           ))}
         </div>
@@ -59,4 +63,4 @@ function PizzaCard({
   );
 }
 
-export default PizzaCard;
+export default SaladCard;

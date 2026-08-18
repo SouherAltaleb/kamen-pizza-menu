@@ -14,12 +14,12 @@ export const auflaeufe = [
   {
     id: "63",
     number: "63",
-    name: "Hähnchen-Auflauf",
+    name: "Pollo-Auflauf",
     description:
-      "Kartoffeln, Hähnchenbrust, Brokkoli, Champignons, Sahnesauce und mit Käse überbacken",
+      "Hähnchenbrust, Brokkoli, Champignons, Sahnesauce und mit Käse überbacken",
     allergens: ["l"],
     category: "Aufläufe",
-    image: "/auflaeufe/auflauf-haehnchen.png",
+    image: "/auflaeufe/auflauf-pollo.png",
     sizes: [{ size: "Portion", price: "11,50 €" }],
   },
 
@@ -28,7 +28,7 @@ export const auflaeufe = [
     number: "64",
     name: "Döner-Auflauf",
     description:
-      "Kartoffeln, Dönerfleisch, Champignons, Zwiebeln, Sahnesauce und mit Käse überbacken",
+      "Dönerfleisch, Champignons, Zwiebeln, Sahnesauce und mit Käse überbacken",
     allergens: ["l"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-doener.png",
@@ -64,7 +64,7 @@ export const auflaeufe = [
     number: "67",
     name: "Spinat-Auflauf",
     description:
-      "Kartoffeln, Blattspinat, Champignons, Knoblauch, Sahnesauce und mit Käse überbacken",
+      "Blattspinat, Champignons, Knoblauch, Sahnesauce und mit Käse überbacken",
     allergens: ["a", "i", "1", "2", "4", "8", "9"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-spinat.png",

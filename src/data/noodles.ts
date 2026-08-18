@@ -2,18 +2,6 @@ export const noodles = [
   {
     id: "39",
     number: "39",
-    name: "Aglio e Olio",
-    description:
-      "Ohne Tomatensauce, Olivenöl, Peperoni, Cherrytomaten, frische Kräuter und Knoblauch",
-    allergens: ["a"],
-    category: "Nudeln",
-    image: "/nudeln/nudeln-aglio.png",
-    sizes: [{ size: "Portion", price: "8,50 €" }],
-  },
-
-  {
-    id: "39a",
-    number: "39a",
     name: "Napoli",
     description: "Tomatensauce, Basilikum und Parmesan",
     allergens: ["a"],
@@ -23,8 +11,8 @@ export const noodles = [
   },
 
   {
-    id: "39b",
-    number: "39b",
+    id: "39a",
+    number: "39a",
     name: "Arrabiata",
     description: "Tomatensauce und Peperoni",
     allergens: [],

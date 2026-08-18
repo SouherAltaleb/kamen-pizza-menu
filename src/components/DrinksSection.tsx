@@ -18,6 +18,7 @@ function DrinksSection() {
             category={drink.category}
             size={drink.size}
             price={drink.price}
+            allergens={drink.allergens}
           />
         ))}
       </div>
