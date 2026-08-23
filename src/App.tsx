@@ -39,7 +39,7 @@ function App() {
         <MenuSection
           id="doener"
           title="Döner & Teller"
-          description="Alle Gerichte werden mit grünem Salat, Weißkraut, Rotkraut, Zwiebeln, Tomaten, Gurken und einer Sauce nach Wahl zubereitet."
+          description="Hänchenfleisch Drehspieß nach Doner Art"
           items={doener}
         />
 
@@ -52,12 +52,7 @@ function App() {
           items={salate}
         />
 
-        <MenuSection
-          id="burger-falafel"
-          title="Burger & Falafel"
-          description="Alle Burger werden mit Eisbergsalat, Tomaten, Zwiebeln, Gewürzgurken, Röstzwiebeln und Burgersauce zubereitet."
-          items={burger}
-        />
+        <MenuSection id="burger" title="Burger" description="" items={burger} />
 
         <MenuSection id="snacks" title="Snacks & Beilagen" items={snacks}>
           <SauceList sauces={snackSauces} />

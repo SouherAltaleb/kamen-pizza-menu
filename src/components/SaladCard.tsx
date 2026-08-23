@@ -50,7 +50,7 @@ function SaladCard({
         <div className="mt-3 space-y-1.5">
           {sizes.map((item) => (
             <div key={item.size} className="flex justify-between text-sm">
-              <span className="text-kamen-dark">{item.size}</span>
+              <span className="text-kamen-dark text-xs">{item.size}</span>
 
               <span className="font-semibold text-kamen-dark">
                 {item.price}

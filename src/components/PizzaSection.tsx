@@ -13,7 +13,9 @@ function PizzaSection() {
 
   return (
     <section id="pizza" className="mx-2 rounded-[25px] bg-kamen-cream p-6">
-      <h2 className="text-3xl font-semibold text-kamen-gold">Pizza</h2>
+      <h2 className="text-3xl font-semibold text-kamen-gold">
+        Steinofen Pizza
+      </h2>
       <p className="mt-2  mb-4 text-xs text-kamen-dark">
         {" "}
         Jede Pizza mit Tomatensauce und Käse
