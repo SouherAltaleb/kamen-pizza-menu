@@ -9,6 +9,7 @@ import { baguettes } from "./data/baguettes";
 import { burger } from "./data/burger";
 import SauceList from "./components/SauceList.tsx";
 import { snacks, snackSauces } from "./data/snacks";
+import { menus } from "./data/menus";
 
 import PizzaSection from "./components/PizzaSection.tsx";
 import DrinksSection from "./components/DrinksSection.tsx";
@@ -23,6 +24,7 @@ function App() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <Header />
         <Navigation />
+        <MenuSection id="menus" title="Menüs" items={menus} />
 
         <PizzaSection />
 
