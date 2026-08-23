@@ -38,8 +38,8 @@ const categories = [
     icon: "/icons/salate.png",
   },
   {
-    id: "burger-falafel",
-    name: "Burger & Falafel",
+    id: "burger",
+    name: "Burger",
     shortName: "Burger",
     icon: "/icons/burger.png",
   },

@@ -7,7 +7,7 @@ export const noodles = [
     allergens: ["a"],
     category: "Nudeln",
     image: "/nudeln/nudeln-napoli.png",
-    sizes: [{ size: "Portion", price: "8,50 €" }],
+    sizes: [{ size: "", price: "8,00 €" }],
   },
 
   {
@@ -18,7 +18,7 @@ export const noodles = [
     allergens: [],
     category: "Nudeln",
     image: "/nudeln/nudeln-arrabiata.png",
-    sizes: [{ size: "Portion", price: "8,80 €" }],
+    sizes: [{ size: "", price: "8,50 €" }],
   },
 
   {
@@ -29,7 +29,7 @@ export const noodles = [
     allergens: ["a", "l"],
     category: "Nudeln",
     image: "/nudeln/nudeln-bolognese.png",
-    sizes: [{ size: "Portion", price: "9,00 €" }],
+    sizes: [{ size: "", price: "9,00 €" }],
   },
 
   {
@@ -40,7 +40,7 @@ export const noodles = [
     allergens: ["a", "l", "1", "2", "4", "8", "9"],
     category: "Nudeln",
     image: "/nudeln/nudeln-alla-panna.png",
-    sizes: [{ size: "Portion", price: "9,50 €" }],
+    sizes: [{ size: "", price: "9,50 €" }],
   },
 
   {
@@ -52,7 +52,7 @@ export const noodles = [
     allergens: ["1", "2", "8", "9"],
     category: "Nudeln",
     image: "/nudeln/nudeln-da-roma.png",
-    sizes: [{ size: "Portion", price: "9,80 €" }],
+    sizes: [{ size: "", price: "9,50 €" }],
   },
 
   {
@@ -63,7 +63,7 @@ export const noodles = [
     allergens: ["a", "h", "l", "1", "2", "4", "8", "9"],
     category: "Nudeln",
     image: "/nudeln/nudeln-carbonara.png",
-    sizes: [{ size: "Portion", price: "9,50 €" }],
+    sizes: [{ size: "", price: "9,50 €" }],
   },
 
   {
@@ -74,7 +74,7 @@ export const noodles = [
     allergens: ["a", "i", "l"],
     category: "Nudeln",
     image: "/nudeln/nudeln-al-tonno.png",
-    sizes: [{ size: "Portion", price: "9,50 €" }],
+    sizes: [{ size: "", price: "9,50 €" }],
   },
 
   {
@@ -85,7 +85,7 @@ export const noodles = [
     allergens: ["a", "g", "i", "z"],
     category: "Nudeln",
     image: "/nudeln/nudeln-frutti-di-mare.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "10,50 €" }],
   },
 
   {
@@ -97,7 +97,7 @@ export const noodles = [
     allergens: ["a", "l", "1", "9"],
     category: "Nudeln",
     image: "/nudeln/nudeln-pollo.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "10,50 €" }],
   },
 
   {
@@ -108,7 +108,7 @@ export const noodles = [
     allergens: ["a", "i", "l"],
     category: "Nudeln",
     image: "/nudeln/nudeln-salmone.png",
-    sizes: [{ size: "Portion", price: "11,00 €" }],
+    sizes: [{ size: "", price: "11,00 €" }],
   },
 
   {
@@ -119,7 +119,7 @@ export const noodles = [
     allergens: ["a", "l"],
     category: "Nudeln",
     image: "/nudeln/nudeln-quattro-formaggi.png",
-    sizes: [{ size: "Portion", price: "10,00 €" }],
+    sizes: [{ size: "", price: "10,00 €" }],
   },
 
   {
@@ -130,7 +130,7 @@ export const noodles = [
     allergens: ["a", "l"],
     category: "Nudeln",
     image: "/nudeln/nudeln-del-bosco.png",
-    sizes: [{ size: "Portion", price: "9,00 €" }],
+    sizes: [{ size: "", price: "9,00 €" }],
   },
 
   {
@@ -141,7 +141,7 @@ export const noodles = [
     allergens: ["a", "g", "l"],
     category: "Nudeln",
     image: "/nudeln/nudeln-marina.png",
-    sizes: [{ size: "Portion", price: "11,00 €" }],
+    sizes: [{ size: "", price: "11,00 €" }],
   },
   {
     id: "50",
@@ -151,6 +151,6 @@ export const noodles = [
     allergens: ["l"],
     category: "Nudeln",
     image: "/nudeln/nudeln-gorgonzola.png",
-    sizes: [{ size: "Portion", price: "9,00 €" }],
+    sizes: [{ size: "", price: "9,00 €" }],
   },
 ];

@@ -19,7 +19,7 @@ function DrinkCard({ name, description, size, price, allergens }: Drink) {
       <p className="mt-1 text-xs text-kamen-dark">{description}</p>
 
       <div className="mt-2 flex items-center justify-between text-sm">
-        <span className="font-medium text-kamen-gold">{size}</span>
+        <span className="font-medium text-xs text-kamen-gold ">{size}</span>
         <span className="font-bold text-kamen-dark">{price}</span>
       </div>
     </article>

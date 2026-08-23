@@ -4,7 +4,7 @@ export const drinks = [
     description: "auch Light & Zero",
     category: "Getränke",
     size: "0,33 l",
-    price: "2,00 €",
+    price: "2,50 €",
     allergens: [],
   },
 
@@ -13,7 +13,7 @@ export const drinks = [
     description: "auch Light & Zero",
     category: "Getränke",
     size: "1 l",
-    price: "3,00 €",
+    price: "3,50 €",
     allergens: [],
   },
 

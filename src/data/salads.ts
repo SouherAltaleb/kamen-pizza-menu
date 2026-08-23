@@ -10,7 +10,7 @@ export const salate = [
     allergens: [],
     category: "Salate",
     image: "/salate/salat-gemischt.png",
-    sizes: [{ size: "Portion", price: "7,50 €" }],
+    sizes: [{ size: "", price: "7,50 €" }],
   },
 
   {
@@ -22,7 +22,7 @@ export const salate = [
     allergens: ["l", "s"],
     category: "Salate",
     image: "/salate/salat-bauern.png",
-    sizes: [{ size: "Portion", price: "8,50 €" }],
+    sizes: [{ size: "", price: "8,50 €" }],
   },
 
   {
@@ -33,7 +33,7 @@ export const salate = [
     allergens: ["l"],
     category: "Salate",
     image: "/salate/salat-thunfisch.png",
-    sizes: [{ size: "Portion", price: "9,00 €" }],
+    sizes: [{ size: "", price: "9,00 €" }],
   },
 
   {
@@ -45,7 +45,7 @@ export const salate = [
     allergens: ["l"],
     category: "Salate",
     image: "/salate/salat-rucola.png",
-    sizes: [{ size: "Portion", price: "9,00 €" }],
+    sizes: [{ size: "", price: "9,00 €" }],
   },
 
   {
@@ -57,7 +57,7 @@ export const salate = [
     allergens: ["1", "2", "8", "9"],
     category: "Salate",
     image: "/salate/salat-mozzarella.png",
-    sizes: [{ size: "Portion", price: "10,00 €" }],
+    sizes: [{ size: "", price: "10,00 €" }],
   },
 
   {
@@ -69,7 +69,7 @@ export const salate = [
     allergens: ["1", "2", "4", "h", "i", "8", "9"],
     category: "Salate",
     image: "/salate/salat-roma.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "10,50 €" }],
   },
 
   {
@@ -81,7 +81,7 @@ export const salate = [
     allergens: ["1", "2", "4", "h", "i", "8", "9"],
     category: "Salate",
     image: "/salate/salat-capricciosa.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "10,50 €" }],
   },
 
   {
@@ -92,7 +92,7 @@ export const salate = [
     allergens: [],
     category: "Salate",
     image: "/salate/salat-caprese.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "8,50 €" }],
   },
 
   {
@@ -104,7 +104,7 @@ export const salate = [
     allergens: ["1", "2", "4", "h", "i", "8", "9"],
     category: "Salate",
     image: "/salate/salat-hawaii.png",
-    sizes: [{ size: "Portion", price: "9,50 €" }],
+    sizes: [{ size: "", price: "9,50 €" }],
   },
 
   {
@@ -116,7 +116,7 @@ export const salate = [
     allergens: ["2", "l"],
     category: "Salate",
     image: "/salate/salat-nostalgia.png",
-    sizes: [{ size: "Portion", price: "9,50 €" }],
+    sizes: [{ size: "", price: "9,50 €" }],
   },
 
   {
@@ -128,6 +128,6 @@ export const salate = [
     allergens: ["2", "4", "l"],
     category: "Salate",
     image: "/salate/salat-antipasto.png",
-    sizes: [{ size: "Portion", price: "9,50 €" }],
+    sizes: [{ size: "", price: "9,50 €" }],
   },
 ];

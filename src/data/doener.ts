@@ -7,7 +7,17 @@ export const doener = [
     allergens: ["a", "l"],
     category: "Döner & Teller",
     image: "/doener/doener-tasche.png",
-    sizes: [{ size: "Portion", price: "7,50 €" }],
+    sizes: [{ size: "", price: "7,00 €" }],
+  },
+  {
+    id: "60",
+    number: "60",
+    name: "Kinder Dönertasche",
+    description: "Dönerfleisch, Pommes und Sauce",
+    allergens: ["a", "l"],
+    category: "Döner & Teller",
+    image: "/doener/doener-tasche.png",
+    sizes: [{ size: "", price: "5,00 €" }],
   },
 
   {
@@ -18,7 +28,7 @@ export const doener = [
     allergens: ["a", "l"],
     category: "Döner & Teller",
     image: "/doener/doener-dueruem.png",
-    sizes: [{ size: "Portion", price: "8,50 €" }],
+    sizes: [{ size: "Portion", price: "8,00 €" }],
   },
 
   {
@@ -29,7 +39,7 @@ export const doener = [
     allergens: ["a", "l"],
     category: "Döner & Teller",
     image: "/doener/doener-teller.png",
-    sizes: [{ size: "Portion", price: "11,50 €" }],
+    sizes: [{ size: "", price: "10,00 €" }],
   },
 
   {
@@ -40,6 +50,39 @@ export const doener = [
     allergens: ["a", "l"],
     category: "Döner & Teller",
     image: "/doener/doener-box.png",
-    sizes: [{ size: "Portion", price: "7,50 €" }],
+    sizes: [{ size: "", price: "7,00 €" }],
+  },
+
+  {
+    id: "61",
+    number: "61",
+    name: "Falafel Tasche",
+    description: "Falafel, Salat, Tomaten, Zwiebeln und Sauce",
+    allergens: ["A", "H", "V"],
+    category: "Döner & Teller",
+    image: "/burger/falafel-tasche.png",
+    sizes: [{ size: "", price: "7,00 €" }],
+  },
+
+  {
+    id: "62",
+    number: "62",
+    name: "Falafel Dürüm",
+    description: "Falafel, Salat, Tomaten, Zwiebeln und Humus-Sauce",
+    allergens: ["A", "H", "V"],
+    category: "Döner & Teller",
+    image: "/burger/falafel-dueruem.png",
+    sizes: [{ size: "", price: "8,00 €" }],
+  },
+
+  {
+    id: "63",
+    number: "63",
+    name: "Falafel Teller",
+    description: "Falafel, Salat, Tomaten, Zwiebeln und Humus-Sauce",
+    allergens: ["A", "H", "V"],
+    category: "Döner & Teller",
+    image: "/burger/falafel-teller.png",
+    sizes: [{ size: "", price: "10,00 €" }],
   },
 ];
