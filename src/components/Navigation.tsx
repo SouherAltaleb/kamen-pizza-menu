@@ -62,6 +62,15 @@ const categories = [
     icon: "/icons/nachtisch.png",
   },
 ];
+const stickyCategories = [
+  {
+    id: "menus",
+    name: "Menüs",
+    shortName: "Menüs",
+    icon: "/icons/menus.png",
+  },
+  ...categories,
+];
 
 function Navigation() {
   const [activeCategory, setActiveCategory] = useState("pizza");
@@ -153,7 +162,7 @@ function Navigation() {
           <div className="mx-auto w-full max-w-7xl bg-kamen-dark">
             <nav className="overflow-x-auto scrollbar-hide">
               <div className="flex w-max min-w-full justify-center gap-7 px-5 pb-4 pt-3">
-                {categories.map((category) => {
+                {stickyCategories.map((category) => {
                   const isActive = activeCategory === category.id;
 
                   return (

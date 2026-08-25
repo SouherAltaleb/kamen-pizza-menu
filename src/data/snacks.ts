@@ -1,7 +1,7 @@
 export const snacks = [
   {
-    id: "86",
-    number: "86",
+    id: "88",
+    number: "88",
     name: "Pommes",
     description: "",
     allergens: [],
@@ -12,48 +12,35 @@ export const snacks = [
       { size: "Groß", price: "4,00 €" },
     ],
   },
-
-  {
-    id: "87",
-    number: "87",
-    name: "Chicken Nuggets",
-    description: "6 Stück + 1 Dip nach Wahl",
-    allergens: ["a"],
-    category: "Snacks & Beilagen",
-    image: "/snacks/chicken-nuggets.png",
-    sizes: [{ size: "", price: "6,00 €" }],
-  },
-
-  // {
-  //   id: "88",
-  //   number: "88",
-  //   name: "Chili Cheese Nuggets",
-  //   description: "6 Stück + 1 Dip nach Wahl",
-  //   allergens: ["a", "l"],
-  //   category: "Snacks & Beilagen",
-  //   image: "/snacks/chili-nuggets.png",
-  //   sizes: [{ size: "", price: "6,50 €" }],
-  // },
-
   {
     id: "89",
     number: "89",
     name: "Chicken Nuggets",
+    description: "6 Stück + 1 Dip nach Wahl",
+    allergens: ["A", "F", "L"],
+    category: "Snacks & Beilagen",
+    image: "/snacks/chicken-nuggets.png",
+    sizes: [{ size: "", price: "6,00 €" }],
+  },
+  {
+    id: "90",
+    number: "90",
+    name: "Chicken Nuggets",
     description: "6 Stück + Pommes + 1 Dip nach Wahl",
-    allergens: [],
+    allergens: ["A", "F", "L"],
     category: "Snacks & Beilagen",
     image: "/snacks/chicken-nuggets-pommes.png",
     sizes: [{ size: "", price: "7,50 €" }],
   },
   {
-    id: "90",
-    number: "90",
-    name: "Hummus",
-    description: "Hummus mit Pommes oder gemischtem Salat",
-    allergens: [],
+    id: "91",
+    number: "91",
+    name: "Hummus (Vegan)",
+    description: "Gemahlene Kichererbsen mit Sesamsauce verrührt",
+    allergens: ["K"],
     category: "Snacks & Beilagen",
     image: "/snacks/hummus.png",
-    sizes: [{ size: "", price: "6,50 €" }],
+    sizes: [{ size: "", price: "4,00 €" }],
   },
 ];
 
@@ -61,18 +48,16 @@ export const snackSauces = [
   {
     name: "Hausgemachte Kräuterbutter",
     price: "1,50 €",
-    allergens: ["L"],
+    allergens: ["G"],
   },
-
   {
     name: "Aioli",
     price: "1,50 €",
-    allergens: ["H"],
+    allergens: ["C", "G", "1"],
   },
-
   {
     name: "Mayonnaise, Ketchup",
     price: "0,50 €",
-    allergens: ["H"],
+    allergens: ["C", "I", "1", "4", "12"],
   },
 ];
