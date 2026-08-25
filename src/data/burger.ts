@@ -2,11 +2,11 @@ import type { MenuItem } from "../types/menu";
 
 export const burger: MenuItem[] = [
   {
-    id: "80",
-    number: "80",
+    id: "84",
+    number: "84",
     name: "Hamburger",
     description: "Rindfleisch-Patty, Salat, Tomaten, Zwiebeln und Burgersauce",
-    allergens: ["A", "H", "U"],
+    allergens: ["A", "C", "G"],
     category: "Burger",
     image: "/burger/hamburger.png",
     sizes: [
@@ -15,12 +15,12 @@ export const burger: MenuItem[] = [
     ],
   },
   {
-    id: "81",
-    number: "81",
+    id: "85",
+    number: "85",
     name: "Cheeseburger",
     description:
       "Rindfleisch-Patty, Käse, Salat, Tomaten, Zwiebeln und Burgersauce",
-    allergens: ["A", "H", "L", "U"],
+    allergens: ["A", "C", "G", "2", "3"],
     category: "Burger",
     image: "/burger/cheeseburger.png",
     sizes: [
@@ -29,11 +29,11 @@ export const burger: MenuItem[] = [
     ],
   },
   {
-    id: "83",
-    number: "83",
+    id: "86",
+    number: "86",
     name: "Chili Cheese Burger",
-    description: "mit Jalapenos und Paprika",
-    allergens: ["A", "H", "U"],
+    description: "mit Jalapeños und Paprika",
+    allergens: ["A", "C", "G", "2", "3"],
     category: "Burger",
     image: "/burger/chili-cheese-burger.png",
     sizes: [
@@ -42,11 +42,11 @@ export const burger: MenuItem[] = [
     ],
   },
   {
-    id: "82",
-    number: "82",
+    id: "87",
+    number: "87",
     name: "Chicken Burger",
     description: "Hähnchen-Patty, Salat, Tomaten, Zwiebeln und Burgersauce",
-    allergens: ["A", "H", "U"],
+    allergens: ["A", "C", "G"],
     category: "Burger",
     image: "/burger/chicken-burger.png",
     sizes: [

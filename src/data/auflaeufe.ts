@@ -5,10 +5,10 @@ export const auflaeufe = [
     name: "Kartoffel-Auflauf",
     description:
       "Kartoffeln, Champignons, Brokkoli, Sahnesauce und mit Käse überbacken",
-    allergens: ["l"],
+    allergens: ["C", "G", "1"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-kartoffel.png",
-    sizes: [{ size: "Portion", price: "10,00 €" }],
+    sizes: [{ size: "", price: "10,00 €" }],
   },
 
   {
@@ -17,10 +17,10 @@ export const auflaeufe = [
     name: "Pollo-Auflauf",
     description:
       "Hähnchenbrust, Brokkoli, Champignons, Sahnesauce und mit Käse überbacken",
-    allergens: ["l"],
+    allergens: ["C", "G", "1"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-pollo.png",
-    sizes: [{ size: "Portion", price: "11,50 €" }],
+    sizes: [{ size: "", price: "11,50 €" }],
   },
 
   {
@@ -29,10 +29,10 @@ export const auflaeufe = [
     name: "Döner-Auflauf",
     description:
       "Dönerfleisch, Champignons, Zwiebeln, Sahnesauce und mit Käse überbacken",
-    allergens: ["l"],
+    allergens: ["C", "G", "1", "J", "I"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-doener.png",
-    sizes: [{ size: "Portion", price: "12,00 €" }],
+    sizes: [{ size: "", price: "12,00 €" }],
   },
 
   {
@@ -41,10 +41,10 @@ export const auflaeufe = [
     name: "Gemüse-Auflauf",
     description:
       "Kartoffeln, Brokkoli, Paprika, Champignons, Mais, Sahnesauce und mit Käse überbacken",
-    allergens: ["l"],
+    allergens: ["C", "G", "1"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-gemuese.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "10,50 €" }],
   },
 
   {
@@ -53,10 +53,10 @@ export const auflaeufe = [
     name: "Nudel-Auflauf",
     description:
       "Penne, Schinken, Champignons, Sahnesauce und mit Käse überbacken",
-    allergens: ["a", "l"],
+    allergens: ["C", "G", "1", "A", "3"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-nudel.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "10,50 €" }],
   },
 
   {
@@ -65,9 +65,9 @@ export const auflaeufe = [
     name: "Spinat-Auflauf",
     description:
       "Blattspinat, Champignons, Knoblauch, Sahnesauce und mit Käse überbacken",
-    allergens: ["a", "i", "1", "2", "4", "8", "9"],
+    allergens: ["C", "G", "1"],
     category: "Aufläufe",
     image: "/auflaeufe/auflauf-spinat.png",
-    sizes: [{ size: "Portion", price: "10,50 €" }],
+    sizes: [{ size: "", price: "10,50 €" }],
   },
 ];
