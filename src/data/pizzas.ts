@@ -615,4 +615,14 @@ export const pizzas = [
     image: "/pizza/portion-pizzabroetchen.png",
     sizes: [{ size: "8 Stk.", price: "5,00 €" }],
   },
+  {
+    id: "39",
+    number: "39",
+    name: "Familienpizza",
+    description: "Familienpizza mit Zutaten nach Wahl",
+    allergens: ["A", "G"],
+    category: "Spezial",
+    image: "/pizza/pizza1.png",
+    sizes: [{ size: "Familienpizza", price: "ab 25,00 €" }],
+  },
 ];

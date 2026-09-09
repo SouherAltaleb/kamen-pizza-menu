@@ -91,7 +91,7 @@ function AllergenInfo() {
             {allergens.map(([code, name]) => (
               <div
                 key={code}
-                className="flex items-center gap-1 rounded-md border border-kamen-gold/10 bg-kamen-cream/[0.025] px-1.5 py-1"
+                className="flex items-center gap-1 rounded-md border border-kamen-gold/10 bg-kamen-cream/2.5 px-1.5 py-1"
               >
                 <span className="shrink-0 text-[9px] font-bold text-kamen-gold">
                   {code}
@@ -115,7 +115,7 @@ function AllergenInfo() {
             {additives.map(([code, name]) => (
               <div
                 key={code}
-                className="flex items-center gap-1 rounded-md border border-kamen-gold/10 bg-kamen-cream/[0.025] px-1.5 py-1"
+                className="flex items-center gap-1 rounded-md border border-kamen-gold/10 bg-kamen-cream/2.5 px-1.5 py-1"
               >
                 <span className="shrink-0 text-[9px] font-bold text-kamen-gold">
                   {code}
@@ -131,7 +131,7 @@ function AllergenInfo() {
 
         {/* Hinweis */}
         <div className="mt-8 border-t border-kamen-gold/10 pt-5">
-          <div className="rounded-xl border border-kamen-gold/10 bg-kamen-cream/[0.025] px-4 py-4 text-center">
+          <div className="rounded-xl border border-kamen-gold/10 bg-kamen-cream/2.5 px-4 py-4 text-center">
             <div className="mb-2 flex items-center justify-center gap-2">
               <span className="flex h-5 w-5 items-center justify-center rounded-full border border-kamen-gold/50 text-[10px] font-bold text-kamen-gold">
                 i
