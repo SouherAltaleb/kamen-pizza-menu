@@ -2,8 +2,8 @@ import type { MenuItem } from "../types/menu";
 
 export const desserts: MenuItem[] = [
   {
-    id: "92",
-    number: "92",
+    id: "93",
+    number: "93",
     name: "Tiramisu",
     description: "Italienisches Dessert, hausgemacht ohne Alkohol",
     allergens: ["A", "G", "C", "10"],

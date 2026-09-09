@@ -1,7 +1,7 @@
 export const noodles = [
   {
-    id: "39",
-    number: "39",
+    id: "40",
+    number: "40",
     name: "Napoli",
     description: "Tomatensauce, Basilikum und Parmesan",
     allergens: ["A", "C", "G"],
@@ -11,8 +11,8 @@ export const noodles = [
   },
 
   {
-    id: "39a",
-    number: "39a",
+    id: "40a",
+    number: "40a",
     name: "Arrabiata",
     description: "Tomatensauce und Peperoni",
     allergens: ["A", "C", "G"],
@@ -22,8 +22,8 @@ export const noodles = [
   },
 
   {
-    id: "40",
-    number: "40",
+    id: "41",
+    number: "41",
     name: "Bolognese",
     description: "Mit Bolognesesauce",
     allergens: ["A", "C", "G"],
@@ -33,8 +33,8 @@ export const noodles = [
   },
 
   {
-    id: "41",
-    number: "41",
+    id: "42",
+    number: "42",
     name: "Alla Panna",
     description: "Pizzabelag aus Truthahnfleisch und Champignons in Sahnesauce",
     allergens: ["A", "C", "G", "4", "2", "5"],
@@ -44,8 +44,8 @@ export const noodles = [
   },
 
   {
-    id: "41a",
-    number: "41a",
+    id: "42a",
+    number: "42a",
     name: "Da Roma",
     description:
       "Mit Pizzabelag aus Truthahnfleisch, Erbsen, Tomaten-Sahnesauce",
@@ -56,8 +56,8 @@ export const noodles = [
   },
 
   {
-    id: "42",
-    number: "42",
+    id: "43",
+    number: "43",
     name: "Carbonara",
     description: "Mit Pizzabelag aus Truthahnfleisch, Sahnesauce, Ei",
     allergens: ["A", "C", "G", "4", "2", "5"],
@@ -67,8 +67,8 @@ export const noodles = [
   },
 
   {
-    id: "43",
-    number: "43",
+    id: "44",
+    number: "44",
     name: "Al Tonno",
     description: "Thunfisch, Zwiebeln und Knoblauch in Tomatensauce",
     allergens: ["A", "C", "G", "D"],
@@ -78,8 +78,8 @@ export const noodles = [
   },
 
   {
-    id: "44",
-    number: "44",
+    id: "45",
+    number: "45",
     name: "Frutti di Mare",
     description: "Meeresfrüchte, Knoblauch und Tomatensauce",
     allergens: ["A", "C", "G", "B", "D", "N"],
@@ -89,8 +89,8 @@ export const noodles = [
   },
 
   {
-    id: "45",
-    number: "45",
+    id: "46",
+    number: "46",
     name: "Pollo",
     description:
       "Hähnchenbruststreifen, Brokkoli, Mais, Champignons und Tomaten-Sahnesauce",
@@ -101,8 +101,8 @@ export const noodles = [
   },
 
   {
-    id: "46",
-    number: "46",
+    id: "47",
+    number: "47",
     name: "Salmone",
     description: "Lachs und Spinat in Tomaten-Sahnesauce",
     allergens: ["A", "C", "G", "D"],
@@ -112,8 +112,8 @@ export const noodles = [
   },
 
   {
-    id: "47",
-    number: "47",
+    id: "48",
+    number: "48",
     name: "Quattro Formaggi",
     description: "4 verschiedene Käsesorten",
     allergens: ["A", "C", "G"],
@@ -123,8 +123,8 @@ export const noodles = [
   },
 
   {
-    id: "48",
-    number: "48",
+    id: "49",
+    number: "49",
     name: "Del Bosco",
     description: "Brokkoli, Spinat und Champignons in Sahnesauce",
     allergens: ["A", "C", "G"],
@@ -134,8 +134,8 @@ export const noodles = [
   },
 
   {
-    id: "49",
-    number: "49",
+    id: "50",
+    number: "50",
     name: "Marina",
     description: "Scampis, Knoblauch und schwarze Oliven in Tomatensauce",
     allergens: ["A", "C", "G", "B"],
@@ -145,8 +145,8 @@ export const noodles = [
   },
 
   {
-    id: "50",
-    number: "50",
+    id: "51",
+    number: "51",
     name: "Gorgonzola",
     description: "Sahnesauce, Gorgonzola-Käse",
     allergens: ["A", "C", "G"],

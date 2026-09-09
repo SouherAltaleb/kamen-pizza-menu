@@ -3,7 +3,7 @@ import type { MenuItem } from "../types/menu";
 export const burger: MenuItem[] = [
   {
     id: "84",
-    number: "84",
+    number: "85",
     name: "Hamburger",
     description: "Rindfleisch-Patty, Salat, Tomaten, Zwiebeln und Burgersauce",
     allergens: ["A", "C", "G"],
@@ -16,7 +16,7 @@ export const burger: MenuItem[] = [
   },
   {
     id: "85",
-    number: "85",
+    number: "86",
     name: "Cheeseburger",
     description:
       "Rindfleisch-Patty, Käse, Salat, Tomaten, Zwiebeln und Burgersauce",
@@ -30,7 +30,7 @@ export const burger: MenuItem[] = [
   },
   {
     id: "86",
-    number: "86",
+    number: "87",
     name: "Chili Cheese Burger",
     description: "mit Jalapeños und Paprika",
     allergens: ["A", "C", "G", "2", "3"],
@@ -43,7 +43,7 @@ export const burger: MenuItem[] = [
   },
   {
     id: "87",
-    number: "87",
+    number: "88",
     name: "Chicken Burger",
     description: "Hähnchen-Patty, Salat, Tomaten, Zwiebeln und Burgersauce",
     allergens: ["A", "C", "G"],

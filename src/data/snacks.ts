@@ -1,7 +1,7 @@
 export const snacks = [
   {
     id: "88",
-    number: "88",
+    number: "89",
     name: "Pommes",
     description: "",
     allergens: [],
@@ -14,7 +14,7 @@ export const snacks = [
   },
   {
     id: "89",
-    number: "89",
+    number: "90",
     name: "Chicken Nuggets",
     description: "6 Stück + 1 Dip nach Wahl",
     allergens: ["A", "F", "L"],
@@ -24,7 +24,7 @@ export const snacks = [
   },
   {
     id: "90",
-    number: "90",
+    number: "91",
     name: "Chicken Nuggets",
     description: "6 Stück + Pommes + 1 Dip nach Wahl",
     allergens: ["A", "F", "L"],
@@ -34,7 +34,7 @@ export const snacks = [
   },
   {
     id: "91",
-    number: "91",
+    number: "92",
     name: "Hummus (Vegan)",
     description: "Gemahlene Kichererbsen mit Sesamsauce verrührt",
     allergens: ["K"],
