@@ -224,7 +224,7 @@ export const pizzas = [
   {
     id: "15",
     number: "15",
-    name: "Dönerpizza",
+    name: "Döner Pizza",
     description: "Dönerfleisch, Zwiebeln und Sauce Hollandaise",
     allergens: ["A", "G", "C", "J"],
     category: "Döner",
@@ -618,7 +618,7 @@ export const pizzas = [
   {
     id: "39",
     number: "39",
-    name: "Familienpizza",
+    name: "Familien Pizza",
     description: "Familienpizza mit Zutaten nach Wahl",
     allergens: ["A", "G"],
     category: "Spezial",
