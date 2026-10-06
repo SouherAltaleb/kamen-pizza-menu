@@ -24,7 +24,7 @@ export const menus = [
   {
     id: "103",
     number: "Menü 3",
-    name: "Hamburger / Chicken Burger",
+    name: "Burger",
     description: "Burger nach Wahl + Pommes + Getränk (0,33l)",
     allergens: ["A", "C", "G", "2", "3"],
     category: "Menüs",
