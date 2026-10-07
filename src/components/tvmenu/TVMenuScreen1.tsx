@@ -132,7 +132,7 @@ export function TVMenuScreen1() {
   };
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2.5 sm:p-3">
+    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2 sm:p-2.5">
       {/* خلفية الفيديو والإضاءة */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
@@ -182,7 +182,7 @@ export function TVMenuScreen1() {
               <h1 className="max-w-4xl text-4xl font-black uppercase tracking-widest text-kamen-cream font-heading">
                 DÖNER, BURGER & MENÜS
               </h1>
-              <p className="mt-2 text-xl text-kamen-beige">
+              <p className="mt-2 text-l text-kamen-beige">
                 Frisch zubereitet & lecker
               </p>
             </motion.div>
@@ -193,25 +193,25 @@ export function TVMenuScreen1() {
       {!showHero && (
         <>
           {/* Header */}
-          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1 shrink-0">
+          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1 shrink-0 h-[7%]">
             <div className="flex items-center gap-2.5">
               <img
                 src="/logo-k-transparent.svg"
                 alt="Logo"
-                className="h-10 w-auto pr-1"
+                className="h-9 w-auto pr-1"
               />
               <div>
                 <h1 className="text-xl font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
                   DÖNER, BURGER & SNACKS
                 </h1>
-                <p className="text-xs text-kamen-beige mt-0.5">
+                <p className="text-[11px] text-kamen-beige mt-0.5">
                   Frisch zubereitet & lecker
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-kamen-gold">
+              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-kamen-gold">
                 👑 UNSERE KÖNIGSDISZIPLIN
               </span>
             </div>
@@ -231,57 +231,57 @@ export function TVMenuScreen1() {
                   <motion.div
                     key={item.id || item.name || idx}
                     variants={cardItemVariants}
-                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-2 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
+                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-1.5 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
                   >
                     {(item.number || item.id) && (
-                      <span className="absolute left-1.5 top-1.5 z-20 flex h-6 w-6 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-xs font-bold text-kamen-dark shadow">
+                      <span className="absolute left-1.5 top-1.5 z-20 flex h-5.5 w-5.5 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[10px] font-bold text-kamen-dark shadow">
                         {item.number || item.id}
                       </span>
                     )}
 
-                    {/* حاوية الصورة بأبعاد دقيقة وموحدة لمنع التفاوت في الحجم وتشويه الإضاءة */}
-                    <div className="relative w-full h-24 sm:h-26 flex items-center justify-center shrink-0 my-1 overflow-hidden">
-                      {/* توهج خفيف ومتناسق ناعم جداً خلف الصورة */}
-                      <div className="absolute w-24 h-12 bg-kamen-gold/10 rounded-full blur-lg pointer-events-none" />
+                    {/* حاوية الصورة مع تحديد أقصى ارتفاع لمنع ضغط باقي العناصر */}
+                    <div className="relative w-full h-[45%] min-h-[70px] max-h-[90px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
+                      <div className="absolute w-24 h-10 bg-kamen-gold/10 rounded-full blur-md pointer-events-none" />
 
                       {item.image ? (
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="h-full w-auto max-w-[90%] object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:scale-105 relative z-10"
+                          className="max-h-full w-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105 relative z-10"
                         />
                       ) : (
                         <div className="h-full w-full bg-kamen-dark/50 rounded-lg" />
                       )}
                     </div>
 
-                    <div className="w-full text-center shrink-0 flex flex-col justify-between pt-0.5">
-                      <div>
-                        <h3 className="truncate text-sm font-black uppercase tracking-wide text-kamen-cream font-heading">
+                    {/* قسم النصوص والمكونات والأسعار */}
+                    <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pt-0.5">
+                      <div className="flex flex-col justify-center">
+                        <h3 className="truncate text-xs font-black uppercase tracking-wide text-kamen-cream font-heading">
                           {item.name}
                         </h3>
-                        <p className="line-clamp-2 text-[10px] font-semibold text-kamen-beige leading-tight mt-0.5">
+                        <p className="line-clamp-2 text-[9px] font-semibold text-kamen-beige/90 leading-tight mt-0.5">
                           {item.description}
                         </p>
                       </div>
 
-                      <div className="mt-1 flex items-center justify-center gap-1.5 px-1">
+                      <div className="mt-1 flex items-center justify-center gap-1.5 px-0.5 shrink-0">
                         {item.sizes && item.sizes.length > 0 ? (
                           item.sizes.map((s) => (
                             <div
                               key={s.size}
-                              className="flex-1 rounded-md border border-kamen-gold/30 bg-kamen-gold/15 px-1 py-0.5 text-center"
+                              className="flex-1 rounded-md border border-kamen-gold/30 bg-kamen-gold/15 px-0.5 py-0.5 text-center"
                             >
-                              <span className="block text-[7px] font-bold uppercase text-kamen-gold/90">
+                              <span className="block text-[6.5px] font-bold uppercase text-kamen-gold/90">
                                 {s.size}
                               </span>
-                              <span className="text-xs font-black text-kamen-gold font-heading">
+                              <span className="text-[10px] font-black text-kamen-gold font-heading">
                                 {s.price}
                               </span>
                             </div>
                           ))
                         ) : (
-                          <div className="rounded-md border border-kamen-gold/30 bg-kamen-gold/15 px-2.5 py-0.5 text-[10.5px] font-black text-kamen-gold font-heading">
+                          <div className="rounded-md border border-kamen-gold/30 bg-kamen-gold/15 px-2 py-0.5 text-[10px] font-black text-kamen-gold font-heading">
                             {item.price}
                           </div>
                         )}
