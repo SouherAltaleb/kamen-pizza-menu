@@ -13,34 +13,44 @@ type AnyItem = {
   sizes?: { size: string; price: string }[];
 };
 
-const HERO_DURATION = 5000;
-const PAGE_ROTATE_DURATION = 10000; // 10 Sekunden pro Seite
-const ITEMS_PER_PAGE = 12; // 4 in der Breite × 3 in der Höhe
-
-// العروض اليومية المحددة
+// Alle 3 Angebote
 const TAGESANGEBOTE = [
   {
+    id: "montag",
     day: "MONTAG",
-    title: "PIZZA-MONTAG",
-    desc: "Jede große Pizza nach Wahl",
+    title: "PIZZA-TAG",
+    subtitle: "Heiß. Steinofen. Jeden Montag.",
+    itemDetail: "Große Pizza (28cm) nach Wahl",
     price: "9,50 €",
-    icon: "🍕",
+    oldPrice: "12,50 €",
+    image: "/pizza.png",
   },
   {
+    id: "mittwoch",
     day: "MITTWOCH",
-    title: "DÖNER-MITTWOCH",
-    desc: "Dönertasche",
+    title: "DÖNER-TAG",
+    subtitle: "Knusprig. Frisch. Jeden Mittwoch.",
+    itemDetail: "Döner Tasche nach Wahl",
     price: "6,00 €",
-    icon: "🥙",
+    oldPrice: "8,00 €",
+    image: "/doener-tasche-screen.png",
   },
   {
+    id: "donnerstag",
     day: "DONNERSTAG",
-    title: "NUDEL-DONNERSTAG",
-    desc: "Alle Nudelgerichte",
+    title: "PASTA-TAG",
+    subtitle: "Lecker. Überbacken. Jeden Donnerstag.",
+    itemDetail: "Alle Nudelgerichte nach Wahl",
     price: "9,00 €",
-    icon: "🍝",
+    oldPrice: "11,50 €",
+    image: "/pasta.png",
   },
 ];
+
+const HERO_DURATION = 5000;
+const PAGE_ROTATE_DURATION = 10000;
+const ROTATION_INTERVAL = 8000; // Dauer pro Angebot-Folie
+const ITEMS_PER_PAGE = 12;
 
 function chunkArray<T>(arr: T[], size: number): T[][] {
   const result: T[][] = [];
@@ -72,7 +82,9 @@ export function TVMenuScreen3() {
   const [showHero, setShowHero] = useState(true);
   const [pageIndex, setPageIndex] = useState(0);
 
-  // أخذ البيتزا من الرقم 19 وحتى نهاية القائمة
+  // activeSlide: 0 = Übersicht (Alle 3), 1 = Montag, 2 = Mittwoch, 3 = Donnerstag
+  const [activeSlide, setActiveSlide] = useState(0);
+
   const pizzaPages = useMemo(() => {
     const allPizzas = pizzas as AnyItem[];
     const startIndex = allPizzas.findIndex(
@@ -91,7 +103,7 @@ export function TVMenuScreen3() {
     }
   }, [showHero]);
 
-  // التبديل الدوري لصفحات البيتزا المتبقية
+  // Rotate Left side Pizza Grid
   useEffect(() => {
     if (showHero || pizzaPages.length <= 1) return;
     const timer = setInterval(() => {
@@ -100,22 +112,46 @@ export function TVMenuScreen3() {
     return () => clearInterval(timer);
   }, [showHero, pizzaPages.length]);
 
+  // Rotate Right side Offers (Übersicht -> Montag -> Mittwoch -> Donnerstag)
+  useEffect(() => {
+    if (showHero) return;
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % (TAGESANGEBOTE.length + 1));
+    }, ROTATION_INTERVAL);
+    return () => clearInterval(timer);
+  }, [showHero]);
+
   const currentPizzas = pizzaPages[pageIndex] || [];
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2 sm:p-2.5">
-      {/* خلفية الفيديو والإضاءة */}
+    <div className="relative h-screen w-screen overflow-hidden bg-[#0a0806] font-sans text-kamen-cream select-none flex flex-col justify-between p-3">
+      {/* Hintergrund Video mit subtiler Abdunkelung */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-80"
+          className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen"
         >
           <source src="/video/fire4.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/80 via-kamen-dark/30 to-kamen-dark" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0806]/90 via-[#0a0806]/60 to-[#0a0806]" />
+      </div>
+
+      {/* RIESIGE HINTERGRUND-TYPOGRAFIE (DESIGN-ELEMENT) */}
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-5">
+        <motion.span
+          key={activeSlide}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 0.08, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="text-[22vw] font-black uppercase font-heading tracking-tighter text-white whitespace-nowrap"
+        >
+          {activeSlide === 0
+            ? "KAMEN PIZZA"
+            : TAGESANGEBOTE[activeSlide - 1].day}
+        </motion.span>
       </div>
 
       {/* Intro Hero */}
@@ -127,7 +163,7 @@ export function TVMenuScreen3() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.8 }}
-            className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-kamen-dark p-12 text-center"
+            className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#0a0806] p-12 text-center"
           >
             <video
               autoPlay
@@ -154,7 +190,7 @@ export function TVMenuScreen3() {
                 PIZZA & TAGESANGEBOTE
               </h1>
               <p className="mt-1 text-lg text-kamen-beige">
-                Unsere besten Angebote für Sie
+                Unsere Wochen-Aktionen & Tagesangebote
               </p>
             </motion.div>
           </motion.div>
@@ -163,53 +199,58 @@ export function TVMenuScreen3() {
 
       {!showHero && (
         <>
-          {/* Header */}
-          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1 shrink-0 h-[6.5%]">
-            <div className="flex items-center gap-2">
+          {/* HEADER */}
+          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/30 pb-2 shrink-0 h-[7%]">
+            <div className="flex items-center gap-3">
               <img
                 src="/logo-k-transparent.svg"
-                alt="Logo"
-                className="h-7 w-auto pr-1"
+                alt="Kamen Pizza"
+                className="h-8 w-auto"
               />
               <div>
-                <h1 className="text-lg font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
-                  PIZZA & TAGESANGEBOTE
+                <h1 className="text-xl font-black font-heading tracking-widest uppercase text-kamen-gold leading-none">
+                  KAMEN PIZZA
                 </h1>
-                <p className="text-[10px] text-kamen-beige mt-0.5">
-                  Frisch & Sparen an AktionsTagen
+                <p className="text-[11px] text-kamen-beige mt-0.5 font-medium">
+                  Unsere Wochen-Aktionen & Tagesangebote
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              {pizzaPages.length > 1 && (
-                <div className="flex items-center gap-1 bg-kamen-dark/60 border border-kamen-gold/30 rounded-full px-2 py-0.5 mr-1">
-                  <span className="text-[9px] font-bold text-kamen-beige mr-1">
-                    SEITE {pageIndex + 1} / {pizzaPages.length}
-                  </span>
-                  {pizzaPages.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setPageIndex(idx)}
-                      className={`h-1 rounded-full transition-all duration-300 ${
-                        idx === pageIndex
-                          ? "w-4 bg-kamen-gold"
-                          : "w-1 bg-kamen-gold/30"
-                      }`}
-                    />
-                  ))}
-                </div>
-              )}
-
-              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-kamen-gold">
-                🔥 TAGESAKTIONEN
+            {/* Slide Indikatoren / Navigation (Offers) */}
+            <div className="flex items-center gap-2 bg-black/50 border border-kamen-gold/30 rounded-full px-3 py-1 backdrop-blur-md">
+              <span className="text-xs font-bold text-kamen-gold uppercase tracking-wider mr-1">
+                {activeSlide === 0
+                  ? "Übersicht"
+                  : TAGESANGEBOTE[activeSlide - 1].day}
               </span>
+              <button
+                onClick={() => setActiveSlide(0)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeSlide === 0
+                    ? "w-5 bg-kamen-gold"
+                    : "w-2 bg-kamen-gold/30"
+                }`}
+              />
+              {TAGESANGEBOTE.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveSlide(idx + 1)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    activeSlide === idx + 1
+                      ? "w-5 bg-kamen-gold"
+                      : "w-2 bg-kamen-gold/30"
+                  }`}
+                />
+              ))}
             </div>
           </div>
 
-          {/* التقسيم الرئيسي: اليسار 8 أعمدة (4x3 بيتزا) | اليمين 4 أعمدة (العروض اليومية) */}
-          <div className="relative z-10 grid grid-cols-12 gap-2 my-1 flex-1 items-stretch min-h-0 overflow-hidden">
-            {/* 1. قسم البيتزا اليسار: 4 أفقي × 3 عمودي */}
+          {/* HAUPTBEREICH (GRID 12 COLUMNS) */}
+          <div className="relative z-10 grid grid-cols-12 gap-3 my-2 flex-1 items-stretch min-h-0 overflow-hidden">
+            {/* ======================================================== */}
+            {/* 1. LEFT SIDE: PIZZA GRID (8 COLS)                        */}
+            {/* ======================================================== */}
             <div className="col-span-8 h-full min-h-0 flex flex-col justify-between">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -218,23 +259,21 @@ export function TVMenuScreen3() {
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                  className="grid grid-cols-4 grid-rows-3 gap-1.5 h-full min-h-0"
+                  className="grid grid-cols-4 grid-rows-3 gap-2 h-full min-h-0"
                 >
                   {currentPizzas.map((item, idx) => (
                     <motion.div
                       key={item.id || item.name || idx}
                       variants={cardItemVariants}
-                      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-1 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
+                      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-black/70 p-1.5 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
                     >
-                      {/* ID Nummer + Kreis */}
                       {(item.number || item.id) && (
-                        <span className="absolute left-1 top-1 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[9px] font-bold text-kamen-dark shadow">
+                        <span className="absolute left-1.5 top-1.5 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[9px] font-bold text-kamen-dark shadow">
                           {item.number || item.id}
                         </span>
                       )}
 
-                      {/* حاوية الصورة */}
-                      <div className="relative w-full h-[40%] min-h-[50px] max-h-[75px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
+                      <div className="relative w-full h-[42%] min-h-[50px] max-h-[75px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
                         <div className="absolute w-20 h-8 bg-kamen-gold/10 rounded-full blur-md pointer-events-none" />
 
                         {item.image ? (
@@ -244,14 +283,13 @@ export function TVMenuScreen3() {
                             className="max-h-full w-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105 relative z-10"
                           />
                         ) : (
-                          <div className="h-full w-full bg-kamen-dark/50 rounded-lg" />
+                          <div className="h-full w-full bg-zinc-900/50 rounded-lg" />
                         )}
                       </div>
 
-                      {/* قسم النصوص والمكونات والأسعار */}
                       <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pt-0.5 pb-0.5">
                         <div className="flex flex-col justify-center">
-                          <h3 className="truncate text-[10px] font-black uppercase tracking-wide text-kamen-cream font-heading">
+                          <h3 className="truncate text-[10.5px] font-black uppercase tracking-wide text-kamen-cream font-heading">
                             {item.name}
                           </h3>
                           <p className="line-clamp-2 text-[7.5px] font-semibold text-kamen-beige/80 leading-tight mt-0.5">
@@ -259,7 +297,6 @@ export function TVMenuScreen3() {
                           </p>
                         </div>
 
-                        {/* بوكس السعر المدمج */}
                         <div className="mt-0.5 flex items-center justify-center gap-1 px-0.5 shrink-0">
                           {item.sizes && item.sizes.length > 0 ? (
                             item.sizes.map((s) => (
@@ -270,7 +307,7 @@ export function TVMenuScreen3() {
                                 <span className="block text-[5px] font-bold uppercase text-kamen-gold/90 leading-none">
                                   {s.size}
                                 </span>
-                                <span className="text-[8px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
+                                <span className="text-[8.5px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
                                   {s.price}
                                 </span>
                               </div>
@@ -288,63 +325,184 @@ export function TVMenuScreen3() {
               </AnimatePresence>
             </div>
 
-            {/* 2. قسم العروض اليومية اليمين (Tagesangebote) */}
-            <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2 shadow-2xl overflow-hidden">
-              {/* هيدر العروض */}
-              <div className="w-full text-center border-b border-kamen-gold/25 pb-1 shrink-0">
-                <h2 className="text-sm font-black uppercase tracking-widest text-kamen-gold font-heading">
-                  TAGESANGEBOTE
-                </h2>
-                <p className="text-[9px] font-bold text-kamen-beige uppercase tracking-wider">
-                  Exklusive Spar-Aktionen
-                </p>
-              </div>
-
-              {/* قائمة أيام الإثنين، الأربعاء، الخميس */}
-              <div className="w-full flex-1 flex flex-col justify-around py-1 gap-1.5">
-                {TAGESANGEBOTE.map((offer) => (
-                  <div
-                    key={offer.day}
-                    className="relative flex flex-col justify-between rounded-lg border border-kamen-gold/25 bg-gradient-to-r from-kamen-gold/10 via-transparent to-kamen-gold/5 p-2 shadow-sm overflow-hidden"
+            {/* ======================================================== */}
+            {/* 2. RIGHT SIDE: OFFERS ROTATING CONTAINER (4 COLS)        */}
+            {/* ======================================================== */}
+            <div className="col-span-4 h-full min-h-0 relative flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                {/* ---------------------------------------------------- */}
+                {/* SLIDE 0: ALLE 3 TAGE IN DER ÜBERSICHT                 */}
+                {/* ---------------------------------------------------- */}
+                {activeSlide === 0 && (
+                  <motion.div
+                    key="overview"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-full h-full rounded-2xl border border-kamen-gold/30 bg-black/80 p-3.5 flex flex-col justify-between items-center text-center shadow-2xl backdrop-blur-xl overflow-hidden relative"
                   >
-                    <div className="flex items-center justify-between border-b border-kamen-gold/15 pb-0.5">
-                      <span className="rounded bg-kamen-gold px-1.5 py-0.2 text-[9px] font-black text-kamen-dark uppercase tracking-wider">
-                        {offer.day}
+                    <div className="text-center my-1 z-10">
+                      <span className="px-3 py-0.5 rounded-full border border-kamen-gold/40 bg-kamen-gold/10 text-[9px] font-bold text-kamen-gold uppercase tracking-widest">
+                        🔥 SPARE JEDEN TAG
                       </span>
-                      <span className="text-sm">{offer.icon}</span>
+                      <h2 className="text-lg font-black font-heading text-kamen-cream uppercase tracking-wider mt-1 leading-tight">
+                        UNSERE TAGESANGEBOTE
+                      </h2>
                     </div>
 
-                    <div className="my-1 flex items-baseline justify-between">
-                      <div>
-                        <h3 className="text-xs font-black uppercase tracking-wide text-kamen-cream font-heading">
-                          {offer.title}
-                        </h3>
-                        <p className="text-[10px] font-bold text-kamen-beige/85">
-                          {offer.desc}
+                    {/* 3 Vertical Offer Cards */}
+                    <div className="flex flex-col gap-2 w-full flex-1 my-2 justify-center z-10">
+                      {TAGESANGEBOTE.map((item, idx) => (
+                        <motion.div
+                          key={item.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: idx * 0.1 }}
+                          className="relative rounded-xl border border-kamen-gold/25 bg-gradient-to-r from-zinc-900/90 to-black/90 p-2 flex items-center justify-between shadow-md backdrop-blur-md overflow-hidden group"
+                        >
+                          {/* Day & Info */}
+                          <div className="flex items-center gap-2.5 text-left">
+                            <div className="relative h-11 w-11 shrink-0 flex items-center justify-center">
+                              <div className="absolute inset-0 bg-kamen-gold/10 rounded-full blur-sm" />
+                              <motion.img
+                                src={item.image}
+                                alt={item.title}
+                                animate={{ y: [0, -3, 0] }}
+                                transition={{
+                                  duration: 2.5 + idx,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }}
+                                className="max-h-10 w-auto object-contain relative z-10 drop-shadow"
+                              />
+                            </div>
+                            <div>
+                              <span className="text-[9px] font-black tracking-widest text-kamen-gold uppercase block leading-none">
+                                {item.day}
+                              </span>
+                              <h3 className="text-sm font-black font-heading text-kamen-cream uppercase leading-tight mt-0.5">
+                                {item.title}
+                              </h3>
+                              <p className="text-[8px] text-kamen-beige/70 line-clamp-1">
+                                {item.itemDetail}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Price */}
+                          <div className="text-right shrink-0 bg-black/60 rounded-lg px-2 py-1 border border-kamen-gold/20">
+                            <span className="text-[8px] text-kamen-cream/50 line-through block leading-none">
+                              {item.oldPrice}
+                            </span>
+                            <span className="text-sm font-black font-heading text-kamen-gold leading-none mt-0.5 block">
+                              {item.price}
+                            </span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <div className="text-[8px] text-kamen-beige/50 uppercase tracking-widest border-t border-kamen-gold/20 pt-1 w-full text-center z-10">
+                      KAMEN PIZZA • FRISCH & LECKER
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ---------------------------------------------------- */}
+                {/* SLIDE 1-3: EINZELNES TAGESANGEBOT (POSTER-BG LAYOUT) */}
+                {/* ---------------------------------------------------- */}
+                {activeSlide > 0 && (
+                  <motion.div
+                    key={`detail-${activeSlide}`}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-full h-full rounded-2xl border border-kamen-gold/40 p-4 flex flex-col justify-between items-center shadow-[0_0_40px_rgba(0,0,0,0.8)] backdrop-blur-xl relative overflow-hidden"
+                  >
+                    {/* Background Image: poster-bg.jpeg */}
+                    <img
+                      src="images/poster-bg.jpeg"
+                      alt="Background Poster"
+                      className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                    />
+
+                    {/* Overlay Gradient for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 z-0 pointer-events-none" />
+
+                    {/* Top Info Header */}
+                    <div className="relative z-10 w-full text-center">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full border border-kamen-gold/50 bg-black/70 text-[9px] font-bold text-kamen-gold tracking-widest uppercase mb-2 backdrop-blur-sm">
+                        <span>📅</span>
+                        <span>
+                          TAGESANGEBOT • {TAGESANGEBOTE[activeSlide - 1].day}
+                        </span>
+                      </div>
+
+                      <h2 className="text-3xl font-black font-heading uppercase text-kamen-cream tracking-wide leading-tight drop-shadow-xl">
+                        {TAGESANGEBOTE[activeSlide - 1].title}
+                      </h2>
+                      <p className="text-xs font-medium text-kamen-beige mt-0.5 drop-shadow">
+                        {TAGESANGEBOTE[activeSlide - 1].subtitle}
+                      </p>
+                    </div>
+
+                    {/* Middle: Schwebendes Gerichte-Bild mit Animation */}
+                    <div className="relative z-10 w-full flex-1 flex items-center justify-center my-2 min-h-0">
+                      <div className="absolute w-40 h-40 bg-orange-500/15 rounded-full blur-2xl" />
+
+                      <motion.img
+                        src={TAGESANGEBOTE[activeSlide - 1].image}
+                        alt={TAGESANGEBOTE[activeSlide - 1].title}
+                        animate={{
+                          y: [0, -8, 0],
+                          rotate: [0, 1.5, 0, -1.5, 0],
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="max-h-[160px] w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.95)] relative z-20"
+                      />
+                    </div>
+
+                    {/* Bottom: Details & Preis */}
+                    <div className="relative z-10 w-full flex flex-col gap-2">
+                      <div className="border-l-2 border-kamen-gold pl-3 py-0.5 text-left bg-black/60 rounded-r-lg backdrop-blur-sm">
+                        <span className="block text-[8px] font-bold uppercase text-kamen-gold tracking-widest">
+                          IM ANGEBOT ENTHALTEN:
+                        </span>
+                        <p className="text-xs font-bold text-white mt-0.5">
+                          {TAGESANGEBOTE[activeSlide - 1].itemDetail}
                         </p>
                       </div>
-                      <div className="text-right">
-                        <span className="text-lg font-black text-kamen-gold font-heading drop-shadow">
-                          {offer.price}
+
+                      <div className="flex items-center justify-between bg-black/80 rounded-xl p-2.5 border border-kamen-gold/40 backdrop-blur-md">
+                        <div className="flex flex-col text-left">
+                          <span className="text-[9px] font-bold text-kamen-cream/50 line-through">
+                            Statt {TAGESANGEBOTE[activeSlide - 1].oldPrice}
+                          </span>
+                          <span className="text-3xl font-black font-heading text-kamen-gold drop-shadow-md leading-none">
+                            {TAGESANGEBOTE[activeSlide - 1].price}
+                          </span>
+                        </div>
+
+                        <span className="px-3 py-1.5 rounded-lg bg-kamen-gold text-kamen-dark text-[9px] font-black uppercase tracking-wider shadow">
+                          NUR AM {TAGESANGEBOTE[activeSlide - 1].day}
                         </span>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* ملاحظة سفلية للقسم الأيمن */}
-              <div className="w-full text-center border-t border-kamen-gold/15 pt-1 shrink-0">
-                <span className="text-[8px] font-bold text-kamen-beige/70 uppercase tracking-widest">
-                  Gültig an den jeweiligen Aktionstagen
-                </span>
-              </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="relative z-10 flex items-center justify-between border-t border-kamen-gold/20 pt-0.5 text-[9.5px] text-kamen-beige/60 shrink-0">
-            <span>Steinofen Qualität • Kamen Pizza</span>
+          {/* FOOTER */}
+          <div className="relative z-10 flex items-center justify-between border-t border-kamen-gold/20 pt-1 text-[10px] text-kamen-beige/60 shrink-0">
+            <span>Kamen Pizza • Steinofen Qualität</span>
             <span>Alle Preise inkl. MwSt.</span>
           </div>
         </>
