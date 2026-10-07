@@ -110,13 +110,13 @@ export function TVMenuScreen1() {
     const pairTimer = setInterval(() => {
       setPairIndex((prev) => (prev + 1) % menuPairs.length);
     }, MENUS_PAIR_ROTATE_DURATION);
-    return () => clearInterval(pairTimer);
+    return () => clearTimeout(pairTimer);
   }, [showHero, menuPairs.length]);
 
   useEffect(() => {
     if (showHero) {
       const t = setTimeout(() => setShowHero(false), HERO_DURATION);
-      return () => clearInterval(t);
+      return () => clearTimeout(t);
     }
   }, [showHero]);
 
@@ -258,32 +258,32 @@ export function TVMenuScreen1() {
                     {/* قسم النصوص والمكونات والأسعار */}
                     <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pt-0.5 pb-0.5">
                       <div className="flex flex-col justify-center">
-                        <h3 className="truncate text-[11px] font-black uppercase tracking-wide text-kamen-cream font-heading">
+                        <h3 className="truncate text-[10px] font-black uppercase tracking-wide text-kamen-cream font-heading">
                           {item.name}
                         </h3>
-                        <p className="line-clamp-2 text-[8px] font-semibold text-kamen-beige/90 leading-tight mt-0.5">
+                        <p className="line-clamp-2 text-[7.5px] font-semibold text-kamen-beige/80 leading-tight mt-0.5">
                           {item.description}
                         </p>
                       </div>
 
-                      {/* بوكس السعر والنصوص المصغرة بشكل أنيق */}
+                      {/* بوكس السعر المدمج */}
                       <div className="mt-0.5 flex items-center justify-center gap-1 px-0.5 shrink-0">
                         {item.sizes && item.sizes.length > 0 ? (
                           item.sizes.map((s) => (
                             <div
                               key={s.size}
-                              className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/15 px-0.5 py-[1px] text-center"
+                              className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/15 px-0.5 py-[1px] text-center flex flex-col justify-center gap-0"
                             >
-                              <span className="block text-[5.5px] font-bold uppercase text-kamen-gold/90 leading-none">
+                              <span className="block text-[5px] font-bold uppercase text-kamen-gold/90 leading-none">
                                 {s.size}
                               </span>
-                              <span className="text-[8.5px] font-black text-kamen-gold font-heading leading-tight">
+                              <span className="text-[8px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
                                 {s.price}
                               </span>
                             </div>
                           ))
                         ) : (
-                          <div className="rounded border border-kamen-gold/30 bg-kamen-gold/15 px-2 py-[2px] text-[8.5px] font-black text-kamen-gold font-heading leading-tight">
+                          <div className="rounded border border-kamen-gold/30 bg-kamen-gold/15 px-2 py-[1px] text-[8.5px] font-black text-kamen-gold font-heading leading-none">
                             {item.price}
                           </div>
                         )}
@@ -294,11 +294,11 @@ export function TVMenuScreen1() {
               </motion.div>
             </div>
 
-            {/* 2. قسم المناوي التتابعي الأيمن */}
+            {/* 2. قسم المناوي التتابعي الأيمن (SPARS-MENÜS مصغر ومضبوط) */}
             <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2 shadow-2xl overflow-hidden">
               {/* هيدر قسم المناوي */}
               <div className="w-full flex items-center justify-between border-b border-kamen-gold/20 pb-1 shrink-0 z-20">
-                <span className="text-sm font-black uppercase tracking-widest text-kamen-gold flex items-center gap-1.5">
+                <span className="text-xs font-black uppercase tracking-widest text-kamen-gold flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-kamen-gold animate-ping" />
                   SPARS-MENÜS
                 </span>
@@ -361,21 +361,21 @@ export function TVMenuScreen1() {
                           exit="exit"
                           className="absolute left-2 z-20 flex flex-col items-start max-w-[42%]"
                         >
-                          <span className="text-[10px] font-black uppercase tracking-widest text-kamen-gold">
+                          <span className="text-[8.5px] font-black uppercase tracking-widest text-kamen-gold">
                             {menuTopRight.number || "MENÜ 1"}
                           </span>
 
-                          <h3 className="text-lg font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
+                          <h3 className="text-sm font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
                             {menuTopRight.name}
                           </h3>
 
                           {menuTopRight.description && (
-                            <p className="text-[9px] font-bold text-kamen-beige line-clamp-2">
+                            <p className="text-[7.5px] font-semibold text-kamen-beige/85 line-clamp-2 leading-tight">
                               {menuTopRight.description}
                             </p>
                           )}
 
-                          <span className="text-xl font-black text-kamen-gold font-heading tracking-tight mt-0.5">
+                          <span className="text-base font-black text-kamen-gold font-heading tracking-tight mt-0.5">
                             {getMenuPrice(menuTopRight)}
                           </span>
                         </motion.div>
@@ -417,21 +417,21 @@ export function TVMenuScreen1() {
                           exit="exit"
                           className="absolute right-2 z-20 flex flex-col items-end text-right max-w-[42%]"
                         >
-                          <span className="text-[10px] font-black uppercase tracking-widest text-kamen-gold">
+                          <span className="text-[8.5px] font-black uppercase tracking-widest text-kamen-gold">
                             {menuLeftMid.number || "MENÜ 2"}
                           </span>
 
-                          <h3 className="text-lg font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
+                          <h3 className="text-sm font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
                             {menuLeftMid.name}
                           </h3>
 
                           {menuLeftMid.description && (
-                            <p className="text-[9px] font-bold text-kamen-beige line-clamp-2">
+                            <p className="text-[7.5px] font-semibold text-kamen-beige/85 line-clamp-2 leading-tight">
                               {menuLeftMid.description}
                             </p>
                           )}
 
-                          <span className="text-xl font-black text-kamen-gold font-heading tracking-tight mt-0.5">
+                          <span className="text-base font-black text-kamen-gold font-heading tracking-tight mt-0.5">
                             {getMenuPrice(menuLeftMid)}
                           </span>
                         </motion.div>
