@@ -132,7 +132,7 @@ export function TVMenuScreen1() {
   };
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2 sm:p-2.5">
+    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2.5 sm:p-3">
       {/* خلفية الفيديو والإضاءة */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
@@ -231,7 +231,7 @@ export function TVMenuScreen1() {
                   <motion.div
                     key={item.id || item.name || idx}
                     variants={cardItemVariants}
-                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-1.5 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
+                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-2 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
                   >
                     {(item.number || item.id) && (
                       <span className="absolute left-1.5 top-1.5 z-20 flex h-6 w-6 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-xs font-bold text-kamen-dark shadow">
@@ -239,21 +239,23 @@ export function TVMenuScreen1() {
                       </span>
                     )}
 
-                    <div className="relative w-full flex-1 min-h-0 flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
-                      <div className="absolute w-32 h-12 bg-kamen-gold/20 rounded-full blur-xl pointer-events-none" />
+                    {/* حاوية الصورة بأبعاد دقيقة وموحدة لمنع التفاوت في الحجم وتشويه الإضاءة */}
+                    <div className="relative w-full h-24 sm:h-26 flex items-center justify-center shrink-0 my-1 overflow-hidden">
+                      {/* توهج خفيف ومتناسق ناعم جداً خلف الصورة */}
+                      <div className="absolute w-24 h-12 bg-kamen-gold/10 rounded-full blur-lg pointer-events-none" />
 
                       {item.image ? (
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="max-h-full w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105"
+                          className="h-full w-auto max-w-[90%] object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:scale-105 relative z-10"
                         />
                       ) : (
                         <div className="h-full w-full bg-kamen-dark/50 rounded-lg" />
                       )}
                     </div>
 
-                    <div className="w-full text-center shrink-0 flex flex-col justify-between pt-1">
+                    <div className="w-full text-center shrink-0 flex flex-col justify-between pt-0.5">
                       <div>
                         <h3 className="truncate text-sm font-black uppercase tracking-wide text-kamen-cream font-heading">
                           {item.name}
@@ -263,7 +265,7 @@ export function TVMenuScreen1() {
                         </p>
                       </div>
 
-                      <div className="mt-1 flex items-center justify-center gap-2 px-2">
+                      <div className="mt-1 flex items-center justify-center gap-1.5 px-1">
                         {item.sizes && item.sizes.length > 0 ? (
                           item.sizes.map((s) => (
                             <div
@@ -291,7 +293,7 @@ export function TVMenuScreen1() {
             </div>
 
             {/* 2. قسم المناوي التتابعي الأيمن */}
-            <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2 shadow-2xl overflow-hidden">
+            <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2.5 shadow-2xl overflow-hidden">
               {/* هيدر قسم المناوي */}
               <div className="w-full flex items-center justify-between border-b border-kamen-gold/20 pb-1 shrink-0 z-20">
                 <span className="text-base font-black uppercase tracking-widest text-kamen-gold flex items-center gap-2">
