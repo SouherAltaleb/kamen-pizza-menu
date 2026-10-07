@@ -13,36 +13,36 @@ type AnyItem = {
   sizes?: { size: string; price: string }[];
 };
 
-// Alle 3 Angebote
+// Alle 3 Angebote mit aktualisierten Texten & Preisen
 const TAGESANGEBOTE = [
   {
     id: "montag",
     day: "MONTAG",
     title: "PIZZA-TAG",
     subtitle: "Heiß. Steinofen. Jeden Montag.",
-    itemDetail: "Große Pizza (28cm) nach Wahl",
+    itemDetail: "Jede große Pizza nach Wahl",
     price: "9,50 €",
-    oldPrice: "12,50 €",
-    image: "/pizza.png",
+    oldPrice: "12,00 €",
+    image: "/pizza3.png",
   },
   {
     id: "mittwoch",
     day: "MITTWOCH",
     title: "DÖNER-TAG",
     subtitle: "Knusprig. Frisch. Jeden Mittwoch.",
-    itemDetail: "Döner Tasche nach Wahl",
+    itemDetail: "Döner Tasche",
     price: "6,00 €",
-    oldPrice: "8,00 €",
+    oldPrice: "7,00 €",
     image: "/doener-tasche-screen.png",
   },
   {
     id: "donnerstag",
     day: "DONNERSTAG",
-    title: "PASTA-TAG",
+    title: "NUDEL-TAG",
     subtitle: "Lecker. Überbacken. Jeden Donnerstag.",
     itemDetail: "Alle Nudelgerichte nach Wahl",
     price: "9,00 €",
-    oldPrice: "11,50 €",
+    oldPrice: "11,00 €",
     image: "/pasta.png",
   },
 ];
@@ -434,7 +434,6 @@ export function TVMenuScreen3() {
                     {/* Top Info Header */}
                     <div className="relative z-10 w-full text-center">
                       <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full border border-kamen-gold/50 bg-black/70 text-[9px] font-bold text-kamen-gold tracking-widest uppercase mb-2 backdrop-blur-sm">
-                        <span>📅</span>
                         <span>
                           TAGESANGEBOT • {TAGESANGEBOTE[activeSlide - 1].day}
                         </span>
@@ -448,15 +447,15 @@ export function TVMenuScreen3() {
                       </p>
                     </div>
 
-                    {/* Middle: Schwebendes Gerichte-Bild mit Animation */}
-                    <div className="relative z-10 w-full flex-1 flex items-center justify-center my-2 min-h-0">
-                      <div className="absolute w-40 h-40 bg-orange-500/15 rounded-full blur-2xl" />
+                    {/* Middle: Schwebendes Gerichte-Bild (Leicht nach unten versetzt für perfekte Positionierung) */}
+                    <div className="relative z-10 w-full flex-1 flex items-center justify-center my-2 min-h-0 pt-4">
+                      <div className="absolute w-40 h-40 bg-orange-500/15 rounded-full blur-2xl transform translate-y-3" />
 
                       <motion.img
                         src={TAGESANGEBOTE[activeSlide - 1].image}
                         alt={TAGESANGEBOTE[activeSlide - 1].title}
                         animate={{
-                          y: [0, -8, 0],
+                          y: [12, 4, 12],
                           rotate: [0, 1.5, 0, -1.5, 0],
                         }}
                         transition={{
@@ -464,7 +463,7 @@ export function TVMenuScreen3() {
                           repeat: Infinity,
                           ease: "easeInOut",
                         }}
-                        className="max-h-[160px] w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.95)] relative z-20"
+                        className="max-h-[150px] w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.95)] relative z-20 transform translate-y-3"
                       />
                     </div>
 
