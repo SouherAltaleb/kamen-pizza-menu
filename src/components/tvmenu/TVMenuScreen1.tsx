@@ -132,7 +132,7 @@ export function TVMenuScreen1() {
   };
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2.5 sm:p-3.5">
+    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2 sm:p-2.5">
       {/* خلفية الفيديو والإضاءة */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
@@ -140,11 +140,11 @@ export function TVMenuScreen1() {
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-15"
+          className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-80"
         >
           <source src="/video/fire4.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/95 via-kamen-dark/90 to-kamen-dark" />
+        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/80 via-kamen-dark/30 to-kamen-dark" />
       </div>
 
       {/* شاشة الانترو */}
@@ -193,77 +193,77 @@ export function TVMenuScreen1() {
       {!showHero && (
         <>
           {/* Header */}
-          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1.5 shrink-0">
+          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1 shrink-0">
             <div className="flex items-center gap-2.5">
               <img
                 src="/logo-k-transparent.svg"
                 alt="Logo"
-                className="h-9 w-auto drop-shadow-[0_0_15px_rgba(214,179,106,0.4)] pr-1"
+                className="h-10 w-auto pr-1"
               />
               <div>
-                <h1 className="text-xl font-black font-heading tracking-wider uppercase text-kamen-gold">
+                <h1 className="text-xl font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
                   DÖNER, BURGER & SNACKS
                 </h1>
-                <p className="text-xs text-kamen-beige">
+                <p className="text-xs text-kamen-beige mt-0.5">
                   Frisch zubereitet & lecker
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-3 py-0.5 text-xs font-bold uppercase tracking-widest text-kamen-gold">
+              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-kamen-gold">
                 👑 UNSERE KÖNIGSDISZIPLIN
               </span>
             </div>
           </div>
 
           {/* التقسيم الرئيسي */}
-          <div className="relative z-10 grid grid-cols-12 gap-2.5 my-1.5 flex-1 items-stretch overflow-hidden">
+          <div className="relative z-10 grid grid-cols-12 gap-2 my-1 flex-1 items-stretch min-h-0 overflow-hidden">
             {/* 1. قائمة الأصناف اليسرى */}
-            <div className="col-span-8 h-full flex flex-col justify-between">
+            <div className="col-span-8 h-full min-h-0 flex flex-col justify-between">
               <motion.div
                 variants={gridContainerVariants}
                 initial="hidden"
                 animate="visible"
-                className="grid grid-cols-4 grid-rows-3 gap-2.5 h-full"
+                className="grid grid-cols-4 grid-rows-3 gap-2 h-full min-h-0"
               >
                 {allScreen1Items.map((item, idx) => (
                   <motion.div
                     key={item.id || item.name || idx}
                     variants={cardItemVariants}
-                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-2 shadow-lg backdrop-blur-md justify-between overflow-hidden"
+                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-1.5 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
                   >
                     {(item.number || item.id) && (
-                      <span className="absolute left-1.5 top-1.5 z-20 flex h-5.5 w-5.5 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[10px] font-bold text-kamen-dark shadow">
+                      <span className="absolute left-1.5 top-1.5 z-20 flex h-6 w-6 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-xs font-bold text-kamen-dark shadow">
                         {item.number || item.id}
                       </span>
                     )}
 
-                    <div className="relative w-full h-24 sm:h-28 flex items-center justify-center shrink-0 my-0.5">
-                      <div className="absolute w-24 h-16 bg-kamen-gold/10 rounded-full blur-xl pointer-events-none" />
+                    <div className="relative w-full flex-1 min-h-0 flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
+                      <div className="absolute w-32 h-12 bg-kamen-gold/20 rounded-full blur-xl pointer-events-none" />
 
                       {item.image ? (
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="h-full w-auto max-w-full object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105"
+                          className="max-h-full w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105"
                         />
                       ) : (
                         <div className="h-full w-full bg-kamen-dark/50 rounded-lg" />
                       )}
                     </div>
 
-                    <div className="w-full text-center flex-1 flex flex-col justify-between pt-0.5">
+                    <div className="w-full text-center shrink-0 flex flex-col justify-between pt-1">
                       <div>
-                        <h3 className="truncate text-xs font-black uppercase tracking-wide text-kamen-cream font-heading">
+                        <h3 className="truncate text-sm font-black uppercase tracking-wide text-kamen-cream font-heading">
                           {item.name}
                         </h3>
-                        <p className="line-clamp-2 text-[10px] font-semibold text-kamen-beige/80 leading-tight mt-0.5">
+                        <p className="line-clamp-2 text-[10px] font-semibold text-kamen-beige leading-tight mt-0.5">
                           {item.description}
                         </p>
                       </div>
 
-                      <div className="mt-1 flex items-center justify-center gap-1.5">
+                      <div className="mt-1 flex items-center justify-center gap-2 px-2">
                         {item.sizes && item.sizes.length > 0 ? (
                           item.sizes.map((s) => (
                             <div
@@ -291,7 +291,7 @@ export function TVMenuScreen1() {
             </div>
 
             {/* 2. قسم المناوي التتابعي الأيمن */}
-            <div className="col-span-4 h-full flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2.5 shadow-2xl overflow-hidden">
+            <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2 shadow-2xl overflow-hidden">
               {/* هيدر قسم المناوي */}
               <div className="w-full flex items-center justify-between border-b border-kamen-gold/20 pb-1 shrink-0 z-20">
                 <span className="text-base font-black uppercase tracking-widest text-kamen-gold flex items-center gap-2">
@@ -315,7 +315,7 @@ export function TVMenuScreen1() {
               </div>
 
               {/* حاوية المناوي التتابعية */}
-              <div className="relative w-full flex-1 flex flex-col justify-between z-10 py-1 mx-0 overflow-hidden">
+              <div className="relative w-full flex-1 min-h-0 flex flex-col justify-between z-10 py-1 mx-0 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`pair-${pairIndex}`}
@@ -361,7 +361,7 @@ export function TVMenuScreen1() {
                             {menuTopRight.number || "MENÜ 1"}
                           </span>
 
-                          <h3 className="text-2xl font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
+                          <h3 className="text-xl font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
                             {menuTopRight.name}
                           </h3>
 
@@ -371,7 +371,7 @@ export function TVMenuScreen1() {
                             </p>
                           )}
 
-                          <span className="text-3xl font-black text-kamen-gold font-heading tracking-tight mt-1">
+                          <span className="text-2xl font-black text-kamen-gold font-heading tracking-tight mt-1">
                             {getMenuPrice(menuTopRight)}
                           </span>
                         </motion.div>
@@ -417,7 +417,7 @@ export function TVMenuScreen1() {
                             {menuLeftMid.number || "MENÜ 2"}
                           </span>
 
-                          <h3 className="text-2xl font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
+                          <h3 className="text-xl font-black uppercase tracking-tight text-kamen-cream font-heading leading-tight my-0.5 wrap-break-word">
                             {menuLeftMid.name}
                           </h3>
 
@@ -427,7 +427,7 @@ export function TVMenuScreen1() {
                             </p>
                           )}
 
-                          <span className="text-3xl font-black text-kamen-gold font-heading tracking-tight mt-1">
+                          <span className="text-2xl font-black text-kamen-gold font-heading tracking-tight mt-1">
                             {getMenuPrice(menuLeftMid)}
                           </span>
                         </motion.div>
