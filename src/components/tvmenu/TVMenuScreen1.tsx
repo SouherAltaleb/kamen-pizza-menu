@@ -192,7 +192,7 @@ export function TVMenuScreen1() {
 
       {!showHero && (
         <>
-          {/* Header - kompakter */}
+          {/* Header */}
           <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1 shrink-0 h-[6.5%]">
             <div className="flex items-center gap-2">
               <img
@@ -233,15 +233,15 @@ export function TVMenuScreen1() {
                     variants={cardItemVariants}
                     className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-1 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
                   >
-                    {/* ID Nummer + Kreis - kleiner */}
+                    {/* ID Nummer + Kreis */}
                     {(item.number || item.id) && (
                       <span className="absolute left-1 top-1 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[9px] font-bold text-kamen-dark shadow">
                         {item.number || item.id}
                       </span>
                     )}
 
-                    {/* حاوية الصورة - متناسقة ومرنة */}
-                    <div className="relative w-full h-[42%] min-h-[55px] max-h-[80px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
+                    {/* حاوية الصورة */}
+                    <div className="relative w-full h-[40%] min-h-[50px] max-h-[75px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
                       <div className="absolute w-20 h-8 bg-kamen-gold/10 rounded-full blur-md pointer-events-none" />
 
                       {item.image ? (
@@ -255,34 +255,35 @@ export function TVMenuScreen1() {
                       )}
                     </div>
 
-                    {/* قسم النصوص والمكونات والأسعار - أكثر ضغطاً */}
+                    {/* قسم النصوص والمكونات والأسعار */}
                     <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pt-0.5 pb-0.5">
                       <div className="flex flex-col justify-center">
                         <h3 className="truncate text-[11px] font-black uppercase tracking-wide text-kamen-cream font-heading">
                           {item.name}
                         </h3>
-                        <p className="line-clamp-2 text-[8.5px] font-semibold text-kamen-beige/90 leading-tight mt-0.5">
+                        <p className="line-clamp-2 text-[8px] font-semibold text-kamen-beige/90 leading-tight mt-0.5">
                           {item.description}
                         </p>
                       </div>
 
+                      {/* بوكس السعر والنصوص المصغرة بشكل أنيق */}
                       <div className="mt-0.5 flex items-center justify-center gap-1 px-0.5 shrink-0">
                         {item.sizes && item.sizes.length > 0 ? (
                           item.sizes.map((s) => (
                             <div
                               key={s.size}
-                              className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/15 px-0.5 py-0.5 text-center"
+                              className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/15 px-0.5 py-[1px] text-center"
                             >
-                              <span className="block text-[6px] font-bold uppercase text-kamen-gold/90">
+                              <span className="block text-[5.5px] font-bold uppercase text-kamen-gold/90 leading-none">
                                 {s.size}
                               </span>
-                              <span className="text-[9px] font-black text-kamen-gold font-heading">
+                              <span className="text-[8.5px] font-black text-kamen-gold font-heading leading-tight">
                                 {s.price}
                               </span>
                             </div>
                           ))
                         ) : (
-                          <div className="rounded border border-kamen-gold/30 bg-kamen-gold/15 px-2 py-0.5 text-[9px] font-black text-kamen-gold font-heading">
+                          <div className="rounded border border-kamen-gold/30 bg-kamen-gold/15 px-2 py-[2px] text-[8.5px] font-black text-kamen-gold font-heading leading-tight">
                             {item.price}
                           </div>
                         )}
