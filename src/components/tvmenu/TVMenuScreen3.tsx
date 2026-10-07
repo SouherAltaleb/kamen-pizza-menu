@@ -72,14 +72,12 @@ export function TVMenuScreen3() {
   const [showHero, setShowHero] = useState(true);
   const [pageIndex, setPageIndex] = useState(0);
 
-  // أخذ البيتزا من الرقم 18b وحتى نهاية القائمة
+  // أخذ البيتزا من الرقم 19 وحتى نهاية القائمة
   const pizzaPages = useMemo(() => {
     const allPizzas = pizzas as AnyItem[];
-    // البحث عن الفهرس الذي يبدأ من 18b
     const startIndex = allPizzas.findIndex(
       (p) => p.number === "19" || p.id === "19"
     );
-    // إذا لم يجد 18b يأخذ من العنصر 24 كاحتياطي
     const filteredPizzas =
       startIndex !== -1 ? allPizzas.slice(startIndex) : allPizzas.slice(24);
 
@@ -89,7 +87,7 @@ export function TVMenuScreen3() {
   useEffect(() => {
     if (showHero) {
       const t = setTimeout(() => setShowHero(false), HERO_DURATION);
-      return () => clearInterval(t);
+      return () => clearTimeout(t);
     }
   }, [showHero]);
 
@@ -105,7 +103,7 @@ export function TVMenuScreen3() {
   const currentPizzas = pizzaPages[pageIndex] || [];
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2.5 sm:p-3.5">
+    <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2 sm:p-2.5">
       {/* خلفية الفيديو والإضاءة */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
@@ -117,7 +115,7 @@ export function TVMenuScreen3() {
         >
           <source src="/video/fire4.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/80 via-kamen-dark/60 to-kamen-dark" />
+        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/80 via-kamen-dark/30 to-kamen-dark" />
       </div>
 
       {/* Intro Hero */}
@@ -149,13 +147,13 @@ export function TVMenuScreen3() {
               <img
                 src="/logo.png"
                 alt="Kamen Pizza"
-                className="h-36 w-auto drop-shadow-[0_10px_35px_rgba(214,179,106,0.6)]"
+                className="h-32 w-auto drop-shadow-[0_10px_35px_rgba(214,179,106,0.6)]"
               />
-              <div className="my-4 h-1 w-full bg-gradient-to-r from-transparent via-kamen-gold to-transparent" />
-              <h1 className="max-w-4xl text-4xl font-black uppercase tracking-widest text-kamen-cream font-heading">
+              <div className="my-3 h-1 w-full bg-gradient-to-r from-transparent via-kamen-gold to-transparent" />
+              <h1 className="max-w-4xl text-3xl font-black uppercase tracking-widest text-kamen-cream font-heading">
                 PIZZA & TAGESANGEBOTE
               </h1>
-              <p className="mt-2 text-xl text-kamen-beige">
+              <p className="mt-1 text-lg text-kamen-beige">
                 Unsere besten Angebote für Sie
               </p>
             </motion.div>
@@ -166,53 +164,53 @@ export function TVMenuScreen3() {
       {!showHero && (
         <>
           {/* Header */}
-          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1.5 shrink-0">
-            <div className="flex items-center gap-2.5">
+          <div className="relative z-10 flex items-center justify-between border-b border-kamen-gold/25 pb-1 shrink-0 h-[6.5%]">
+            <div className="flex items-center gap-2">
               <img
                 src="/logo-k-transparent.svg"
                 alt="Logo"
-                className="h-12 w-auto pr-1"
+                className="h-7 w-auto pr-1"
               />
               <div>
-                <h1 className="text-2xl font-black font-heading tracking-wider uppercase text-kamen-gold">
+                <h1 className="text-lg font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
                   PIZZA & TAGESANGEBOTE
                 </h1>
-                <p className="text-md text-kamen-beige">
+                <p className="text-[10px] text-kamen-beige mt-0.5">
                   Frisch & Sparen an AktionsTagen
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {pizzaPages.length > 1 && (
-                <div className="flex items-center gap-1.5 bg-kamen-dark/60 border border-kamen-gold/30 rounded-full px-3 py-1">
-                  <span className="text-[10px] font-bold text-kamen-beige mr-1">
+                <div className="flex items-center gap-1 bg-kamen-dark/60 border border-kamen-gold/30 rounded-full px-2 py-0.5 mr-1">
+                  <span className="text-[9px] font-bold text-kamen-beige mr-1">
                     SEITE {pageIndex + 1} / {pizzaPages.length}
                   </span>
                   {pizzaPages.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setPageIndex(idx)}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                      className={`h-1 rounded-full transition-all duration-300 ${
                         idx === pageIndex
-                          ? "w-5 bg-kamen-gold"
-                          : "w-1.5 bg-kamen-gold/30"
+                          ? "w-4 bg-kamen-gold"
+                          : "w-1 bg-kamen-gold/30"
                       }`}
                     />
                   ))}
                 </div>
               )}
 
-              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-3 py-2 text-sm font-bold uppercase tracking-widest text-kamen-gold">
+              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-kamen-gold">
                 🔥 TAGESAKTIONEN
               </span>
             </div>
           </div>
 
           {/* التقسيم الرئيسي: اليسار 8 أعمدة (4x3 بيتزا) | اليمين 4 أعمدة (العروض اليومية) */}
-          <div className="relative z-10 grid grid-cols-12 gap-2.5 my-1.5 flex-1 items-stretch overflow-hidden">
+          <div className="relative z-10 grid grid-cols-12 gap-2 my-1 flex-1 items-stretch min-h-0 overflow-hidden">
             {/* 1. قسم البيتزا اليسار: 4 أفقي × 3 عمودي */}
-            <div className="col-span-8 h-full flex flex-col justify-between">
+            <div className="col-span-8 h-full min-h-0 flex flex-col justify-between">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`screen3-page-${pageIndex}`}
@@ -220,61 +218,65 @@ export function TVMenuScreen3() {
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                  className="grid grid-cols-4 grid-rows-3 gap-2.5 h-full"
+                  className="grid grid-cols-4 grid-rows-3 gap-1.5 h-full min-h-0"
                 >
                   {currentPizzas.map((item, idx) => (
                     <motion.div
                       key={item.id || item.name || idx}
                       variants={cardItemVariants}
-                      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-2 shadow-lg backdrop-blur-md justify-between overflow-hidden"
+                      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-1 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
                     >
+                      {/* ID Nummer + Kreis */}
                       {(item.number || item.id) && (
-                        <span className="absolute left-1.5 top-1.5 z-20 flex h-7 w-7 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-sm font-bold text-kamen-dark shadow">
+                        <span className="absolute left-1 top-1 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[9px] font-bold text-kamen-dark shadow">
                           {item.number || item.id}
                         </span>
                       )}
 
-                      <div className="relative w-full h-24 sm:h-28 flex items-center justify-center shrink-0 my-3">
-                        <div className="absolute w-40 h-16 bg-kamen-gold/20 rounded-full blur-xl pointer-events-none" />
+                      {/* حاوية الصورة */}
+                      <div className="relative w-full h-[40%] min-h-[50px] max-h-[75px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
+                        <div className="absolute w-20 h-8 bg-kamen-gold/10 rounded-full blur-md pointer-events-none" />
 
                         {item.image ? (
                           <img
                             src={item.image}
                             alt={item.name}
-                            className="h-32 w-auto max-w-full object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105 mt-6"
+                            className="max-h-full w-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105 relative z-10"
                           />
                         ) : (
                           <div className="h-full w-full bg-kamen-dark/50 rounded-lg" />
                         )}
                       </div>
 
-                      <div className="w-full text-center flex-1 flex flex-col justify-between pt-4">
-                        <div>
-                          <h3 className="truncate text-lg font-black uppercase tracking-wide text-kamen-cream font-heading">
+                      {/* قسم النصوص والمكونات والأسعار */}
+                      <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pt-0.5 pb-0.5">
+                        <div className="flex flex-col justify-center">
+                          <h3 className="truncate text-[10px] font-black uppercase tracking-wide text-kamen-cream font-heading">
                             {item.name}
                           </h3>
-                          <p className="line-clamp-2 text-xs font-semibold text-kamen-beige leading-tight mt-0.5">
+                          <p className="line-clamp-2 text-[7.5px] font-semibold text-kamen-beige/80 leading-tight mt-0.5">
                             {item.description}
                           </p>
                         </div>
 
-                        <div className="mt-1 flex items-center justify-center gap-3 px-8">
+                        {/* بوكس السعر المدمج */}
+                        <div className="mt-0.5 flex items-center justify-center gap-1 px-0.5 shrink-0">
                           {item.sizes && item.sizes.length > 0 ? (
                             item.sizes.map((s) => (
                               <div
                                 key={s.size}
-                                className="flex-1 rounded-md border border-kamen-gold/30 bg-kamen-gold/15 px-1 py-0.5 text-center"
+                                className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/15 px-0.5 py-[1px] text-center flex flex-col justify-center gap-0"
                               >
-                                <span className="block text-[7px] font-bold uppercase text-kamen-gold/90">
+                                <span className="block text-[5px] font-bold uppercase text-kamen-gold/90 leading-none">
                                   {s.size}
                                 </span>
-                                <span className="text-sm font-black text-kamen-gold font-heading">
+                                <span className="text-[8px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
                                   {s.price}
                                 </span>
                               </div>
                             ))
                           ) : (
-                            <div className="rounded-md border border-kamen-gold/30 bg-kamen-gold/15 px-2.5 py-0.5 text-[10.5px] font-black text-kamen-gold font-heading">
+                            <div className="rounded border border-kamen-gold/30 bg-kamen-gold/15 px-2 py-[1px] text-[8.5px] font-black text-kamen-gold font-heading leading-none">
                               {item.price}
                             </div>
                           )}
@@ -287,42 +289,42 @@ export function TVMenuScreen3() {
             </div>
 
             {/* 2. قسم العروض اليومية اليمين (Tagesangebote) */}
-            <div className="col-span-4 h-full flex flex-col justify-between items-center rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#1c1612] via-kamen-dark to-[#0f0c0a] p-3 shadow-2xl relative overflow-hidden">
+            <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2 shadow-2xl overflow-hidden">
               {/* هيدر العروض */}
-              <div className="w-full text-center border-b border-kamen-gold/25 pb-2 shrink-0">
-                <h2 className="text-xl font-black uppercase tracking-widest text-kamen-gold font-heading">
+              <div className="w-full text-center border-b border-kamen-gold/25 pb-1 shrink-0">
+                <h2 className="text-sm font-black uppercase tracking-widest text-kamen-gold font-heading">
                   TAGESANGEBOTE
                 </h2>
-                <p className="text-[10px] font-bold text-kamen-beige uppercase tracking-wider mt-0.5">
+                <p className="text-[9px] font-bold text-kamen-beige uppercase tracking-wider">
                   Exklusive Spar-Aktionen
                 </p>
               </div>
 
               {/* قائمة أيام الإثنين، الأربعاء، الخميس */}
-              <div className="w-full flex-1 flex flex-col justify-around py-2 gap-2">
+              <div className="w-full flex-1 flex flex-col justify-around py-1 gap-1.5">
                 {TAGESANGEBOTE.map((offer) => (
                   <div
                     key={offer.day}
-                    className="relative flex flex-col justify-between rounded-xl border border-kamen-gold/25 bg-gradient-to-r from-kamen-gold/10 via-transparent to-kamen-gold/5 p-2.5 shadow-md overflow-hidden"
+                    className="relative flex flex-col justify-between rounded-lg border border-kamen-gold/25 bg-gradient-to-r from-kamen-gold/10 via-transparent to-kamen-gold/5 p-2 shadow-sm overflow-hidden"
                   >
-                    <div className="flex items-center justify-between border-b border-kamen-gold/15 pb-1">
-                      <span className="rounded bg-kamen-gold px-2 py-0.5 text-[10px] font-black text-kamen-dark uppercase tracking-wider">
+                    <div className="flex items-center justify-between border-b border-kamen-gold/15 pb-0.5">
+                      <span className="rounded bg-kamen-gold px-1.5 py-0.2 text-[9px] font-black text-kamen-dark uppercase tracking-wider">
                         {offer.day}
                       </span>
-                      <span className="text-lg">{offer.icon}</span>
+                      <span className="text-sm">{offer.icon}</span>
                     </div>
 
-                    <div className="my-1.5 flex items-baseline justify-between">
+                    <div className="my-1 flex items-baseline justify-between">
                       <div>
-                        <h3 className="text-sm font-black uppercase tracking-wide text-kamen-cream font-heading">
+                        <h3 className="text-xs font-black uppercase tracking-wide text-kamen-cream font-heading">
                           {offer.title}
                         </h3>
-                        <p className="text-[11px] font-bold text-kamen-beige/90">
+                        <p className="text-[10px] font-bold text-kamen-beige/85">
                           {offer.desc}
                         </p>
                       </div>
                       <div className="text-right">
-                        <span className="text-xl font-black text-kamen-gold font-heading drop-shadow">
+                        <span className="text-lg font-black text-kamen-gold font-heading drop-shadow">
                           {offer.price}
                         </span>
                       </div>
@@ -332,8 +334,8 @@ export function TVMenuScreen3() {
               </div>
 
               {/* ملاحظة سفلية للقسم الأيمن */}
-              <div className="w-full text-center border-t border-kamen-gold/15 pt-1.5 shrink-0">
-                <span className="text-[9px] font-bold text-kamen-beige/70 uppercase tracking-widest">
+              <div className="w-full text-center border-t border-kamen-gold/15 pt-1 shrink-0">
+                <span className="text-[8px] font-bold text-kamen-beige/70 uppercase tracking-widest">
                   Gültig an den jeweiligen Aktionstagen
                 </span>
               </div>
@@ -341,7 +343,7 @@ export function TVMenuScreen3() {
           </div>
 
           {/* Footer */}
-          <div className="relative z-10 flex items-center justify-between border-t border-kamen-gold/20 pt-0.5 text-[10px] text-kamen-beige/60 shrink-0">
+          <div className="relative z-10 flex items-center justify-between border-t border-kamen-gold/20 pt-0.5 text-[9.5px] text-kamen-beige/60 shrink-0">
             <span>Steinofen Qualität • Kamen Pizza</span>
             <span>Alle Preise inkl. MwSt.</span>
           </div>
