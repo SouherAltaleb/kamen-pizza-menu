@@ -24,6 +24,7 @@ const TAGESANGEBOTE = [
     price: "9,50 €",
     oldPrice: "12,00 €",
     image: "/pizza3.png",
+    imageClass: "max-h-[140px]", // حجم مناسب للبيتزا
   },
   {
     id: "mittwoch",
@@ -34,6 +35,7 @@ const TAGESANGEBOTE = [
     price: "6,00 €",
     oldPrice: "7,00 €",
     image: "/doener-tasche-screen.png",
+    imageClass: "max-h-[135px]", // حجم مناسب للدونر
   },
   {
     id: "donnerstag",
@@ -44,6 +46,7 @@ const TAGESANGEBOTE = [
     price: "9,00 €",
     oldPrice: "11,00 €",
     image: "/pasta.png",
+    imageClass: "max-h-[110px]", // تصغير الباستا هنا لتتناسب مع باقي الأطباق
   },
 ];
 
@@ -463,7 +466,10 @@ export function TVMenuScreen3() {
                           repeat: Infinity,
                           ease: "easeInOut",
                         }}
-                        className="max-h-[150px] w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.95)] relative z-20 transform translate-y-3"
+                        className={`${
+                          TAGESANGEBOTE[activeSlide - 1].imageClass ||
+                          "max-h-32.5"
+                        } w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.95)] relative z-20 transform translate-y-3`}
                       />
                     </div>
 
