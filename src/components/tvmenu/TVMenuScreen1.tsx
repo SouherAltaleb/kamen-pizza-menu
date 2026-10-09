@@ -17,6 +17,7 @@ type AnyItem = {
 };
 
 const HERO_DURATION = 5000;
+const HERO_REPEAT_INTERVAL = 240000; // إعادة تشغيل الـ Intro كل 4 دقائق تلقائياً
 const MENUS_PAIR_ROTATE_DURATION = 9000;
 
 function chunkArray<T>(arr: T[], size: number): T[][] {
@@ -27,28 +28,20 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   return result;
 }
 
+// أنيميشن سلس ومحسن جداً لـ Android TV
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
+    transition: { duration: 0.2 },
   },
 };
 
 const cardItemVariants: Variants = {
-  hidden: { opacity: 0, y: 15, scale: 0.94 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 120,
-      damping: 14,
-    },
+    transition: { duration: 0.25, ease: "linear" },
   },
 };
 
@@ -57,9 +50,9 @@ const bgCircleRightVariants: Variants = {
   visible: {
     x: "0%",
     opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.4, ease: "easeOut" },
   },
-  exit: { x: "100%", opacity: 0, transition: { duration: 0.3 } },
+  exit: { x: "100%", opacity: 0, transition: { duration: 0.25 } },
 };
 
 const bgCircleLeftVariants: Variants = {
@@ -67,32 +60,27 @@ const bgCircleLeftVariants: Variants = {
   visible: (delay: number) => ({
     x: "0%",
     opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut", delay: delay },
+    transition: { duration: 0.4, ease: "easeOut", delay },
   }),
-  exit: { x: "-100%", opacity: 0, transition: { duration: 0.3 } },
+  exit: { x: "-100%", opacity: 0, transition: { duration: 0.25 } },
 };
 
 const foodImageVariants: Variants = {
-  hidden: { scale: 0, opacity: 0 },
+  hidden: { scale: 0.8, opacity: 0 },
   visible: (delay: number) => ({
     scale: 1,
     opacity: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 120,
-      damping: 12,
-      delay: delay,
-    },
+    transition: { duration: 0.35, ease: "easeOut", delay },
   }),
-  exit: { scale: 0.5, opacity: 0, transition: { duration: 0.2 } },
+  exit: { scale: 0.8, opacity: 0, transition: { duration: 0.2 } },
 };
 
 const textBoxVariants: Variants = {
-  hidden: { y: 15, opacity: 0 },
+  hidden: { y: 10, opacity: 0 },
   visible: (delay: number) => ({
     y: 0,
     opacity: 1,
-    transition: { duration: 0.4, ease: "easeOut", delay: delay },
+    transition: { duration: 0.3, ease: "easeOut", delay },
   }),
   exit: { y: -10, opacity: 0, transition: { duration: 0.2 } },
 };
@@ -105,20 +93,31 @@ export function TVMenuScreen1() {
 
   const menuPairs = useMemo(() => chunkArray(menus, 2), []);
 
+  // دوران عروض المنيو التتابعية
   useEffect(() => {
     if (showHero || menuPairs.length === 0) return;
     const pairTimer = setInterval(() => {
       setPairIndex((prev) => (prev + 1) % menuPairs.length);
     }, MENUS_PAIR_ROTATE_DURATION);
-    return () => clearTimeout(pairTimer);
+    return () => clearInterval(pairTimer);
   }, [showHero, menuPairs.length]);
 
+  // إخفاء الـ Hero بعد 5 ثوانٍ
   useEffect(() => {
     if (showHero) {
       const t = setTimeout(() => setShowHero(false), HERO_DURATION);
       return () => clearTimeout(t);
     }
   }, [showHero]);
+
+  // إظهار الـ Hero تلقائياً كل 4 دقائق
+  useEffect(() => {
+    const repeatTimer = setInterval(() => {
+      setShowHero(true);
+    }, HERO_REPEAT_INTERVAL);
+
+    return () => clearInterval(repeatTimer);
+  }, []);
 
   const currentPair = menuPairs[pairIndex] || menuPairs[0] || [];
   const menuTopRight = currentPair[0];
@@ -133,29 +132,30 @@ export function TVMenuScreen1() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2 sm:p-2.5">
-      {/* خلفية الفيديو والإضاءة */}
+      {/* خلفية الفيديو والإضاءة (معدلة بشرائح الشفافية opacity-60 وبدون mix-blend ثقيل) */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-80"
+          preload="auto"
+          className="absolute inset-0 h-full w-full object-cover opacity-70"
         >
           <source src="/video/fire4.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/80 via-kamen-dark/30 to-kamen-dark" />
+        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/85 via-kamen-dark/60 to-kamen-dark" />
       </div>
 
-      {/* شاشة الانترو */}
+      {/* شاشة الانترو Hero */}
       <AnimatePresence>
         {showHero && (
           <motion.div
             key="hero"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 0.8 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
             className="absolute inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-kamen-dark p-12 text-center"
           >
             <video
@@ -163,20 +163,21 @@ export function TVMenuScreen1() {
               loop
               muted
               playsInline
-              className="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-screen"
+              preload="auto"
+              className="absolute inset-0 h-full w-full object-cover opacity-35"
             >
-              <source src="/video/pizza.mp4" type="video/mp4" />
+              <source src="/video/doener.mp4" type="video/mp4" />
             </video>
             <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 30 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ duration: 1, type: "spring" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
               className="relative z-10 flex flex-col items-center"
             >
               <img
                 src="/logo.png"
                 alt="Kamen Pizza"
-                className="h-32 w-auto drop-shadow-[0_10px_35px_rgba(214,179,106,0.6)]"
+                className="h-32 w-auto drop-shadow-[0_8px_25px_rgba(214,179,106,0.5)]"
               />
               <div className="my-3 h-1 w-full bg-gradient-to-r from-transparent via-kamen-gold to-transparent" />
               <h1 className="max-w-4xl text-3xl font-black uppercase tracking-widest text-kamen-cream font-heading">
@@ -211,7 +212,7 @@ export function TVMenuScreen1() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="rounded-full border border-kamen-gold/40 bg-kamen-gold/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-kamen-gold">
+              <span className="rounded-full border border-kamen-gold/40 bg-black/70 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-kamen-gold">
                 👑 UNSERE KÖNIGSDISZIPLIN
               </span>
             </div>
@@ -231,7 +232,7 @@ export function TVMenuScreen1() {
                   <motion.div
                     key={item.id || item.name || idx}
                     variants={cardItemVariants}
-                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/20 bg-kamen-dark/85 p-1 shadow-lg backdrop-blur-md justify-between overflow-hidden min-h-0"
+                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/30 bg-black/80 p-1 shadow-md justify-between overflow-hidden min-h-0"
                   >
                     {/* ID Nummer + Kreis */}
                     {(item.number || item.id) && (
@@ -242,16 +243,17 @@ export function TVMenuScreen1() {
 
                     {/* حاوية الصورة */}
                     <div className="relative w-full h-[40%] min-h-[50px] max-h-[75px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
-                      <div className="absolute w-20 h-8 bg-kamen-gold/10 rounded-full blur-md pointer-events-none" />
+                      <div className="absolute w-20 h-8 bg-kamen-gold/10 rounded-full blur-sm pointer-events-none" />
 
                       {item.image ? (
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="max-h-full w-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:scale-105 relative z-10"
+                          className="max-h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] relative z-10"
+                          loading="eager"
                         />
                       ) : (
-                        <div className="h-full w-full bg-kamen-dark/50 rounded-lg" />
+                        <div className="h-full w-full bg-zinc-900/80 rounded-lg" />
                       )}
                     </div>
 
@@ -272,7 +274,7 @@ export function TVMenuScreen1() {
                           item.sizes.map((s) => (
                             <div
                               key={s.size}
-                              className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/15 px-0.5 py-[1px] text-center flex flex-col justify-center gap-0"
+                              className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/20 px-0.5 py-[1px] text-center flex flex-col justify-center gap-0"
                             >
                               <span className="block text-[5px] font-bold uppercase text-kamen-gold/90 leading-none">
                                 {s.size}
@@ -283,7 +285,7 @@ export function TVMenuScreen1() {
                             </div>
                           ))
                         ) : (
-                          <div className="rounded border border-kamen-gold/30 bg-kamen-gold/15 px-2 py-[1px] text-[8.5px] font-black text-kamen-gold font-heading leading-none">
+                          <div className="rounded border border-kamen-gold/30 bg-kamen-gold/20 px-2 py-[1px] text-[8.5px] font-black text-kamen-gold font-heading leading-none">
                             {item.price}
                           </div>
                         )}
@@ -295,11 +297,11 @@ export function TVMenuScreen1() {
             </div>
 
             {/* 2. قسم المناوي التتابعي الأيمن (SPARS-MENÜS مصغر ومضبوط) */}
-            <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-gradient-to-b from-[#181310] via-kamen-dark to-[#0d0a08] p-2 shadow-2xl overflow-hidden">
+            <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-black/85 p-2 shadow-xl overflow-hidden">
               {/* هيدر قسم المناوي */}
               <div className="w-full flex items-center justify-between border-b border-kamen-gold/20 pb-1 shrink-0 z-20">
                 <span className="text-xs font-black uppercase tracking-widest text-kamen-gold flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-kamen-gold animate-ping" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-kamen-gold animate-pulse" />
                   SPARS-MENÜS
                 </span>
 
@@ -338,7 +340,7 @@ export function TVMenuScreen1() {
 
                         <motion.div
                           variants={foodImageVariants}
-                          custom={0.35}
+                          custom={0.2}
                           initial="hidden"
                           animate="visible"
                           exit="exit"
@@ -349,13 +351,14 @@ export function TVMenuScreen1() {
                               menuTopRight.image || "/menus/doener-menue.png"
                             }
                             alt={menuTopRight.name}
-                            className="max-h-[85%] w-auto object-contain drop-shadow-[0_12px_22px_rgba(0,0,0,0.6)]"
+                            className="max-h-[85%] w-auto object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]"
+                            loading="eager"
                           />
                         </motion.div>
 
                         <motion.div
                           variants={textBoxVariants}
-                          custom={0.7}
+                          custom={0.35}
                           initial="hidden"
                           animate="visible"
                           exit="exit"
@@ -387,7 +390,7 @@ export function TVMenuScreen1() {
                       <div className="relative w-full flex items-center justify-start h-[48%] overflow-hidden">
                         <motion.div
                           variants={bgCircleLeftVariants}
-                          custom={2.2}
+                          custom={0.4}
                           initial="hidden"
                           animate="visible"
                           exit="exit"
@@ -396,7 +399,7 @@ export function TVMenuScreen1() {
 
                         <motion.div
                           variants={foodImageVariants}
-                          custom={2.55}
+                          custom={0.55}
                           initial="hidden"
                           animate="visible"
                           exit="exit"
@@ -405,13 +408,14 @@ export function TVMenuScreen1() {
                           <img
                             src={menuLeftMid.image || "/menus/burger-menue.png"}
                             alt={menuLeftMid.name}
-                            className="max-h-[85%] w-auto object-contain drop-shadow-[0_12px_22px_rgba(0,0,0,0.6)]"
+                            className="max-h-[85%] w-auto object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]"
+                            loading="eager"
                           />
                         </motion.div>
 
                         <motion.div
                           variants={textBoxVariants}
-                          custom={2.9}
+                          custom={0.7}
                           initial="hidden"
                           animate="visible"
                           exit="exit"
