@@ -17,6 +17,7 @@ type AnyItem = {
 };
 
 const HERO_DURATION = 5000;
+const HERO_REPEAT_INTERVAL = 240000; // إعادة تشغيل الإنترو كل 4 دقائق تلقائياً
 const PAGE_ROTATE_INTERVAL = 12000;
 
 // أنيميشن سلس وخفيف جدًا مخصص لمعالجات التلفاز
@@ -40,7 +41,7 @@ export function TVMenuScreen4() {
   const [showHero, setShowHero] = useState(true);
   const [currentPage, setCurrentPage] = useState<1 | 2>(1);
 
-  // Hero Timeout
+  // Hero Timeout لإخفاء شاشة البداية بعد 5 ثوانٍ
   useEffect(() => {
     if (showHero) {
       const t = setTimeout(() => setShowHero(false), HERO_DURATION);
@@ -48,13 +49,22 @@ export function TVMenuScreen4() {
     }
   }, [showHero]);
 
+  // إظهار شاشة البداية Hero تلقائياً كل 4 دقائق
+  useEffect(() => {
+    const repeatTimer = setInterval(() => {
+      setShowHero(true);
+    }, HERO_REPEAT_INTERVAL);
+
+    return () => clearInterval(repeatTimer);
+  }, []);
+
   // Seitenrotation
   useEffect(() => {
     if (showHero) return;
     const interval = setInterval(() => {
       setCurrentPage((prev) => (prev === 1 ? 2 : 1));
     }, PAGE_ROTATE_INTERVAL);
-    return () => clearTimeout(interval);
+    return () => clearInterval(interval);
   }, [showHero]);
 
   // Data Slices (4 pro Seite)
@@ -134,7 +144,7 @@ export function TVMenuScreen4() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2">
-      {/* Background Video المحسن خفيف الأداء */}
+      {/* Background Video (موحد بشرائح الشفافية opacity-60) */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
@@ -142,7 +152,7 @@ export function TVMenuScreen4() {
           muted
           playsInline
           preload="auto"
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          className="absolute inset-0 h-full w-full object-cover opacity-70"
         >
           <source src="/video/fire4.mp4" type="video/mp4" />
         </video>
