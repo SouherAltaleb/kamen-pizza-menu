@@ -143,11 +143,11 @@ export function TVMenuScreen4() {
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-60"
+          className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-80"
         >
           <source src="/video/fire4.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/90 via-kamen-dark/50 to-kamen-dark" />
+        <div className="absolute inset-0 bg-linear-to-b from-kamen-dark/80 via-kamen-dark/60 to-kamen-dark" />
       </div>
 
       {/* Intro Hero Screen */}
@@ -183,7 +183,7 @@ export function TVMenuScreen4() {
               />
               <div className="my-3 h-1 w-full bg-gradient-to-r from-transparent via-kamen-gold to-transparent" />
               <h1 className="text-3xl font-black uppercase tracking-widest text-kamen-cream font-heading">
-                HEISSE GERICHTE & SPEZIALITÄTEN
+                WARM GERICHTE
               </h1>
             </motion.div>
           </motion.div>
@@ -198,13 +198,13 @@ export function TVMenuScreen4() {
               <img
                 src="/logo-k-transparent.svg"
                 alt="Logo"
-                className="h-6 w-auto"
+                className="h-7 w-auto"
               />
               <div>
-                <h1 className="text-base font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
-                  HEISSE GERICHTE & SPEZIALITÄTEN
+                <h1 className="text-lg font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
+                  WARM GERICHTE
                 </h1>
-                <p className="text-[8px] text-kamen-beige mt-0.5">
+                <p className="text-[10px] text-kamen-beige mt-0.5">
                   Frisch aus dem Steinofen
                 </p>
               </div>
@@ -217,7 +217,7 @@ export function TVMenuScreen4() {
                   currentPage === 1 ? "text-kamen-gold" : "text-zinc-600"
                 }
               >
-                SEITE 1
+                1
               </span>
               <span>•</span>
               <span
@@ -225,7 +225,7 @@ export function TVMenuScreen4() {
                   currentPage === 2 ? "text-kamen-gold" : "text-zinc-600"
                 }
               >
-                SEITE 2
+                2
               </span>
             </div>
           </div>
@@ -371,7 +371,7 @@ export function TVMenuScreen4() {
                 playsInline
                 className="h-full w-full object-cover opacity-85"
               >
-                <source src="/video/pasta.mp4" type="video/mp4" />
+                <source src="/video/pasta2.mp4" type="video/mp4" />
               </video>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30 pointer-events-none" />
