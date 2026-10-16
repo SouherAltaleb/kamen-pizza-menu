@@ -20,20 +20,29 @@ const HERO_DURATION = 5000;
 const HERO_REPEAT_INTERVAL = 240000; // إعادة تشغيل الإنترو كل 4 دقائق تلقائياً
 const PAGE_ROTATE_INTERVAL = 12000;
 
-// أنيميشن سلس وخفيف جدًا مخصص لمعالجات التلفاز
+// أنيميشن تسلسلي متناسق لظهور الكروت واحداً تلو الآخر
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.2 },
+    transition: {
+      staggerChildren: 0.12, // الفارق الزمني بالثواني بين ظهور كل كرت والآخر
+      delayChildren: 0.05,
+    },
   },
 };
 
 const cardItemVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 20, scale: 0.92 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.25, ease: "linear" },
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 130,
+      damping: 15,
+    },
   },
 };
 
@@ -77,63 +86,64 @@ export function TVMenuScreen4() {
   const baguettesPage1 = baguettes.slice(0, 4);
   const baguettesPage2 = baguettes.slice(4, 8);
 
-  // تصميم البطاقة المطور والسريع للشاشات (بدون backdrop-blur)
+  // تصميم البطاقة مع استخدام كلاس CSS الخاص بالصورة (menu-item-img)
   const renderPizzaStyleCard = (item: AnyItem, idx: number) => (
     <motion.div
       key={item.id || item.name || idx}
       variants={cardItemVariants}
-      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/30 bg-black/80 p-1 shadow-md justify-between overflow-hidden min-h-0 w-full h-full"
+      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/40 bg-kamen-dark p-1.5 shadow-lg justify-between overflow-hidden min-h-0 w-full h-full"
     >
       {(item.number || item.id) && (
-        <span className="absolute left-1 top-1 z-20 flex h-4 w-4 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[8.5px] font-bold text-kamen-dark shadow">
+        <span className="absolute left-1 top-1 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/40 bg-kamen-gold text-[9px] font-black text-kamen-dark shadow-md">
           {item.number || item.id}
         </span>
       )}
 
-      <div className="relative w-full h-[38%] min-h-[35px] max-h-[60px] flex items-center justify-center shrink-0 overflow-hidden my-0.5">
-        <div className="absolute w-16 h-6 bg-kamen-gold/10 rounded-full blur-sm pointer-events-none" />
+      {/* حقل الصورة مع كلاس CSS الخارجي للحركة النظيفة */}
+      <div className="relative w-full h-[38%] min-h-[35px] max-h-[60px] flex items-center justify-center shrink-0 overflow-visible my-0.5">
+        <div className="absolute w-22 h-10 bg-kamen-gold/40 rounded-full blur-md pointer-events-none z-0" />
 
         {item.image ? (
           <img
             src={item.image}
             alt={item.name}
-            className="max-h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] relative z-10"
+            className="menu-item-img max-h-full w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.85)] relative z-10"
             loading="eager"
           />
         ) : (
-          <div className="h-full w-full bg-zinc-900/80 rounded-lg flex items-center justify-center text-[7.5px] text-zinc-600">
+          <div className="h-full w-full bg-zinc-900/80 rounded-lg flex items-center justify-center text-[8px] text-zinc-500 font-medium">
             Kein Bild
           </div>
         )}
       </div>
 
-      <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pb-0.5">
+      <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pb-0.5 z-10">
         <div className="flex flex-col justify-center">
-          <h3 className="truncate text-[10px] font-black uppercase tracking-wide text-kamen-cream font-heading">
+          <h3 className="truncate text-[10px] sm:text-[10.5px] font-black uppercase tracking-wide text-kamen-cream font-heading drop-shadow-sm">
             {item.name}
           </h3>
-          <p className="line-clamp-2 text-[7px] font-semibold text-kamen-beige/80 leading-tight mt-0.5">
+          <p className="line-clamp-2 text-[7.5px] font-bold text-kamen-beige/90 leading-tight mt-0.5">
             {item.description}
           </p>
         </div>
 
-        <div className="mt-0.5 flex items-center justify-center gap-1 px-0.5 shrink-0">
+        <div className="mt-1 flex items-center justify-center gap-1 px-0.5 shrink-0">
           {item.sizes && item.sizes.length > 0 ? (
             item.sizes.map((s) => (
               <div
                 key={s.size}
-                className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/20 px-0.5 py-[1px] text-center flex flex-col justify-center gap-0"
+                className="flex-1 rounded border border-kamen-gold/40 bg-kamen-gold/25 px-1 py-[1.5px] text-center flex flex-col justify-center gap-0 shadow-sm"
               >
-                <span className="block text-[4.5px] font-bold uppercase text-kamen-gold/90 leading-none">
+                <span className="block text-[5px] font-extrabold uppercase text-kamen-gold/90 leading-none">
                   {s.size}
                 </span>
-                <span className="text-[8px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
+                <span className="text-[8.5px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
                   {s.price}
                 </span>
               </div>
             ))
           ) : (
-            <div className="rounded border border-kamen-gold/30 bg-kamen-gold/20 px-1.5 py-[1px] text-[8px] font-black text-kamen-gold font-heading leading-none">
+            <div className="rounded border border-kamen-gold/40 bg-kamen-gold/25 px-2 py-[1.5px] text-[8.5px] font-black text-kamen-gold font-heading leading-none shadow-sm">
               {item.price || "—"}
             </div>
           )}
@@ -144,7 +154,7 @@ export function TVMenuScreen4() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2">
-      {/* Background Video (موحد بشرائح الشفافية opacity-60) */}
+      {/* Background Video */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
@@ -181,8 +191,8 @@ export function TVMenuScreen4() {
               <source src="/video/pasta.mp4" type="video/mp4" />
             </video>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
               className="relative z-10 flex flex-col items-center"
             >
@@ -193,7 +203,7 @@ export function TVMenuScreen4() {
               />
               <div className="my-3 h-1 w-full bg-gradient-to-r from-transparent via-kamen-gold to-transparent" />
               <h1 className="text-3xl font-black uppercase tracking-widest text-kamen-cream font-heading">
-                WARM GERICHTE
+                WARME GERICHTE
               </h1>
             </motion.div>
           </motion.div>
@@ -212,7 +222,7 @@ export function TVMenuScreen4() {
               />
               <div>
                 <h1 className="text-lg font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
-                  WARM GERICHTE
+                  WARME GERICHTE
                 </h1>
                 <p className="text-[10px] text-kamen-beige mt-0.5">
                   Frisch aus dem Steinofen
@@ -221,7 +231,7 @@ export function TVMenuScreen4() {
             </div>
 
             {/* Seiten-Indikator */}
-            <div className="flex items-center gap-1.5 rounded-full border border-kamen-gold/30 bg-black/70 px-2.5 py-0.5 text-[9px] font-bold text-kamen-gold">
+            <div className="flex items-center gap-1.5 rounded-full border border-kamen-gold/30 bg-kamen-dark/70 px-2.5 py-0.5 text-[9px] font-bold text-kamen-gold">
               <span
                 className={
                   currentPage === 1 ? "text-kamen-gold" : "text-zinc-600"
@@ -251,11 +261,11 @@ export function TVMenuScreen4() {
                     alt="Nudeln"
                     className="h-4 w-4 object-contain"
                   />
-                  <h2 className="text-[10px] font-black uppercase tracking-wider text-kamen-gold font-heading">
+                  <h2 className="text-[10.5px] font-black uppercase tracking-wider text-kamen-gold font-heading">
                     PASTA & NUDELN
                   </h2>
                 </div>
-                <span className="text-[8px] text-kamen-gold/70 font-semibold">
+                <span className="text-[8.5px] text-kamen-gold/80 font-bold">
                   {currentPage}/2
                 </span>
               </div>
@@ -287,11 +297,11 @@ export function TVMenuScreen4() {
                     alt="Aufläufe"
                     className="h-4 w-4 object-contain"
                   />
-                  <h2 className="text-[10px] font-black uppercase tracking-wider text-kamen-gold font-heading">
+                  <h2 className="text-[10.5px] font-black uppercase tracking-wider text-kamen-gold font-heading">
                     AUFLÄUFE
                   </h2>
                 </div>
-                <span className="text-[8px] text-kamen-gold/70 font-semibold">
+                <span className="text-[8.5px] text-kamen-gold/80 font-bold">
                   {currentPage}/2
                 </span>
               </div>
@@ -307,23 +317,35 @@ export function TVMenuScreen4() {
                     className="h-full min-h-0"
                   >
                     {currentPage === 1 ? (
-                      <div className="grid grid-cols-1 grid-rows-4 gap-1.5 h-full min-h-0">
+                      <motion.div
+                        variants={gridContainerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="grid grid-cols-1 grid-rows-4 gap-1.5 h-full min-h-0"
+                      >
                         {auflaeufePage1.map((item, idx) =>
                           renderPizzaStyleCard(item, idx)
                         )}
-                      </div>
+                      </motion.div>
                     ) : (
                       <div className="grid grid-cols-1 grid-rows-4 gap-1.5 h-full min-h-0">
                         {auflaeufePage2.map((item, idx) =>
                           renderPizzaStyleCard(item, idx)
                         )}
 
-                        <div className="row-span-2 flex items-end justify-center w-full h-full min-h-0 overflow-hidden pb-1">
+                        {/* Grosses Auflauf-Bild */}
+                        <div className="row-span-2 relative flex items-end justify-center w-full h-full min-h-0 overflow-visible pb-1">
+                          <div className="absolute w-36 h-16 bg-kamen-gold/30 rounded-full blur-md pointer-events-none" />
                           <motion.img
-                            variants={cardItemVariants}
+                            animate={{ y: [0, -4, 0] }}
+                            transition={{
+                              duration: 3.5,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
                             src="/auflauf.png"
                             alt="Auflauf"
-                            className="max-h-full max-w-62 object-contain drop-shadow-[0_8px_15px_rgba(0,0,0,0.8)]"
+                            className="max-h-full max-w-60 object-contain relative z-10 drop-shadow-[0_8px_18px_rgba(0,0,0,0.85)]"
                           />
                         </div>
                       </div>
@@ -342,11 +364,11 @@ export function TVMenuScreen4() {
                     alt="Baguettes"
                     className="h-4 w-4 object-contain"
                   />
-                  <h2 className="text-[10px] font-black uppercase tracking-wider text-kamen-gold font-heading">
+                  <h2 className="text-[10.5px] font-black uppercase tracking-wider text-kamen-gold font-heading">
                     BAGUETTES
                   </h2>
                 </div>
-                <span className="text-[8px] text-kamen-gold/70 font-semibold">
+                <span className="text-[8.5px] text-kamen-gold/80 font-bold">
                   {currentPage}/2
                 </span>
               </div>
@@ -385,7 +407,7 @@ export function TVMenuScreen4() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
 
               <div className="absolute top-2 left-1 right-1 flex justify-center z-10">
-                <span className="rounded-full border border-kamen-gold/50 bg-black/80 px-2 py-0.5 text-[8px] font-black uppercase tracking-wider text-kamen-gold text-center">
+                <span className="rounded-full border border-kamen-gold/50 bg-black/80 px-2 py-0.5 text-[8px] font-black uppercase tracking-wider text-kamen-gold text-center shadow">
                   🔥 FRISCH ZUBEREITET
                 </span>
               </div>

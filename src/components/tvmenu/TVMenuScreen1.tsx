@@ -28,20 +28,29 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   return result;
 }
 
-// أنيميشن سلس ومحسن جداً لـ Android TV
+// أنيميشن تسلسلي متناسق لظهور الكروت واحداً تلو الآخر (مثل باقي الشاشات)
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.2 },
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
   },
 };
 
 const cardItemVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 20, scale: 0.92 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.25, ease: "linear" },
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 130,
+      damping: 15,
+    },
   },
 };
 
@@ -130,9 +139,75 @@ export function TVMenuScreen1() {
     return "11,00 €";
   };
 
+  // Einheitliche Karten-Struktur (identisch zu Screen 2, 3 und 4)
+  const renderItemCard = (item: AnyItem, idx: number) => (
+    <motion.div
+      key={item.id || item.name || idx}
+      variants={cardItemVariants}
+      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/40 bg-kamen-dark p-1.5 shadow-lg justify-between overflow-hidden min-h-0 w-full h-full"
+    >
+      {(item.number || item.id) && (
+        <span className="absolute left-1 top-1 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/40 bg-kamen-gold text-[9px] font-black text-kamen-dark shadow-md">
+          {item.number || item.id}
+        </span>
+      )}
+
+      {/* Bildbereich mit exaktem goldenen Blur-Hintergrund und menu-item-img */}
+      <div className="relative w-full h-[38%] min-h-[35px] max-h-[60px] flex items-center justify-center shrink-0 overflow-visible my-0.5">
+        <div className="absolute w-22 h-10 bg-kamen-gold/40 rounded-full blur-md pointer-events-none z-0" />
+
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.name}
+            className="menu-item-img max-h-full w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.85)] relative z-10"
+            loading="eager"
+          />
+        ) : (
+          <div className="h-full w-full bg-zinc-900/80 rounded-lg flex items-center justify-center text-[8px] text-zinc-500 font-medium">
+            Kein Bild
+          </div>
+        )}
+      </div>
+
+      <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pb-0.5 z-10">
+        <div className="flex flex-col justify-center">
+          <h3 className="truncate text-[10px] sm:text-[10.5px] font-black uppercase tracking-wide text-kamen-cream font-heading drop-shadow-sm">
+            {item.name}
+          </h3>
+          <p className="line-clamp-2 text-[7.5px] font-bold text-kamen-beige/90 leading-tight mt-0.5">
+            {item.description}
+          </p>
+        </div>
+
+        <div className="mt-1 flex items-center justify-center gap-1 px-0.5 shrink-0">
+          {item.sizes && item.sizes.length > 0 ? (
+            item.sizes.map((s) => (
+              <div
+                key={s.size}
+                className="flex-1 rounded border border-kamen-gold/40 bg-kamen-gold/25 px-1 py-[1.5px] text-center flex flex-col justify-center gap-0 shadow-sm"
+              >
+                <span className="block text-[5px] font-extrabold uppercase text-kamen-gold/90 leading-none">
+                  {s.size}
+                </span>
+                <span className="text-[8.5px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
+                  {s.price}
+                </span>
+              </div>
+            ))
+          ) : (
+            <div className="rounded border border-kamen-gold/40 bg-kamen-gold/25 px-2 py-[1.5px] text-[8.5px] font-black text-kamen-gold font-heading leading-none shadow-sm">
+              {item.price || "—"}
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2 sm:p-2.5">
-      {/* خلفية الفيديو والإضاءة (معدلة بشرائح الشفافية opacity-60 وبدون mix-blend ثقيل) */}
+      {/* خلفية الفيديو والإضاءة */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
@@ -228,77 +303,12 @@ export function TVMenuScreen1() {
                 animate="visible"
                 className="grid grid-cols-4 grid-rows-3 gap-1.5 h-full min-h-0"
               >
-                {allScreen1Items.map((item, idx) => (
-                  <motion.div
-                    key={item.id || item.name || idx}
-                    variants={cardItemVariants}
-                    className="relative flex flex-col items-center rounded-xl border border-kamen-gold/30 bg-black/80 p-1 shadow-md justify-between overflow-hidden min-h-0"
-                  >
-                    {/* ID Nummer + Kreis */}
-                    {(item.number || item.id) && (
-                      <span className="absolute left-1 top-1 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[9px] font-bold text-kamen-dark shadow">
-                        {item.number || item.id}
-                      </span>
-                    )}
-
-                    {/* حاوية الصورة */}
-                    <div className="relative w-full h-[40%] min-h-[50px] max-h-[75px] flex items-center justify-center shrink-0 my-0.5 overflow-hidden">
-                      <div className="absolute w-20 h-8 bg-kamen-gold/10 rounded-full blur-sm pointer-events-none" />
-
-                      {item.image ? (
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="max-h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] relative z-10"
-                          loading="eager"
-                        />
-                      ) : (
-                        <div className="h-full w-full bg-zinc-900/80 rounded-lg" />
-                      )}
-                    </div>
-
-                    {/* قسم النصوص والمكونات والأسعار */}
-                    <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pt-0.5 pb-0.5">
-                      <div className="flex flex-col justify-center">
-                        <h3 className="truncate text-[10px] font-black uppercase tracking-wide text-kamen-cream font-heading">
-                          {item.name}
-                        </h3>
-                        <p className="line-clamp-2 text-[7.5px] font-semibold text-kamen-beige/80 leading-tight mt-0.5">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      {/* بوكس السعر المدمج */}
-                      <div className="mt-0.5 flex items-center justify-center gap-1 px-0.5 shrink-0">
-                        {item.sizes && item.sizes.length > 0 ? (
-                          item.sizes.map((s) => (
-                            <div
-                              key={s.size}
-                              className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/20 px-0.5 py-[1px] text-center flex flex-col justify-center gap-0"
-                            >
-                              <span className="block text-[5px] font-bold uppercase text-kamen-gold/90 leading-none">
-                                {s.size}
-                              </span>
-                              <span className="text-[8px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
-                                {s.price}
-                              </span>
-                            </div>
-                          ))
-                        ) : (
-                          <div className="rounded border border-kamen-gold/30 bg-kamen-gold/20 px-2 py-[1px] text-[8.5px] font-black text-kamen-gold font-heading leading-none">
-                            {item.price}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                {allScreen1Items.map((item, idx) => renderItemCard(item, idx))}
               </motion.div>
             </div>
 
-            {/* 2. قسم المناوي التتابعي الأيمن (SPARS-MENÜS مصغر ومضبوط) */}
+            {/* 2. قسم المناوي التتابعي الأيمن (SPARS-MENÜS) */}
             <div className="col-span-4 h-full min-h-0 flex flex-col justify-between items-center relative rounded-2xl border border-kamen-gold/30 bg-black/85 p-2 shadow-xl overflow-hidden">
-              {/* هيدر قسم المناوي */}
               <div className="w-full flex items-center justify-between border-b border-kamen-gold/20 pb-1 shrink-0 z-20">
                 <span className="text-xs font-black uppercase tracking-widest text-kamen-gold flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-kamen-gold animate-pulse" />
@@ -320,7 +330,6 @@ export function TVMenuScreen1() {
                 </div>
               </div>
 
-              {/* حاوية المناوي التتابعية */}
               <div className="relative w-full flex-1 min-h-0 flex flex-col justify-between z-10 py-0.5 mx-0 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
