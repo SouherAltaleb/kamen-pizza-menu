@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 
 import { saladDressing, salate } from "../../data/salads";
@@ -20,28 +20,57 @@ type AnyItem = {
 
 const HERO_DURATION = 5000;
 const HERO_REPEAT_INTERVAL = 240000; // إعادة تشغيل الإنترو كل 4 دقائق تلقائياً
+const SALAD_ROTATE_INTERVAL = 10000; // تدوير صفحات السلطة كل 10 ثوانٍ
 
-// أنيميشن خفيف ومخصص للـ Smart TV
+// أنيميشن لظهور الكروت
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.2 },
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
   },
 };
 
 const cardItemVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 20, scale: 0.9 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.25, ease: "linear" },
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 140,
+      damping: 12,
+    },
+  },
+};
+
+// أنيميشن لصورة الأكل
+const foodImageVariants: Variants = {
+  hidden: { scale: 0.6, opacity: 0, y: 10 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 150,
+      damping: 10,
+      delay: 0.1,
+    },
   },
 };
 
 export function TVMenuScreen5() {
   const [showHero, setShowHero] = useState(true);
+  const [saladPage, setSaladPage] = useState<1 | 2>(1);
 
-  // Hero Timeout لإخفاء شاشة البداية بعد 5 ثوانٍ
+  const drinksVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Hero Timeout
   useEffect(() => {
     if (showHero) {
       const t = setTimeout(() => setShowHero(false), HERO_DURATION);
@@ -58,67 +87,92 @@ export function TVMenuScreen5() {
     return () => clearInterval(repeatTimer);
   }, []);
 
-  // تصميم البطاقة المطور والسريع للشاشات (بدون backdrop-blur)
+  // تدوير صفحتين للسلطات (6 كروت لكل صفحة)
+  useEffect(() => {
+    if (showHero) return;
+    const interval = setInterval(() => {
+      setSaladPage((prev) => (prev === 1 ? 2 : 1));
+    }, SALAD_ROTATE_INTERVAL);
+    return () => clearInterval(interval);
+  }, [showHero]);
+
+  const salatePage1 = salate.slice(0, 6);
+  const salatePage2 = salate.slice(6, 12);
+
+  // تصميم البطاقة القياسي للوجبات مع تكبير الخطوط وإعادة الوهج الذهبي الضبابي
   const renderPizzaStyleCard = (item: AnyItem, idx: number) => (
     <motion.div
       key={item.id || item.name || idx}
       variants={cardItemVariants}
-      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/30 bg-black/80 p-1 shadow-md justify-between overflow-hidden min-h-0 w-full h-full"
+      whileHover={{ scale: 1.02 }}
+      className="relative flex flex-col items-center rounded-xl border border-kamen-gold/40 bg-black/85 p-1.5 shadow-lg justify-between overflow-hidden min-h-0 w-full h-full"
     >
       {(item.number || item.id) && (
-        <span className="absolute left-1 top-1 z-20 flex h-4 w-4 items-center justify-center rounded-full border border-kamen-cream/30 bg-kamen-gold text-[8.5px] font-bold text-kamen-dark shadow">
+        <span className="absolute left-1 top-1 z-20 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-kamen-cream/40 bg-kamen-gold text-[9px] font-black text-kamen-dark shadow-md">
           {item.number || item.id}
         </span>
       )}
 
-      <div className="relative w-full h-[36%] min-h-[28px] max-h-[50px] flex items-center justify-center shrink-0 overflow-hidden my-0.5">
-        <div className="absolute w-16 h-6 bg-kamen-gold/10 rounded-full blur-sm pointer-events-none" />
+      {/* حقل الصورة مع تأثير الوهج الذهبي الضبابي الخلفي */}
+      <div className="relative w-full h-[42%] min-h-[32px] max-h-[56px] flex items-center justify-center shrink-0 overflow-visible my-0.5">
+        {/* Glow Effect الخفي الضبابي المميز */}
+        <div className="absolute w-28 h-20 bg-kamen-gold/40 rounded-full blur-md pointer-events-none z-0 top-0.5" />
 
         {item.image ? (
-          <img
+          <motion.img
+            variants={foodImageVariants}
+            animate={{
+              y: [0, -2, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             src={item.image}
             alt={item.name}
-            className="max-h-full w-auto object-contain drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] relative z-10"
+            className="h-26 pt-4 w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.85)] relative z-10"
             loading="eager"
           />
         ) : (
-          <div className="h-full w-full bg-zinc-900/80 rounded-lg flex items-center justify-center text-[7.5px] text-zinc-600">
+          <div className="h-full w-full bg-zinc-900/80 rounded-lg flex items-center justify-center text-[8px] text-zinc-500 font-medium">
             Kein Bild
           </div>
         )}
       </div>
 
-      <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pb-0.5">
+      {/* تفاصيل الكرت والأسعار بخط أكبر وأوضح */}
+      <div className="w-full text-center flex-1 flex flex-col justify-between min-h-0 pb-0.5 z-10 pt-6">
         <div className="flex flex-col justify-center">
-          <h3 className="truncate text-[9px] font-black uppercase tracking-wide text-kamen-cream font-heading">
+          <h3 className="truncate  font-black uppercase tracking-wide text-kamen-cream font-heading drop-shadow-sm">
             {item.name}
           </h3>
           {item.description && (
-            <p className="line-clamp-2 text-[6.5px] font-semibold text-kamen-beige/80 leading-tight mt-0.5">
+            <p className="line-clamp-2 text-xs font-bold text-kamen-beige/90 leading-tight mt-0.5">
               {item.description}
             </p>
           )}
         </div>
 
-        <div className="mt-0.5 flex items-center justify-center gap-1 px-0.5 shrink-0">
+        <div className="mt-1 flex items-center justify-center gap-1 px-0.5 shrink-0">
           {item.sizes && item.sizes.length > 0 ? (
             item.sizes.map((s, sIdx) => (
               <div
                 key={s.size || sIdx}
-                className="flex-1 rounded border border-kamen-gold/30 bg-kamen-gold/20 px-0.5 py-[1px] text-center flex flex-col justify-center gap-0"
+                className="flex-1 rounded border border-kamen-gold/40 bg-kamen-gold/25 px-1 py-2 text-center flex flex-col justify-center gap-0 shadow-sm"
               >
                 {s.size && (
-                  <span className="block text-[4.5px] font-bold uppercase text-kamen-gold/90 leading-none">
+                  <span className="block text-[8px] font-extrabold uppercase text-kamen-gold/90 leading-none mb-0.5">
                     {s.size}
                   </span>
                 )}
-                <span className="text-[7.5px] font-black text-kamen-gold font-heading leading-none mt-[1px]">
+                <span className="text-xs font-black text-kamen-gold font-heading leading-none mt-px">
                   {s.price}
                 </span>
               </div>
             ))
           ) : (
-            <div className="rounded border border-kamen-gold/30 bg-kamen-gold/20 px-1.5 py-[1px] text-[7.5px] font-black text-kamen-gold font-heading leading-none">
+            <div className="rounded border border-kamen-gold/40 bg-kamen-gold/25 px-2 py-[1.5px] text-[8.5px] font-black text-kamen-gold font-heading leading-none shadow-sm">
               {item.price || "—"}
             </div>
           )}
@@ -127,23 +181,23 @@ export function TVMenuScreen5() {
     </motion.div>
   );
 
-  // Kompakte Zeile für Getränke (ohne Bild)
+  // سطر المشروبات بخط أكبر وأوضح
   const renderDrinkRow = (item: AnyItem, idx: number) => (
     <motion.div
       key={item.name + idx}
       variants={cardItemVariants}
-      className="flex items-center justify-between rounded-lg border border-kamen-gold/20 bg-black/70 px-1.5 py-0.5 shadow-sm"
+      className="flex items-center justify-between border-b border-kamen-gold/20 py-0.5 px-1 hover:bg-white/5 rounded transition-colors"
     >
-      <span className="truncate text-[8px] font-bold uppercase text-kamen-cream font-heading">
+      <span className="truncate text-sm font-black uppercase text-kamen-cream font-heading tracking-wide">
         {item.name}
       </span>
-      <div className="flex items-center gap-1 shrink-0">
+      <div className="flex items-center gap-1.5 shrink-0">
         {item.size && (
-          <span className="text-[6.5px] text-kamen-gold/80 font-medium">
+          <span className="text-xs text-kamen-gold/90 font-bold">
             {item.size}
           </span>
         )}
-        <span className="text-[7.5px] font-black text-kamen-gold font-heading">
+        <span className="text-sm font-black text-kamen-gold font-heading">
           {item.price}
         </span>
       </div>
@@ -152,7 +206,7 @@ export function TVMenuScreen5() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-kamen-dark font-sans text-kamen-cream select-none flex flex-col justify-between p-2">
-      {/* Background Video (موحد بشرائح الشفافية opacity-60) */}
+      {/* Background Video */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
@@ -160,14 +214,14 @@ export function TVMenuScreen5() {
           muted
           playsInline
           preload="auto"
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          className="absolute inset-0 h-full w-full object-cover opacity-100"
         >
           <source src="/video/fire4.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-kamen-dark/85 via-kamen-dark/60 to-kamen-dark" />
       </div>
 
-      {/* Intro Hero Screen مع فيديو السلطة salad.mp4 */}
+      {/* Intro Hero Screen */}
       <AnimatePresence>
         {showHero && (
           <motion.div
@@ -189,9 +243,9 @@ export function TVMenuScreen5() {
               <source src="/video/salad.mp4" type="video/mp4" />
             </video>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, type: "spring" }}
               className="relative z-10 flex flex-col items-center"
             >
               <img
@@ -201,7 +255,7 @@ export function TVMenuScreen5() {
               />
               <div className="my-3 h-1 w-full bg-gradient-to-r from-transparent via-kamen-gold to-transparent" />
               <h1 className="text-3xl font-black uppercase tracking-widest text-kamen-cream font-heading">
-                SALATE, BEILAGEN & GETRÄNKE
+                SALATE, SNACKS & GETRÄNKE
               </h1>
             </motion.div>
           </motion.div>
@@ -216,146 +270,197 @@ export function TVMenuScreen5() {
               <img
                 src="/logo-k-transparent.svg"
                 alt="Logo"
-                className="h-7 w-auto"
+                className="h-9 w-auto"
               />
               <div>
                 <h1 className="text-lg font-black font-heading tracking-wider uppercase text-kamen-gold leading-none">
                   SALATE, BEILAGEN & GETRÄNKE
                 </h1>
-                <p className="text-[10px] text-kamen-beige mt-0.5">
+                <p className="text-sm text-kamen-beige mt-0.5">
                   Frisch, Knackig & Lecker
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Haupt-Grid (12 Spalten) */}
-          <div className="relative z-10 grid grid-cols-12 gap-2 my-1 flex-1 min-h-0 overflow-hidden">
-            {/* SPALTE 1: SALATE (5 Spalten Breit) */}
-            <div className="col-span-5 flex flex-col h-full min-h-0 rounded-xl border border-kamen-gold/30 bg-black/60 p-1.5 shadow-md">
-              <div className="flex items-center justify-between border-b border-kamen-gold/20 pb-1 mb-1 shrink-0">
-                <div className="flex items-center gap-1.5">
-                  <img
-                    src="/icons/salat.png"
-                    alt="Salat"
-                    className="h-4 w-4 object-contain"
-                  />
-                  <h2 className="text-[10px] font-black uppercase tracking-wider text-kamen-gold font-heading">
-                    KNACKIGE SALATE
-                  </h2>
+          {/* HAUPT-LAYOUT */}
+          <div className="relative z-10 flex flex-col gap-2 my-1 flex-1 min-h-0 overflow-hidden">
+            {/* ======================================================== */}
+            {/* 1. القسم العلوي: SALATE (يسار) + SNACKS & SAUCEN (يمين)    */}
+            {/* ======================================================== */}
+            <div className="grid grid-cols-12 gap-2 h-[61%] min-h-0">
+              {/* SALATE (اليسار: 6 Spalten) */}
+              <div className="col-span-6 flex flex-col h-full min-h-0 rounded-xl border border-kamen-gold/30 bg-black/60 p-1.5 shadow-md">
+                <div className="flex items-center justify-between border-b border-kamen-gold/20 pb-1 mb-1 shrink-0">
+                  <div className="flex items-center gap-1.5">
+                    <img
+                      src="/icons/salate.png"
+                      alt="Salat"
+                      className="h-4 w-4 object-contain"
+                    />
+                    <h2 className="font-black uppercase tracking-wider text-kamen-gold font-heading">
+                      KNACKIGE SALATE
+                    </h2>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs text-kamen-beige/90 italic font-medium">
+                      {saladDressing}
+                    </span>
+                    <span className="text-xs text-kamen-gold/80 font-bold border-l border-kamen-gold/30 pl-1.5">
+                      {saladPage}/2
+                    </span>
+                  </div>
                 </div>
-                <span className="text-[7.5px] text-kamen-beige/80 italic">
-                  {saladDressing}
-                </span>
+
+                <div className="flex-1 min-h-0">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`salats-page-${saladPage}`}
+                      variants={gridContainerVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                      className="grid grid-cols-3 grid-rows-2 gap-1.5 h-full min-h-0"
+                    >
+                      {(saladPage === 1 ? salatePage1 : salatePage2).map(
+                        (item, idx) => renderPizzaStyleCard(item, idx)
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
 
-              <motion.div
-                variants={gridContainerVariants}
-                initial="hidden"
-                animate="visible"
-                className="grid grid-cols-2 grid-rows-5 gap-1.5 flex-1 min-h-0"
-              >
-                {salate
-                  .slice(0, 10)
-                  .map((item, idx) => renderPizzaStyleCard(item, idx))}
-              </motion.div>
-            </div>
-
-            {/* SPALTE 2: SNACKS & BEILAGEN + BILD (5 Spalten Breit) */}
-            <div className="col-span-5 flex flex-col gap-2 h-full min-h-0">
-              {/* Snacks */}
-              <div className="flex-1 flex flex-col rounded-xl border border-kamen-gold/30 bg-black/60 p-1.5 shadow-md min-h-0">
-                <div className="flex items-center gap-1.5 border-b border-kamen-gold/20 pb-1 mb-1 shrink-0">
-                  <img
-                    src="/icons/snacks.png"
-                    alt="Snacks"
-                    className="h-4 w-4 object-contain"
-                  />
-                  <h2 className="text-[10px] font-black uppercase tracking-wider text-kamen-gold font-heading">
-                    SNACKS & BEILAGEN
-                  </h2>
+              {/* SNACKS & SAUCEN (اليمين: 6 Spalten - كروت سناك + قائمة صوصات نصية + صورة صوصات بالأسفل) */}
+              <div className="col-span-6 flex flex-col h-full min-h-0 rounded-xl border border-kamen-gold/30 bg-black/60 p-1.5 shadow-md">
+                <div className="flex items-center justify-between border-b border-kamen-gold/20 pb-1 mb-1 shrink-0">
+                  <div className="flex items-center gap-1.5">
+                    <img
+                      src="/icons/snacks.png"
+                      alt="Snacks"
+                      className="h-4 w-4 object-contain"
+                    />
+                    <h2 className=" font-black uppercase tracking-wider text-kamen-gold font-heading">
+                      SNACKS & SAUCEN
+                    </h2>
+                  </div>
                 </div>
-                <motion.div
-                  variants={gridContainerVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="grid grid-cols-2 grid-rows-2 gap-1.5 flex-1 min-h-0"
-                >
-                  {snacks.map((item, idx) => renderPizzaStyleCard(item, idx))}
-                </motion.div>
-              </div>
 
-              {/* Banner Bild unter Snacks */}
-              <motion.div
-                variants={cardItemVariants}
-                className="h-[35%] shrink-0 relative flex items-center justify-center rounded-xl border border-kamen-gold/30 bg-black/80 overflow-hidden p-1 shadow-md"
-              >
-                <img
-                  src="/snacks/snack-banner.png"
-                  alt="Snack Highlights"
-                  className="absolute inset-0 w-full h-full object-cover opacity-75"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-                <span className="relative z-10 text-[11px] font-black uppercase tracking-widest text-kamen-gold font-heading">
-                  Knusprig & Heiss
-                </span>
-              </motion.div>
+                <div className="grid grid-cols-12 gap-2 flex-1 min-h-0">
+                  {/* 4 كروت للـ Snacks (8 Spalten = 2x2) */}
+                  <motion.div
+                    variants={gridContainerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="col-span-8 grid grid-cols-2 grid-rows-2 gap-1.5 h-full min-h-0"
+                  >
+                    {snacks
+                      .slice(0, 4)
+                      .map((item, idx) => renderPizzaStyleCard(item, idx))}
+                  </motion.div>
+
+                  {/* Saucen قائمة الصوصات (4 Spalten) على شكل Liste مع صورة صوصات أسفلها */}
+                  <div className="col-span-4 flex flex-col justify-between h-full min-h-0">
+                    <div className="flex flex-col flex-1 min-h-0">
+                      <h3 className="text-md font-black uppercase text-kamen-gold font-heading border-b border-kamen-gold/20 pb-0.5 mb-1 shrink-0">
+                        SAUCEN & DIPS
+                      </h3>
+                      <div className="flex flex-col justify-start flex-1 min-h-0 space-y-0.5">
+                        {snackSauces.map((s, idx) => (
+                          <div
+                            key={idx}
+                            className="flex justify-between items-center text-sm border-b border-kamen-cream/10 pb-0.5"
+                          >
+                            <span className="text-kamen-cream font-bold truncate">
+                              {s.name}
+                            </span>
+                            <span className="text-kamen-gold font-black ml-1">
+                              {s.price}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* صورة الصوصات أسفل قائمة الصوصات مع أنيميشن وتأثير خلفي */}
+                    <motion.div
+                      variants={cardItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="h-[42%] shrink-0 relative flex items-center justify-center overflow-hidden mt-1  shadow-sm"
+                    >
+                      <div className="absolute w-16 h-8 bg-kamen-gold/20 rounded-full blur-md pointer-events-none" />
+                      <motion.img
+                        animate={{ scale: [1, 1.04, 1] }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        src="/snacks/sauce.png"
+                        alt="Sauces"
+                        className="h-[78%] w-auto object-contain opacity-90 relative z-10 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
+                        loading="eager"
+                      />
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* SPALTE 3: GETRÄNKE, SAUCEN & DESSERT (2 Spalten Breit) */}
-            <div className="col-span-2 flex flex-col gap-1.5 h-full min-h-0">
-              {/* GETRÄNKE */}
-              <div className="h-[46%] flex flex-col rounded-xl border border-kamen-gold/30 bg-black/60 p-1.5 shadow-md min-h-0">
+            {/* ======================================================== */}
+            {/* 2. القسم السفلي: كرت كامل 12 عمود (المشروبات + فيديو + التحلية) */}
+            {/* ======================================================== */}
+            <div className="col-span-12 h-[39%] min-h-0 rounded-xl border border-kamen-gold/30 bg-black/60 p-2 shadow-md flex items-center justify-between gap-2 overflow-hidden">
+              {/* القسم الأيسر: قائمة المشروبات كاملة */}
+              <div className="w-[40%] flex flex-col h-full min-h-0">
                 <div className="flex items-center gap-1 border-b border-kamen-gold/20 pb-1 mb-1 shrink-0">
                   <img
                     src="/icons/getraenke.png"
                     alt="Drinks"
                     className="h-3.5 w-3.5 object-contain"
                   />
-                  <h2 className="text-[9px] font-black uppercase tracking-wider text-kamen-gold font-heading">
-                    GETRÄNKE
+                  <h2 className=" font-black uppercase tracking-wider text-kamen-gold font-heading">
+                    KALTGETRÄNKE
                   </h2>
                 </div>
                 <motion.div
                   variants={gridContainerVariants}
                   initial="hidden"
                   animate="visible"
-                  className="flex flex-col justify-between flex-1 min-h-0 gap-0.5 overflow-hidden"
+                  className="flex flex-col justify-between flex-1 min-h-0 pr-1"
                 >
                   {drinks.map((item, idx) => renderDrinkRow(item, idx))}
                 </motion.div>
               </div>
 
-              {/* SAUCEN & DIPS */}
-              <div className="shrink-0 rounded-xl border border-kamen-gold/30 bg-black/70 p-1.5 shadow-md">
-                <h3 className="text-[8px] font-black uppercase text-kamen-gold font-heading mb-0.5 border-b border-kamen-gold/20 pb-0.5">
-                  SAUCEN & DIPS
-                </h3>
-                <div className="space-y-0.5">
-                  {snackSauces.map((s, idx) => (
-                    <div
-                      key={idx}
-                      className="flex justify-between items-center text-[7.5px]"
-                    >
-                      <span className="text-kamen-cream font-medium truncate">
-                        {s.name}
-                      </span>
-                      <span className="text-kamen-gold font-bold ml-1">
-                        {s.price}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+              {/* الوسط: فيديو drinks.mp4 مع التحكم ببطء التشغيل المضمون */}
+              <div className="w-[32%] h-full relative flex items-center justify-center overflow-hidden pointer-events-none">
+                <video
+                  ref={drinksVideoRef}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.playbackRate = 0.65;
+                    e.currentTarget.defaultPlaybackRate = 0.65;
+                  }}
+                  className="h-full w-auto object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.85)] relative z-10"
+                >
+                  <source src="/video/drinks.mp4" type="video/mp4" />
+                </video>
               </div>
 
-              {/* DESSERT */}
-              <div className="flex-1 flex flex-col rounded-xl border border-kamen-gold/30 bg-black/70 p-1 shadow-md min-h-0">
-                <h3 className="text-[8px] font-black uppercase text-kamen-gold font-heading mb-0.5 border-b border-kamen-gold/20 pb-0.5 shrink-0">
-                  DESSERT
+              {/* القسم الأيمن: كرت التحلية (Dessert Karte) */}
+              <div className="w-[28%] flex flex-col h-full min-h-0">
+                <h3 className=" font-black uppercase text-kamen-gold font-heading mb-1 border-b border-kamen-gold/20 pb-0.5 shrink-0 text-center">
+                  Nachtisch
                 </h3>
                 <div className="flex-1 min-h-0">
-                  {desserts.map((item, idx) => renderPizzaStyleCard(item, idx))}
+                  {desserts
+                    .slice(0, 1)
+                    .map((item, idx) => renderPizzaStyleCard(item, idx))}
                 </div>
               </div>
             </div>

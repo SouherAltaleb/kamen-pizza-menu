@@ -37,3 +37,25 @@ h5,
 h6 {
   font-family: "Outfit", sans-serif;
 }
+
+p {
+  font-family: "Manrope", sans-serif;
+}
+
+span {
+  font-family: "Manrope", sans-serif;
+}
+
+@keyframes cardImageFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(0.5deg);
+  }
+}
+
+.menu-item-img {
+  animation: cardImageFloat 3.5s ease-in-out infinite;
+}

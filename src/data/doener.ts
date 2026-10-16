@@ -7,7 +7,10 @@ export const doener = [
     allergens: ["A", "G", "C", "I", "J", "1", "5", "12"],
     category: "Döner & Teller",
     image: "/doener/doener-tasche.png",
-    sizes: [{ size: "", price: "7,00 €" }],
+    sizes: [
+      { size: "Kalb", price: "8,00 €" },
+      { size: "Hähnchen", price: "7,00 €" },
+    ],
   },
 
   {
@@ -18,18 +21,25 @@ export const doener = [
     allergens: ["A", "G", "C", "I", "J", "1", "5", "12"],
     category: "Döner & Teller",
     image: "/doener/doener-tasche.png",
-    sizes: [{ size: "", price: "5,00 €" }],
+    sizes: [
+      { size: "Kalb", price: "5,50 €" },
+      { size: "Hähnchen", price: "5,00 €" },
+    ],
   },
 
   {
     id: "60",
     number: "60",
     name: "Döner Dürüm",
-    description: "Dönerfleisch, Salat, Tomaten, Gurken, Zwiebeln und Sauce",
+    description:
+      "Dönerfleisch, Salat, Tomaten, Gurken, Zwiebeln und Sauce, im dünnen Fladenbrot gerollt",
     allergens: ["A", "G", "C", "I", "J", "1", "5", "12"],
     category: "Döner & Teller",
     image: "/doener/doener-dueruem.png",
-    sizes: [{ size: "", price: "8,00 €" }],
+    sizes: [
+      { size: "Kalb", price: "9,00 €" },
+      { size: "Hähnchen", price: "8,00 €" },
+    ],
   },
 
   {
@@ -40,7 +50,10 @@ export const doener = [
     allergens: ["A", "G", "C", "I", "J", "1", "5", "12"],
     category: "Döner & Teller",
     image: "/doener/doener-teller.png",
-    sizes: [{ size: "", price: "10,00 €" }],
+    sizes: [
+      { size: "Kalb", price: "11,00 €" },
+      { size: "Hähnchen", price: "10,00 €" },
+    ],
   },
 
   {
@@ -51,7 +64,10 @@ export const doener = [
     allergens: ["A", "G", "C", "I", "J", "1", "5", "12"],
     category: "Döner & Teller",
     image: "/doener/doener-box.png",
-    sizes: [{ size: "", price: "7,00 €" }],
+    sizes: [
+      { size: "Kalb", price: "8,00 €" },
+      { size: "Hähnchen", price: "7,00 €" },
+    ],
   },
 
   {
